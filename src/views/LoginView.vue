@@ -39,6 +39,7 @@
 
 <script>
 import AlertDanger from "@/components/AlertDanger.vue";
+import router from "@/router";
 
 export default {
     name: "LoginView",
@@ -48,7 +49,15 @@ export default {
         return {
             message: '',
             email: '',
-            password: ''
+            password: '',
+            loginResponse: {
+                userId: 0,
+                roleName: ''
+            },
+            errorResponse: {
+                message: '',
+                errorCode: 0
+            }
 
         }
     },
@@ -57,11 +66,35 @@ export default {
             this.message = '';
             if (this.email == '' || this.password == '') {
                 this.message = 'Please fill in all the required fields';
+            } else {
+                this.sendLoginRequest();
             }
+        },
 
+            sendLoginRequest() {
+                this.$http.get("/some/path", {
+                        params: {
+                            email: this.email,
+                            password: this.password
+                        }
+                    }
+                ).then(response => {
+                    this.loginResponse = response.data
+                    sessionStorage.setItem('userId', this.loginResponse.userId)
+                    sessionStorage.setItem('roleName', this.loginResponse.roleName)
+                    router.push({name: 'storeRoute'})
+                }).catch(error => {
+                    this.errorResponse = error.response.data
+                    if (this.errorResponse.errorCode === 111) {
+                        this.message = this.errorResponse.message
+                    } else {
+                        router.push({name: 'errorRoute'})
+                    }
+                })
+            },
         },
     }
-};
+
 </script>
 
 <style scoped>

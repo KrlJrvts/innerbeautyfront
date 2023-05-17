@@ -8,6 +8,7 @@ import CartView from "@/views/CartView.vue";
 import FavoriteView from "@/views/FavoriteView.vue";
 import AccountView from "@/views/AccountView.vue";
 import RegisterView from "@/views/RegisterView.vue";
+import ErrorView from "@/views/ErrorView.vue";
 
 
 const routes = [
@@ -55,6 +56,11 @@ const routes = [
     path: '/register',
     name: 'registerRoute',
     component: RegisterView
+  },
+  {
+    path: '/error',
+    name: 'errorRoute',
+    component: ErrorView
   },
 
 ]
