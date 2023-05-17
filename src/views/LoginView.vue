@@ -127,12 +127,13 @@ section {
 input {
     background-color: transparent !important;
     /*background-color: grey;*/
-    color: red;
+    color: whitesmoke;
 }
 
 input:focus {
     color: white !important;
     border-color: darkred !important;
+
 
 }
 
