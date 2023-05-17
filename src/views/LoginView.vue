@@ -3,7 +3,7 @@
 
         <div class="container">
             <div class="col">
-                <AlertDanger v-if="email === '' || password ===''" :message="this.message"/>
+                <AlertDanger  :message="this.message"/>
             </div>
         </div>
         <div class="container content-container text-center">
@@ -41,6 +41,7 @@
 import AlertDanger from "@/components/AlertDanger.vue";
 import router from "@/router";
 
+
 export default {
     name: "LoginView",
     components: {AlertDanger},
@@ -72,7 +73,7 @@ export default {
         },
 
             sendLoginRequest() {
-                this.$http.get("/some/path", {
+                this.$http.get("/login", {
                         params: {
                             email: this.email,
                             password: this.password
