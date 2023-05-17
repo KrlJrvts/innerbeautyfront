@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-end p-4">
             <a class="btn" @click="pushTo"><i class="fa-solid fa-arrow-right-to-bracket fa-3x"></i></a>
         </div>
-        <div class="container homepage">
+        <div class="container homepage-data">
             <div class="row">
                 <div class="col">
                     <h1>{{ sloganGenerator () }}</h1>
@@ -13,7 +13,7 @@
 
 
     </section>
-    <section>
+    <section id="testimonials">
 
 
     </section>
@@ -56,11 +56,11 @@ export default {
 
 <style>
 
-.container {
+.homepage-data{
     width: 100vw;
     height: 40%;
     position: relative;
-    top: 30%;
+    top: 20%;
 }
 
 h1 {
