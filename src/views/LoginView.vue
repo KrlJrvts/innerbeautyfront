@@ -3,7 +3,7 @@
 
         <div class="container">
             <div class="col">
-                <AlertDanger v-if="username === '' || password ===''" :message="this.message"/>
+                <AlertDanger v-if="email === '' || password ===''" :message="this.message"/>
             </div>
         </div>
         <div class="container content-container text-center">
@@ -54,7 +54,7 @@ export default {
     },
     methods: {
         login() {
-            this.message =  '';
+            this.message = '';
             if (this.email == '' || this.password == '') {
                 this.message = 'Please fill in all the required fields';
             }
