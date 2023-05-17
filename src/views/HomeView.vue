@@ -65,6 +65,8 @@ export default {
 
 h1 {
     color: white;
+    font-family: 'Playfair Display', serif;
+
 }
 
 a {
