@@ -144,13 +144,13 @@ button:hover {
     transition: all 700ms ease !important;
     transform: scale(1.1) !important;
     border-color: #660000 !important;
-    box-shadow: 0px 0px 300px 25px #660000;
+    box-shadow: 0px 0px 300px 20px #660000;
 }
 
-alert-div {
-    position: relative;
-    margin-top: 200px;
-}
+/*alert-div {*/
+/*    position: relative;*/
+/*    margin-top: 200px;*/
+/*}*/
 
 
 </style>
