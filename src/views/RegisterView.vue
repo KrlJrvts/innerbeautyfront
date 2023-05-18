@@ -1,17 +1,162 @@
 <template>
-    <div>
-        <h1>See on registerview</h1>
-    </div>
+    <section id="register">
+        <div class="container">
+            <div class="col">
+                <AlertDanger :message="this.message"/>
+            </div>
+        </div>
+        <div class="container content-container">
+            <div class="row mt-5">
+                <div class="col-4 d-flex justify-content-center">
+                    <h4>E-mail</h4>
+                </div>
+                <div class="col-4">
+                    <h4>Firstname</h4>
+                </div>
+                <div class="col-4">
+                    <h4>Image</h4>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-4  mt-2">
+                    <input v-model="email" type="email" class="form-control w-75" id="" placeholder="Enter email">
+                </div>
+                <div class="col-4  mt-2">
+                    <input v-model="firstName" type="email" class="form-control w-75" id=""
+                           placeholder="Enter first name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <h4>Password</h4>
+                </div>
+                <div class="col-4">
+                    <h4>Lastname</h4>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-4 mt-2">
+                    <input v-model="password" type="password" class="form-control w-75" id=""
+                           placeholder="Enter password">
+                </div>
+                <div class="col-4 mt-2">
+                    <input v-model="password" type="password" class="form-control w-75" id=""
+                           placeholder="Enter last name">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col d-flex justify-content-center">
+                    <button @click="register" class="btn btn-outline-light w-25">Register</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
+import AlertDanger from "@/components/AlertDanger.vue";
+import router from "@/router";
+
 export default {
-    name: "RegisterView"
+    name: "RegisterView",
+    components: {AlertDanger},
+
+    data() {
+        return {
+            message: '',
+            email: '',
+            password: '',
+            image: '',
+            firstName: '',
+            lastName: '',
+            loginResponse: {
+                userId: 0,
+                roleName: ''
+            },
+            errorResponse: {
+                message: '',
+                errorCode: 0
+            }
+        }
+    },
+    methods: {
+        register() {
+            if (this.email == '' || this.password == '' || this.firstName == '' || this.lastName == '') {
+                this.message = 'Please fill all fields!';
+            } else {
+                this.postRegisterUser();
+            }
+        },
+
+        postRegisterUser() {
+            this.clearAlertMessages()
+            this.$http.post("/register", this.somePayloadDtoObject
+            ).then(response => {
+                const responseBody = response.data
+            }).catch(error => {
+                const errorResponseBody = error.response.data
+            })
+        },
+        clearAlertMessages() {
+            this.successMessage = ''
+            this.errorMessage = ''
+        },
+
+    }
 }
 </script>
 
 <style scoped>
-h1 {
+section {
     color: black;
+}
+
+.container {
+    position: relative;
+    top: 15%;
+    height: 10%;
+    width: 100%;
+
+}
+
+.content-container {
+    color: white;
+    position: relative;
+    top: 15%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #1d1d1d;
+    background: rgba(0, 0, 0, .3);
+}
+
+input {
+    background-color: transparent !important;
+    /*background-color: grey;*/
+    color: whitesmoke;
+}
+
+input:focus {
+    color: white !important;
+    border-color: #660000 !important;
+    box-shadow: 0px 0px 500px 10px #660000 !important;
+
+
+}
+
+button:hover {
+    background-color: #660000 !important;
+    color: white !important;
+    transition: all 700ms ease !important;
+    transform: scale(1.1) !important;
+    border-color: #660000 !important;
+    box-shadow: 0px 0px 300px 10px #660000;
+}
+
+alert-div {
+    position: relative;
+    margin-top: 200px;
 }
 </style>

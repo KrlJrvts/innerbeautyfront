@@ -132,7 +132,7 @@ input {
 
 input:focus {
     color: white !important;
-    border-color: darkred !important;
+    border-color: #660000 !important;
     box-shadow: 0px 0px 500px 10px #660000 !important;
 
 
