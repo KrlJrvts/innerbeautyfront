@@ -11,7 +11,7 @@
             </div>
             <div class="row ">
                 <div class="col d-flex justify-content-center">
-                    <button @click="pushToRegister" class="btn btn-outline-light w-25">Start selling today
+                    <button @click="pushToRegister" class="btn btn-outline-light w-25 button-homepage">Start selling today
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </button>
                 </div>
@@ -77,7 +77,7 @@ export default {
     width: 100vw;
     height: 40%;
     position: relative;
-    top: 20%;
+    top: 18%;
 }
 
 h1 {
@@ -97,7 +97,11 @@ a:hover {
     transform: scale(1.3) perspective(1px) !important;
 }
 
-button:hover {
+.button-homepage {
+    font-family:'Playfair Display', serif !important;
+    font-size: 120%!important;
+}
+.button-homepage:hover {
     background-color: #660000 !important;
     color: white !important;
     transition: all 700ms ease !important;

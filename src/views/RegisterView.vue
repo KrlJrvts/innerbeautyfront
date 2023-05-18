@@ -41,7 +41,7 @@
                            placeholder="Enter password">
                 </div>
                 <div class="col-4 mt-2">
-                    <input v-model="password" type="password" class="form-control w-75" id=""
+                    <input v-model="lastName" type="text" class="form-control w-75" id=""
                            placeholder="Enter last name">
                 </div>
             </div>

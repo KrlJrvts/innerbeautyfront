@@ -30,7 +30,7 @@
             </div>
             <div class="row ">
                 <div class="col d-flex justify-content-center">
-                    <button @click="login" class="btn btn-outline-light w-25">Login</button>
+                    <button @click="login" class="btn btn-outline-light w-25 button-login">Login</button>
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@ input:focus {
 
 }
 
-button:hover {
+.button-login:hover {
     background-color: #660000 !important;
     color: white !important;
     transition: all 700ms ease !important;
@@ -147,10 +147,6 @@ button:hover {
     box-shadow: 0px 0px 300px 20px #660000;
 }
 
-/*alert-div {*/
-/*    position: relative;*/
-/*    margin-top: 200px;*/
-/*}*/
 
 
 </style>
