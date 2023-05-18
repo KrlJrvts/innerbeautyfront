@@ -126,13 +126,15 @@ section {
 
 input {
     background-color: transparent !important;
-    /*background-color: grey;*/
     color: whitesmoke;
+    border-color: #660000;
 }
 
 input:focus {
     color: white !important;
     border-color: darkred !important;
+    border: #660000!important;
+    background: rgba(0, 0, 0, .3)!important;
 
 
 }
