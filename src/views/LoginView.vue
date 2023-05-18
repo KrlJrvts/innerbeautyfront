@@ -141,7 +141,7 @@ button:hover {
     background-color: white;
     transition: all 700ms ease !important;
     transform: scale(1.1) !important;
-    box-shadow: 0px 0px 500px 10px red;
+    box-shadow: 0px 0px 500px 10px #660000;
 }
 
 alert-div {
