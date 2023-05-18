@@ -10,6 +10,9 @@
                 </div>
             </div>
         </div>
+        <div>
+<!--            Add continue selling button and link to RegisterView-->
+        </div>
 
 
     </section>
