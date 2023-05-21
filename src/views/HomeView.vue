@@ -1,7 +1,16 @@
 <template>
     <section id="home">
-        <div class="d-flex justify-content-end p-4">
-            <a class="btn" @click="pushToLogin"><i class="fa-solid fa-arrow-right-to-bracket fa-3x"></i></a>
+        <div class="row col-12">
+            <div class="col d-flex justify-content-start p-3">
+                <h3>LOGO? </h3>
+            </div>
+            <div class="col-6 d-flex justify-content-center p-3 ">
+                <a class="homepage-brand-name">Inner <i class="fa-regular fa-heart fa-beat-fade fa-md"></i> Beauty</a>
+            </div>
+            <div class="col d-flex justify-content-end p-3">
+                <a class="homepage-btn-login" @click="pushToLogin"><i
+                        class="fa-solid fa-arrow-right-to-bracket fa-3x"></i></a>
+            </div>
         </div>
         <div class="container homepage-data">
             <div class="row mb-5">
@@ -11,7 +20,8 @@
             </div>
             <div class="row ">
                 <div class="col d-flex justify-content-center">
-                    <button @click="pushToRegister" class="btn btn-outline-light w-25 button-homepage">Start selling today
+                    <button @click="pushToRegister" class="btn btn-outline-light w-25 button-homepage">Start selling
+                        today
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </button>
                 </div>
@@ -73,34 +83,53 @@ export default {
 
 <style>
 
-.homepage-data {
-    width: 100vw;
-    height: 40%;
-    position: relative;
-    top: 18%;
-}
-
 h1 {
     color: white;
     font-family: 'Playfair Display', serif;
 
 }
 
-a {
+.homepage-brand-name {
+    text-decoration: none!important;
+    font-family: 'Playfair Display', serif;
+    font-size: 200%;
+    color: white;
+    transform: scale(1)!important;
+    transition: all 700ms ease !important;
+
+
+}
+
+.homepage-brand-name:hover {
+    cursor: pointer;
+    color: #660000;
+    transform: scale(1.15)!important;
+}
+.fa-heart {
+    color: #660000;
+}
+.homepage-data {
+    position: relative;
+    top: 18%;
+}
+
+.homepage-btn-login {
     color: #660000 !important;
     transition: all 500ms ease !important;
     transform: scale(1) !important;
 }
 
-a:hover {
+.homepage-btn-login:hover {
     /*transition-duration: 1000ms!important;*/
     transform: scale(1.3) perspective(1px) !important;
+    cursor: pointer;
 }
 
 .button-homepage {
-    font-family:'Playfair Display', serif !important;
-    font-size: 120%!important;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 120% !important;
 }
+
 .button-homepage:hover {
     background-color: #660000 !important;
     color: white !important;
@@ -108,6 +137,40 @@ a:hover {
     transform: scale(1.1) !important;
     border-color: #660000 !important;
     box-shadow: 0px 0px 300px 10px #660000;
+}
+hr {
+    border: none;
+    height: 2px;
+    background-color: transparent;
+    position: relative;
+}
+
+hr:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-image: url('https://i.imgur.com/2P2cs8i.png'); /* Replace with blood drop image URL */
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: blood-drip 1s infinite;
+}
+
+@keyframes blood-drip {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
 }
 
 </style>
