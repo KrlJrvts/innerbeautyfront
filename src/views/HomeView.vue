@@ -70,10 +70,10 @@ export default {
             router.push({name: 'registerRoute'})
         },
         sloganGenerator() {
-            let gen = Math.random();
-            if (gen < 0.3) {
+            let value = Math.random();
+            if (value < 0.3) {
                 return this.sloganA
-            } else if (gen > 0.3 && gen < 0.6) {
+            } else if (value > 0.3 && value < 0.6) {
                 return this.sloganB;
             } else {
                 return this.sloganC
