@@ -4,8 +4,10 @@
             <div class="col d-flex justify-content-start p-3">
                 <h3>LOGO? </h3>
             </div>
-            <div class="col-6 d-flex justify-content-center p-3 ">
-                <a class="homepage-brand-name">Inner <i class="fa-regular fa-heart fa-beat-fade fa-md"></i> Beauty</a>
+            <div class="col-6 d-flex justify-content-center p-2 ">
+                <a class="homepage-brand-name" @click="pushToHome">Inner
+                    <i class="fa-regular fa-heart fa-beat-fade fa-md"></i>
+                    Beauty</a>
             </div>
             <div class="col d-flex justify-content-end p-3">
                 <a class="homepage-btn-login" @click="pushToLogin"><i
@@ -59,11 +61,14 @@ export default {
         }
     },
     methods: {
+        pushToHome() {
+            router.push({name: 'homeRoute'})
+        },
         pushToLogin() {
-            router.push('/login')
+            router.push({name: 'loginRoute'})
         },
         pushToRegister() {
-            router.push('/register')
+            router.push({name: 'registerRoute'})
         },
         sloganGenerator() {
             let gen = Math.random();
@@ -90,24 +95,30 @@ h1 {
 }
 
 .homepage-brand-name {
-    text-decoration: none!important;
+    text-decoration: none !important;
     font-family: 'Playfair Display', serif;
-    font-size: 200%;
-    color: white;
-    transform: scale(1)!important;
+    font-size: 225%;
+    color:white;
+    transform: scale(1) !important;
     transition: all 700ms ease !important;
-
-
 }
 
 .homepage-brand-name:hover {
     cursor: pointer;
-    color: #660000;
-    transform: scale(1.15)!important;
+    color:  #FF0000;
+    transform: scale(1.1) !important;
 }
-.fa-heart {
+.homepage-brand-name .fa-heart {
     color: #660000;
+    transform: scale(1)!important;
+
 }
+.homepage-brand-name:hover .fa-heart {
+    color: white;
+    transition: all 2s ease !important;
+
+}
+
 .homepage-data {
     position: relative;
     top: 18%;
@@ -138,6 +149,7 @@ h1 {
     border-color: #660000 !important;
     box-shadow: 0px 0px 300px 10px #660000;
 }
+
 hr {
     border: none;
     height: 2px;
