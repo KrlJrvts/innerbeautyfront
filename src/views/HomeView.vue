@@ -10,8 +10,9 @@
                     Beauty</a>
             </div>
             <div class="col d-flex justify-content-end p-3">
-                <a class="homepage-btn-login" @click="pushToLogin"><i
-                        class="fa-solid fa-arrow-right-to-bracket fa-3x"></i></a>
+                <a class="homepage-btn-login" @click="pushToLogin">
+                    <i class="fa-solid fa-arrow-right-to-bracket fa-3x"></i>
+                </a>
             </div>
         </div>
         <div class="container homepage-data">
@@ -48,9 +49,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 export default {
     name: 'HomeView',
     computed: {
-        RegisterView() {
-            return RegisterView
-        }
+
     },
     components: {FontAwesomeIcon},
     data() {
@@ -98,21 +97,23 @@ h1 {
     text-decoration: none !important;
     font-family: 'Playfair Display', serif;
     font-size: 225%;
-    color:white;
+    color: white;
     transform: scale(1) !important;
     transition: all 700ms ease !important;
 }
 
 .homepage-brand-name:hover {
     cursor: pointer;
-    color:  #FF0000;
+    color: #FF0000;
     transform: scale(1.1) !important;
 }
+
 .homepage-brand-name .fa-heart {
     color: #660000;
-    transform: scale(1)!important;
+    transform: scale(1) !important;
 
 }
+
 .homepage-brand-name:hover .fa-heart {
     color: white;
     transition: all 2s ease !important;
