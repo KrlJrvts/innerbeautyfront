@@ -85,13 +85,16 @@ export default {
 .store-card:hover {
     cursor: pointer;
     transform: scale(1.1);
-    transition-duration: 900ms;
+    transition: all 800ms ease;
+    border-color: crimson;
+
 }
+
 
 
 .store-card-body {
     border-color: #1d1d1d !important;
-    background: rgba(0, 0, 0, .7) !important;
+    background: rgba(40, 0, 0, .3)!important;
 
 }
 
