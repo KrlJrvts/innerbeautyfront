@@ -1,6 +1,5 @@
 <template>
     <section id="login">
-
         <div class="container">
             <div class="col">
                 <AlertDanger :message="this.message"/>
