@@ -2,7 +2,7 @@
     <section id="login">
         <div class="container">
             <div class="col">
-                <AlertDanger :message="this.message"/>
+                <AlertDanger :message="message"/>
             </div>
         </div>
         <div class="container content-container text-center">
