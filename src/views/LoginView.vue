@@ -1,5 +1,20 @@
 <template>
     <section id="login">
+        <div class="row col-12">
+            <div class="col d-flex justify-content-start p-3">
+                <h3>LOGO? </h3>
+            </div>
+            <div class="col-6 d-flex justify-content-center p-2 ">
+                <a class="homepage-brand-name" @click="pushToHome">Inner
+                    <i class="fa-regular fa-heart fa-beat-fade fa-md"></i>
+                    Beauty</a>
+            </div>
+            <div class="col d-flex justify-content-end p-3">
+                <a class="homepage-btn-login" @click="pushToLogin">
+                    <i class="fa-solid fa-arrow-right-to-bracket fa-3x"></i>
+                </a>
+            </div>
+        </div>
         <div class="container">
             <div class="col">
                 <AlertDanger :message="message"/>
@@ -114,7 +129,7 @@ section {
 .content-container {
     color: white;
     position: relative;
-    top: 15%;
+    top: 13%;
     width: 22%;
     height: 45%;
     border-radius: 15%;

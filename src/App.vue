@@ -1,6 +1,6 @@
 <template>
     <nav v-if="!isHomepage && !isLoginPage && !isRegisterPage">
-        <div class="row col-12">
+        <div class="row homepage-brand-row col-12">
             <div class="col d-flex justify-content-start p-3">
                 <h3>LOGO? </h3>
             </div>
@@ -15,16 +15,16 @@
                     <div class="col p-0">
                         <router-link to="/add-item">addItem?</router-link>
                     </div>
-                    <div class="ps-4">
+                    <div class="ps-4 pt-3">
                         <router-link to="/"><i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i></router-link>
                     </div>
-                    <div class="ps-4">
+                    <div class="ps-4 pt-3">
                         <router-link to="/favorite"><i class="fa-regular fa-heart fa-2xl"></i></router-link>
                     </div>
-                    <div class="ps-4">
+                    <div class="ps-4 pt-3">
                         <router-link to="/account"><i class="fa-regular fa-user fa-2xl"></i></router-link>
                     </div>
-                    <div class="ps-4">
+                    <div class="ps-4 pt-3">
                         <router-link to="/cart"><i class="fa-solid fa-basket-shopping fa-2xl"></i></router-link>
                     </div>
                 </div>
@@ -64,6 +64,9 @@ nav a:hover {
 nav a.router-link-exact-active {
     color: #42b983;
 
+}
+.homepage-brand-name{
+    margin: 0;
 }
 </style>
 <script>

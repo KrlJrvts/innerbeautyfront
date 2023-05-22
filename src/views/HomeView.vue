@@ -151,39 +151,6 @@ h1 {
     box-shadow: 0px 0px 300px 10px #660000;
 }
 
-hr {
-    border: none;
-    height: 2px;
-    background-color: transparent;
-    position: relative;
-}
 
-hr:before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: 0;
-    right: 0;
-    height: 10px;
-    background-image: url('https://i.imgur.com/2P2cs8i.png'); /* Replace with blood drop image URL */
-    background-repeat: no-repeat;
-    background-position: center;
-    animation: blood-drip 1s infinite;
-}
-
-@keyframes blood-drip {
-    0% {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-    50% {
-        transform: translateY(10px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-}
 
 </style>
