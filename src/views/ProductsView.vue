@@ -1,8 +1,8 @@
 <template>
 <section>
-    <div class="container text-center">
+    <div class="container text-center pt-5">
         <div class="row">
-            <div class="col">
+            <div class="col-3">
                 <div class="d-flex">
                     <div class="dropdown me-1">
                         <button type="button" class="btn btn-outline-light button-homepage account-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
@@ -27,8 +27,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-               <h1>this is products view</h1>
+            <div class="col-9">
+                <ul class="list-group">
+                    <li class="list-group-item">An item</li>
+                </ul>
             </div>
         </div>
     </div>
