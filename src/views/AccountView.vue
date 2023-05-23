@@ -26,7 +26,7 @@
                 <div class="col col-3 mt-5">
                     <div class="row">
                         <div class="col">
-                            <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail" style="width: 180px; height: 255px;">
+                            <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail account-image" style="width: 180px; height: 255px;">
                         </div>
                     </div>
                     <div class="row">
@@ -95,5 +95,12 @@ input:focus {
     transform: scale(1.1) !important;
     border-color: #660000 !important;
     box-shadow: 0px 0px 300px 20px #660000;
+}
+
+.account-image {
+    border-color: #660000 !important;
+    border-style: solid;
+    border-width: 2px;
+    padding: 0;
 }
 </style>
