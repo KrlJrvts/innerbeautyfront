@@ -1,11 +1,12 @@
 <template>
     <section id="register">
+
         <div class="container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
         </div>
-        <div @keyup.enter="register" class="container content-container" id="registration-container">
+        <div @keyup.enter="register" class="container content-container-register" id="registration-container">
             <div class="row d-flex justify-content-start mt-3 mb-5">
                 <div class="col-12 ">
                     <h2>Hurry up and sign up!</h2>
@@ -36,32 +37,33 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input v-model="confirmPassword"  type="password" class="form-control" placeholder="Confirm Password">
+                            <input v-model="confirmPassword" type="password" class="form-control"
+                                   placeholder="Confirm Password">
                         </div>
                     </div>
                 </div>
                 <div class="col-6 image-col">
                     <div class="row">
                         <div class="col-12 image-file mb-3">
-                            <img :src="image" class="img-thumbnail rounded-3 registration-image"  style="height: 180px; width: 150px" alt="...">
+                            <img :src="image" class="img-thumbnail rounded-3 registration-image"
+                                 style="height: 180px; width: 150px" alt="...">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="col">
-                                <input class="form-control w-75 registration-image-input" type="file" accept="image/jpeg" id="imageInput" @change="handleImage">
+                                <input class="form-control w-75 registration-image-input" type="file"
+                                       accept="image/jpeg" id="imageInput" @change="handleImage">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row button-row">
+            <div class="row button-row ">
                 <div class="col-12">
-                    <button @click="register"  class="btn btn-outline-light w-25 button-login">Register</button>
+                    <button @click="register" class="btn btn-outline-light w-25 button-login">Register</button>
                 </div>
-
             </div>
-
         </div>
     </section>
 </template>
@@ -130,10 +132,10 @@ export default {
 
 
             this.$http
-                .post("/register",registrationBody)
+                .post("/register", registrationBody)
                 .then(response => {
-                router.push({name: 'loginRoute'})
-            }).catch(error => {
+                    router.push({name: 'loginRoute'})
+                }).catch(error => {
                 this.errorResponse = error.response.data
                 if (this.errorResponse.errorCode === 112) {
                     this.message = this.errorResponse.message
@@ -161,12 +163,12 @@ section {
 
 }
 
-.content-container {
+.content-container-register {
     color: white;
     position: relative;
     top: 15%;
-    width: 50%;
-    height: 50%;
+    width: 900px;
+    height: 520px;
     border-radius: 50px;
     border-style: solid;
     border-color: #1d1d1d;
@@ -204,20 +206,24 @@ alert-div {
 .registration-slogan {
     color: #660000;
 }
+
 .registration-image {
     padding: 0;
-    border-color: #660000!important;
+    border-color: #660000 !important;
 }
+
 .image-col {
     position: relative;
     bottom: 40px;
     left: 80px;
 
 }
+
 .image-file {
     position: relative;
     right: 8%;
 }
+
 input[type="file"]::-webkit-file-upload-button {
     padding: 8px 16px; /* Adjust the padding as needed */
     font-size: 14px; /* Adjust the font size as needed */
@@ -226,10 +232,8 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 4px; /* Add border radius if desired */
     font-family: inherit;
 }
-.button-row {
-    position: relative;
-    bottom: 5%;
-}
+
+
 
 
 </style>

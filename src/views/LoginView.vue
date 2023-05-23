@@ -20,7 +20,7 @@
                 <AlertDanger :message="message"/>
             </div>
         </div>
-        <div class="container content-container text-center">
+        <div class="container content-container-login text-center">
             <div class="row mt-5">
                 <div class="col">
                     <h4>E-mail</h4>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="row ">
-                <div class="col d-flex justify-content-center">
+                <div class="col d-flex justify-content-center  ">
                     <button @click="login" class="btn btn-outline-light w-25 button-login">Login</button>
                 </div>
             </div>
@@ -129,12 +129,12 @@ section {
 
 }
 
-.content-container {
+.content-container-login {
     color: white;
     position: relative;
     top: 13%;
-    width: 22%;
-    height: 45%;
+    width: 400px;
+    height: 400px;
     border-radius: 15%;
     border-style: solid;
     border-color: #1d1d1d;
