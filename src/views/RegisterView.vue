@@ -1,11 +1,12 @@
 <template>
     <section id="register">
-
-        <div class="container">
+        <Navbar :push-to-home="pushToHome"/>
+        <div class="register-alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
         </div>
+
         <div @keyup.enter="register" class="container content-container-register" id="registration-container">
             <div class="row d-flex justify-content-start mt-3 mb-5">
                 <div class="col-12 ">
@@ -71,10 +72,11 @@
 <script>
 import AlertDanger from "@/components/AlertDanger.vue";
 import router from "@/router";
+import Navbar from "@/components/Navbar.vue";
 
 export default {
     name: "RegisterView",
-    components: {AlertDanger},
+    components: {Navbar, AlertDanger},
 
     data() {
         return {
@@ -92,6 +94,9 @@ export default {
         }
     },
     methods: {
+        pushToHome() {
+            router.push({name:'homeRoute'})
+        },
         handleImage(event) {
             const file = event.target.files[0];
             const reader = new FileReader();
@@ -175,7 +180,6 @@ section {
     background: rgba(0, 0, 0, .3);
 }
 
-
 input {
     background-color: transparent !important;
     color: whitesmoke;
@@ -185,8 +189,6 @@ input:focus {
     color: white !important;
     border-color: #660000 !important;
     box-shadow: 0px 0px 500px 10px #660000 !important;
-
-
 }
 
 button:hover {
@@ -216,7 +218,6 @@ alert-div {
     position: relative;
     bottom: 40px;
     left: 80px;
-
 }
 
 .image-file {
