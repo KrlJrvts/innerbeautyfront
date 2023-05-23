@@ -4,7 +4,7 @@
             <div class="row store-view-row gx-5 ">
                 <div v-for="category in categories" :key="category.categoryId" :value="category.categoryId"
                      class="col-3 ">
-                    <div @click="test(category.categoryId)" class="card store-card bg-transparent" style="width: 100%; height: 100%;">
+                    <div @click="navigateToCategory(category.categoryId)" class="card store-card bg-transparent" style="width: 100%; height: 100%;">
                         <img :src="getCategoryImage(category)" class="store-card-image" draggable="false" >
                         <div class="card-body store-card-body bg-dark">
                             <h2 class="card-text">{{ category.categoryName }}</h2>
@@ -55,8 +55,9 @@ export default {
             }
 
         },
-        test(id) {
-            alert(id);
+        navigateToCategory(categoryId) {
+            router.push({name: 'productsRoute', query: {categoryId: categoryId}})
+
         },
     },
     beforeMount() {
