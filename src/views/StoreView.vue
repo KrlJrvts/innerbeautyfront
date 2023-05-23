@@ -4,7 +4,7 @@
             <div class="row store-view-row gx-5 ">
                 <div v-for="category in categories" :key="category.categoryId" :value="category.categoryId"
                      class="col-3 ">
-                    <div class="card store-card bg-transparent" style="width: 100%; height: 100%;">
+                    <div @click="test(category.categoryId)" class="card store-card bg-transparent" style="width: 100%; height: 100%;">
                         <img :src="getCategoryImage(category)" class="store-card-image" draggable="false" >
                         <div class="card-body store-card-body bg-dark">
                             <h2 class="card-text">{{ category.categoryName }}</h2>
@@ -15,7 +15,7 @@
         </div>
     </section>
 </template>
-
+<!--http://localhost:8081/product?categoryId=1  TODO: panna urli categoryId, et saada see teiselt viewilt kätte-->
 <script>
 import {get} from "axios";
 import router from "@/router";
@@ -54,7 +54,10 @@ export default {
                     return require("../assets/categoryphotos/liver.jpg");
             }
 
-        }
+        },
+        test(id) {
+            alert(id);
+        },
     },
     beforeMount() {
         this.getCategories()

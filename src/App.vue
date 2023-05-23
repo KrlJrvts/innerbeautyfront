@@ -62,7 +62,7 @@ nav a:hover {
 }
 
 nav a.router-link-exact-active {
-    color: #42b983;
+    color: #FF0000;
 
 }
 .homepage-brand-name{
