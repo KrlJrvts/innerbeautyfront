@@ -26,7 +26,7 @@
                 <div class="col col-3 mt-5">
                     <div class="row">
                         <div class="col">
-                            <img src="" class="img-thumbnail" style="width: 200px; height: 200px;">
+                            <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail" style="width: 180px; height: 255px;">
                         </div>
                     </div>
                     <div class="row">
