@@ -14,28 +14,53 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col-6">
-                    <div class="row">
-
-                    </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="First name">
+                            <input v-model="firstName" type="text" class="form-control" placeholder="First name">
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Last name">
+                            <input v-model="lastName" type="text" class="form-control" placeholder="Last name">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <input v-model="email" type="text" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <input v-model="password" type="password" class="form-control" placeholder="Password">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input  type="password" class="form-control" placeholder="Confirm Password">
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
-                    Column
+                    <div class="row">
+                        <div class="col-12">
+                            <img :src="image" class="img-thumbnail rounded-3 register-image" alt="...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="col mb-3 ">
+                                <label for="formFile" class="form-label"></label>
+                                <input class="form-control w-75" type="file" accept="image/jpeg" id="formFile">
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button @click="" class="btn btn-outline-light w-25 button-login">Register</button>
+                </div>
+
             </div>
 
         </div>
@@ -151,4 +176,5 @@ alert-div {
 .registration-slogan {
     color: #660000;
 }
+
 </style>
