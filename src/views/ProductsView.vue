@@ -1,40 +1,69 @@
 <template>
-<section>
-    <div class="container text-center pt-5">
-        <div class="row">
-            <div class="col-3">
-                <div class="d-flex">
-                    <div class="dropdown me-1">
-                        <button type="button" class="btn btn-outline-light button-homepage account-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
-                            Offset
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-light button-homepage account-button">Reference</button>
-                        <button type="button" class="btn btn-outline-light button-homepage account-button dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+    <section>
+        <div class="container text-center pt-5">
+            <div class="row">
+                <div class="col-3">
+                    <div class="d-flex">
+                        <div class="dropdown me-1">
+                            <button type="button"
+                                    class="btn btn-outline-light button-homepage account-button dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                                Offset
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-light button-homepage account-button">
+                                Reference
+                            </button>
+                            <button type="button"
+                                    class="btn btn-outline-light button-homepage account-button dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-9">
-                <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                </ul>
+                <div class="col-9">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        Column
+                                    </div>
+                                    <div class="col">
+                                        Column
+                                    </div>
+                                    <div class="col">
+                                        <div class="row mb-2">
+                                            <div class="col d-flex justify-content-end">
+                                                <button class="btn btn-outline-dark">Siin on nupuke</button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col d-flex justify-content-end">
+                                                <button class="btn btn-outline-dark">Siin on nupuke</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-  </section>
+    </section>
 </template>
 
 <script>
