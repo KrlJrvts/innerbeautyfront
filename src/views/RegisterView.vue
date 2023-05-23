@@ -5,7 +5,7 @@
                 <AlertDanger :message="message"/>
             </div>
         </div>
-        <div class="container content-container">
+        <div class="container content-container" id="registration-container">
             <div class="row d-flex justify-content-start mt-3 mb-5">
                 <div class="col-12 ">
                     <h2>Hurry up and sign up!</h2>
@@ -42,20 +42,20 @@
                 </div>
                 <div class="col-6 image-col">
                     <div class="row">
-                        <div class="col-12">
-                            <img src="../assets/categoryphotos/liver.jpg" class="img-thumbnail rounded-3 registration-image"  style="height: 140px; width: 140px" alt="...">
+                        <div class="col-12 image-file mb-3">
+                            <img :src="image" class="img-thumbnail rounded-3 registration-image"  style="height: 180px; width: 150px" alt="...">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="col mb-3 mt-4">
-                                <input class="form-control w-75 registration-image-input" type="file" accept="image/jpeg" id="formFile">
+                            <div class="col">
+                                <input class="form-control w-75 registration-image-input" type="file" accept="image/jpeg" id="imageInput" @change="handleImage">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row button-row">
                 <div class="col-12">
                     <button @click="register" class="btn btn-outline-light w-25 button-login">Register</button>
                 </div>
@@ -80,13 +80,9 @@ export default {
             email: '',
             password: '',
             confirmPassword: '',
-            image: '',
+            image: '/userdefaultimage/defaultimage.jpeg',
             firstName: '',
             lastName: '',
-            responseBody: {
-                message: '',
-                errorCode: 0
-            },
             errorResponse: {
                 message: '',
                 errorCode: 0
@@ -94,6 +90,16 @@ export default {
         }
     },
     methods: {
+        handleImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                this.image = e.target.result; // Save the base64 string to the 'image' data property
+            };
+
+            reader.readAsDataURL(file);
+        },
 
         register() {
             if (this.email == '' || this.password == '' || this.firstName == '' || this.lastName == '') {
@@ -119,23 +125,16 @@ export default {
             this.$http
                 .post("/register",registrationBody)
                 .then(response => {
-                this.responseBody = response.data
-                    if(this.responseBody.errorCode === 200) {
-                        this.message = this.responseBody.message
-                    }
+                router.push({name: 'loginRoute'})
             }).catch(error => {
                 this.errorResponse = error.response.data
-                if (this.errorResponse.errorCode === 403) {
+                if (this.errorResponse.errorCode === 112) {
                     this.message = this.errorResponse.message
                 } else {
                     router.push({name: 'errorRoute'})
                 }
             })
         },
-        // clearAlertMessages() {
-        //     this.successMessage = ''
-        //     this.errorMessage = ''
-        // },
 
     }
 }
@@ -145,6 +144,7 @@ export default {
 section {
     color: black;
 }
+
 
 .container {
     position: relative;
@@ -165,6 +165,7 @@ section {
     border-color: #1d1d1d;
     background: rgba(0, 0, 0, .3);
 }
+
 
 input {
     background-color: transparent !important;
@@ -199,7 +200,17 @@ alert-div {
 }
 .registration-image {
     padding: 0;
-    border-color: black!important;
+    border-color: #660000!important;
+}
+.image-col {
+    position: relative;
+    bottom: 40px;
+    left: 80px;
+
+}
+.image-file {
+    position: relative;
+    right: 40px;
 }
 input[type="file"]::-webkit-file-upload-button {
     padding: 8px 16px; /* Adjust the padding as needed */
@@ -209,7 +220,10 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 4px; /* Add border radius if desired */
     font-family: inherit;
 }
-
+.button-row {
+    position: relative;
+    bottom: 5%;
+}
 
 
 </style>
