@@ -5,7 +5,7 @@
                 <AlertDanger :message="message"/>
             </div>
         </div>
-        <div class="container content-container" id="registration-container">
+        <div @keyup.enter="register" class="container content-container" id="registration-container">
             <div class="row d-flex justify-content-start mt-3 mb-5">
                 <div class="col-12 ">
                     <h2>Hurry up and sign up!</h2>
@@ -57,7 +57,7 @@
             </div>
             <div class="row button-row">
                 <div class="col-12">
-                    <button @click="register" class="btn btn-outline-light w-25 button-login">Register</button>
+                    <button @click="register"  class="btn btn-outline-light w-25 button-login">Register</button>
                 </div>
 
             </div>
@@ -112,13 +112,20 @@ export default {
         },
 
         postRegisterUser() {
+
             const registrationBody = {
                 userEmail: this.email,
                 userPassword: this.password,
-                userImage: this.image,
+                userImage: '',
                 contactFirstname: this.firstName,
                 contactLastname: this.lastName
 
+            }
+            const hasSelectedImage = this.image !== '';
+            const isDefaultImage = this.image === '/userdefaultimage/defaultimage.jpeg';
+
+            if (hasSelectedImage && !isDefaultImage) {
+                registrationBody.userImage = this.image;
             }
 
 
@@ -169,7 +176,6 @@ section {
 
 input {
     background-color: transparent !important;
-    /*background-color: grey;*/
     color: whitesmoke;
 }
 
@@ -210,7 +216,7 @@ alert-div {
 }
 .image-file {
     position: relative;
-    right: 40px;
+    right: 8%;
 }
 input[type="file"]::-webkit-file-upload-button {
     padding: 8px 16px; /* Adjust the padding as needed */
