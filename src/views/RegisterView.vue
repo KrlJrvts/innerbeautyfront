@@ -83,9 +83,9 @@ export default {
             image: '',
             firstName: '',
             lastName: '',
-            RegistrationRequest: {
-                userId: 0,
-                roleName: ''
+            responseBody: {
+                message: '',
+                errorCode: 0
             },
             errorResponse: {
                 message: '',
@@ -101,23 +101,41 @@ export default {
             } else if (this.confirmPassword !== this.password) {
                 this.message = 'Passwords do not match! '
             } else {
-
+                this.postRegisterUser()
             }
         },
 
         postRegisterUser() {
-            this.clearAlertMessages()
-            this.$http.post("/register", this.somePayloadDtoObject
-            ).then(response => {
-                const responseBody = response.data
+            const registrationBody = {
+                userEmail: this.email,
+                userPassword: this.password,
+                userImage: this.image,
+                contactFirstname: this.firstName,
+                contactLastname: this.lastName
+
+            }
+
+
+            this.$http
+                .post("/register",registrationBody)
+                .then(response => {
+                this.responseBody = response.data
+                    if(this.responseBody.errorCode === 200) {
+                        this.message = this.responseBody.message
+                    }
             }).catch(error => {
-                const errorResponseBody = error.response.data
+                this.errorResponse = error.response.data
+                if (this.errorResponse.errorCode === 403) {
+                    this.message = this.errorResponse.message
+                } else {
+                    router.push({name: 'errorRoute'})
+                }
             })
         },
-        clearAlertMessages() {
-            this.successMessage = ''
-            this.errorMessage = ''
-        },
+        // clearAlertMessages() {
+        //     this.successMessage = ''
+        //     this.errorMessage = ''
+        // },
 
     }
 }
