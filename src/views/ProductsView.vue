@@ -34,32 +34,44 @@
                     </div>
                 </div>
                 <div class="col-9">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        Column
-                                    </div>
-                                    <div class="col">
-                                        Column
-                                    </div>
-                                    <div class="col">
-                                        <div class="row mb-2">
-                                            <div class="col d-flex justify-content-end">
-                                                <button class="btn btn-outline-dark">Siin on nupuke</button>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col d-flex justify-content-end">
-                                                <button class="btn btn-outline-dark">Siin on nupuke</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="row">
+                        <div class="col-3 ">
+                            <div class="card" style="width: 18rem;">
+                                <img src="" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                        <div class="col-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
