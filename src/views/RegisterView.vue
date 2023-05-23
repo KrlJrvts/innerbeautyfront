@@ -14,28 +14,52 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col-6">
-                    <div class="row">
-
-                    </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="First name">
+                            <input v-model="firstName" type="text" class="form-control" placeholder="First name">
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Last name">
+                            <input v-model="lastName" type="text" class="form-control" placeholder="Last name">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <input v-model="email" type="text" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <input v-model="password" type="password" class="form-control" placeholder="Password">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input v-model="confirmPassword"  type="password" class="form-control" placeholder="Confirm Password">
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    Column
+                <div class="col-6 image-col">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="../assets/categoryphotos/liver.jpg" class="img-thumbnail rounded-3 registration-image"  style="height: 140px; width: 140px" alt="...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="col mb-3 mt-4">
+                                <input class="form-control w-75 registration-image-input" type="file" accept="image/jpeg" id="formFile">
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button @click="register" class="btn btn-outline-light w-25 button-login">Register</button>
+                </div>
+
             </div>
 
         </div>
@@ -55,12 +79,13 @@ export default {
             message: '',
             email: '',
             password: '',
+            confirmPassword: '',
             image: '',
             firstName: '',
             lastName: '',
-            loginResponse: {
-                userId: 0,
-                roleName: ''
+            responseBody: {
+                message: '',
+                errorCode: 0
             },
             errorResponse: {
                 message: '',
@@ -69,27 +94,48 @@ export default {
         }
     },
     methods: {
+
         register() {
             if (this.email == '' || this.password == '' || this.firstName == '' || this.lastName == '') {
                 this.message = 'Please fill all fields!';
+            } else if (this.confirmPassword !== this.password) {
+                this.message = 'Passwords do not match! '
             } else {
-                this.postRegisterUser();
+                this.postRegisterUser()
             }
         },
 
         postRegisterUser() {
-            this.clearAlertMessages()
-            this.$http.post("/register", this.somePayloadDtoObject
-            ).then(response => {
-                const responseBody = response.data
+            const registrationBody = {
+                userEmail: this.email,
+                userPassword: this.password,
+                userImage: this.image,
+                contactFirstname: this.firstName,
+                contactLastname: this.lastName
+
+            }
+
+
+            this.$http
+                .post("/register",registrationBody)
+                .then(response => {
+                this.responseBody = response.data
+                    if(this.responseBody.errorCode === 200) {
+                        this.message = this.responseBody.message
+                    }
             }).catch(error => {
-                const errorResponseBody = error.response.data
+                this.errorResponse = error.response.data
+                if (this.errorResponse.errorCode === 403) {
+                    this.message = this.errorResponse.message
+                } else {
+                    router.push({name: 'errorRoute'})
+                }
             })
         },
-        clearAlertMessages() {
-            this.successMessage = ''
-            this.errorMessage = ''
-        },
+        // clearAlertMessages() {
+        //     this.successMessage = ''
+        //     this.errorMessage = ''
+        // },
 
     }
 }
@@ -151,4 +197,19 @@ alert-div {
 .registration-slogan {
     color: #660000;
 }
+.registration-image {
+    padding: 0;
+    border-color: black!important;
+}
+input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px; /* Adjust the padding as needed */
+    font-size: 14px; /* Adjust the font size as needed */
+    background-color: black; /* Customize the background color */
+    color: white; /* Customize the text color */
+    border-radius: 4px; /* Add border radius if desired */
+    font-family: inherit;
+}
+
+
+
 </style>
