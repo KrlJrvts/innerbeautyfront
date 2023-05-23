@@ -26,16 +26,17 @@
                 <div class="col col-3 mt-5">
                     <div class="row">
                         <div class="col">
-                    <img src="" class="img-thumbnail" style="width: 200px; height: 200px;" >
+                            <img src="" class="img-thumbnail" style="width: 200px; height: 200px;">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mt-3">
-                    <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button">Choose
-                        file
-                    </button>
+                            <button @click="" type="submit"
+                                    class="btn btn-outline-light button-homepage account-button">Choose
+                                file
+                            </button>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
             <div>

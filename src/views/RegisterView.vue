@@ -2,54 +2,42 @@
     <section id="register">
         <div class="container">
             <div class="col">
-                <AlertDanger :message="this.message"/>
+                <AlertDanger :message="message"/>
             </div>
         </div>
         <div class="container content-container">
-            <div class="row mt-5">
-                <div class="col-4 d-flex justify-content-center">
-                    <h4>E-mail</h4>
-                </div>
-                <div class="col-4">
-                    <h4>Firstname</h4>
-                </div>
-                <div class="col-4">
-                    <h4>Image</h4>
-                </div>
-            </div>
-
-            <div class="row mb-5">
-                <div class="col-4  mt-2">
-                    <input v-model="email" type="email" class="form-control w-75" id="" placeholder="Enter email">
-                </div>
-                <div class="col-4  mt-2">
-                    <input v-model="firstName" type="email" class="form-control w-75" id=""
-                           placeholder="Enter first name">
+            <div class="row d-flex justify-content-start mt-3 mb-5">
+                <div class="col-12 ">
+                    <h2>Hurry up and sign up!</h2>
+                    <div class="col-12 mt-3">
+                        <h5 class="registration-slogan">Before the organs run out</h5>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
-                    <h4>Password</h4>
+                <div class="col-6">
+                    <div class="row">
+
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="First name">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="Last name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <h4>Lastname</h4>
+                <div class="col-6">
+                    Column
                 </div>
             </div>
-            <div class="row mb-5">
-                <div class="col-4 mt-2">
-                    <input v-model="password" type="password" class="form-control w-75" id=""
-                           placeholder="Enter password">
-                </div>
-                <div class="col-4 mt-2">
-                    <input v-model="lastName" type="text" class="form-control w-75" id=""
-                           placeholder="Enter last name">
-                </div>
-            </div>
-            <div class="row ">
-                <div class="col d-flex justify-content-center">
-                    <button @click="register" class="btn btn-outline-light w-25">Register</button>
-                </div>
-            </div>
+
         </div>
     </section>
 </template>
@@ -158,5 +146,9 @@ button:hover {
 alert-div {
     position: relative;
     margin-top: 200px;
+}
+
+.registration-slogan {
+    color: #660000;
 }
 </style>
