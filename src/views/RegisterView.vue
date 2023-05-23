@@ -36,21 +36,20 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input  type="password" class="form-control" placeholder="Confirm Password">
+                            <input v-model="confirmPassword"  type="password" class="form-control" placeholder="Confirm Password">
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-6 image-col">
                     <div class="row">
                         <div class="col-12">
-                            <img :src="image" class="img-thumbnail rounded-3 register-image" alt="...">
+                            <img src="../assets/categoryphotos/liver.jpg" class="img-thumbnail rounded-3 registration-image"  style="height: 140px; width: 140px" alt="...">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="col mb-3 ">
-                                <label for="formFile" class="form-label"></label>
-                                <input class="form-control w-75" type="file" accept="image/jpeg" id="formFile">
+                            <div class="col mb-3 mt-4">
+                                <input class="form-control w-75 registration-image-input" type="file" accept="image/jpeg" id="formFile">
                             </div>
                         </div>
                     </div>
@@ -58,7 +57,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <button @click="" class="btn btn-outline-light w-25 button-login">Register</button>
+                    <button @click="register" class="btn btn-outline-light w-25 button-login">Register</button>
                 </div>
 
             </div>
@@ -80,10 +79,11 @@ export default {
             message: '',
             email: '',
             password: '',
+            confirmPassword: '',
             image: '',
             firstName: '',
             lastName: '',
-            loginResponse: {
+            RegistrationRequest: {
                 userId: 0,
                 roleName: ''
             },
@@ -94,11 +94,14 @@ export default {
         }
     },
     methods: {
+
         register() {
             if (this.email == '' || this.password == '' || this.firstName == '' || this.lastName == '') {
                 this.message = 'Please fill all fields!';
+            } else if (this.confirmPassword !== this.password) {
+                this.message = 'Passwords do not match! '
             } else {
-                this.postRegisterUser();
+
             }
         },
 
@@ -176,5 +179,19 @@ alert-div {
 .registration-slogan {
     color: #660000;
 }
+.registration-image {
+    padding: 0;
+    border-color: black!important;
+}
+input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px; /* Adjust the padding as needed */
+    font-size: 14px; /* Adjust the font size as needed */
+    background-color: black; /* Customize the background color */
+    color: white; /* Customize the text color */
+    border-radius: 4px; /* Add border radius if desired */
+    font-family: inherit;
+}
+
+
 
 </style>
