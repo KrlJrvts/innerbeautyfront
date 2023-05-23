@@ -1,12 +1,12 @@
 <template>
     <section id="register">
         <Navbar :push-to-home="pushToHome"/>
+
         <div class="register-alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
         </div>
-
         <div @keyup.enter="register" class="container content-container-register" id="registration-container">
             <div class="row d-flex justify-content-start mt-3 mb-5">
                 <div class="col-12 ">
@@ -95,7 +95,7 @@ export default {
     },
     methods: {
         pushToHome() {
-            router.push({name:'homeRoute'})
+            router.push({name: 'homeRoute'})
         },
         handleImage(event) {
             const file = event.target.files[0];
@@ -159,13 +159,13 @@ section {
     color: black;
 }
 
-
-.container {
-    position: relative;
-    top: 15%;
-    height: 10%;
-    width: 100%;
-
+.register-alert-container {
+    position: absolute;
+    top: 14%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    z-index: 1;
 }
 
 .content-container-register {
@@ -233,8 +233,6 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 4px; /* Add border radius if desired */
     font-family: inherit;
 }
-
-
 
 
 </style>

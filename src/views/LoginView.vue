@@ -1,7 +1,7 @@
 <template>
     <section id="login">
         <Navbar :push-to-home="pushToHome"/>
-        <div class="container">
+        <div class="container register-alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
@@ -108,18 +108,18 @@ section {
     color: black;
 }
 
-.container {
-    position: relative;
-    top: 15%;
-    height: 10%;
-    width: 100%;
-
+.register-alert-container {
+    position: absolute;
+    top: 14%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    z-index: 1;
 }
-
 .content-container-login {
     color: white;
     position: relative;
-    top: 13%;
+    top: 15%;
     width: 400px;
     height: 400px;
     border-radius: 15%;
