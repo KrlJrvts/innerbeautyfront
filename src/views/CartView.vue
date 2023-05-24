@@ -1,4 +1,5 @@
 <template>
+    <section id="cart">
     <div class="container text-center">
         <div>
             <h1>This is cart view</h1>
@@ -15,6 +16,7 @@
             </div>
         </div>
     </div>
+    </section>
 </template>
 
 <script>

@@ -43,7 +43,6 @@
 
 
 import router from "@/router";
-import RegisterView from "@/views/RegisterView.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default {

@@ -1,5 +1,5 @@
 <template>
-    <nav v-if="!isHomepage && !isLoginPage && !isRegisterPage">
+    <nav v-if="!isHomepage && !isLoginPage && !isRegisterPage && !isErrorPage">
         <div class="row homepage-brand-row col-12">
             <div class="col d-flex justify-content-start p-3">
                 <h3>LOGO? </h3>
@@ -81,6 +81,9 @@ export default {
         isRegisterPage() {
             return this.$route.path === '/register';
         },
+        isErrorPage(){
+            return this.$route.path === '/error';
+        }
     },
 };
 </script>
