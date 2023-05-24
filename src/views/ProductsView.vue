@@ -30,7 +30,7 @@
                                     <p class="card-text">Gender: {{product.genderName}}</p>
                                     <hr class="product-card-separator">
                                     <a class="btn button-product-favorite"><i class="fa-regular fa-heart fa-2xl me-5"></i></a>
-                                    <a class="btn button-product-cart"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a>
+                                    <a class="btn button-product-cart" @click="alert(product.productId)"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -64,6 +64,7 @@ export default {
                     productAvailableAt: '',
                     productPrice: 0,
                     countryName: '',
+                    countryId:'',
                     genderName: '',
                     bloodgroupType: '',
                     imageData: '',
@@ -96,8 +97,10 @@ export default {
                 case 4:
                     return 'Liver';
             }
-
-        }
+        },
+        alert(id) {
+            alert(id)
+        },
     },
     mounted() {
         this.getProducts()
