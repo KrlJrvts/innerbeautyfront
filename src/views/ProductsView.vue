@@ -2,20 +2,20 @@
     <section>
         <div class="container products-container">
             <div class="row d-flex justify-content-center products-select-row ">
-                <select class="form-select w-25 m-5 country-select-products"
+                <select v-model="selectedCountryId" class="form-select w-25 m-5 country-select-products"
                         aria-label="Default select example">
                     <option selected value="0">All Countries</option>
-                    <option v-for="product in products"
-                            :key="product.countryName"
-                            :value="product.countryName">{{ product.countryName }}</option>
+                    <option v-for="country in countries"
+                            :key="country.countryId"
+                            :value="country.countryId">{{ country.countryName }}</option>
 
                 </select>
-                <select class="form-select w-25 m-5 bloodgroup-select-products"
+                <select v-model="selectedBloodGroupId" class="form-select w-25 m-5 bloodgroup-select-products"
                         aria-label="Default select example">
-                    <option selected value="0">All Bloodgroups</option>
-                    <option v-for="product in products"
-                            :key="product.bloodgroupType"
-                            :value="product.bloodgroupType">{{ product.bloodgroupType }}</option>
+                    <option selected value="0">All Blood Groups</option>
+                    <option v-for="bloodGroup in bloodGroups"
+                            :key="bloodGroup.bloodGroupTypeId"
+                            :value="bloodGroup.bloodGroupTypeId">{{ bloodGroup.bloodGroupTypeName }}</option>
                 </select>
                 <div class="row mt-5 px-0">
                     <div class="col-12">
@@ -30,7 +30,7 @@
                                     <p class="card-text">Gender: {{product.genderName}}</p>
                                     <hr class="product-card-separator">
                                     <a class="btn button-product-favorite"><i class="fa-regular fa-heart fa-2xl me-5"></i></a>
-                                    <a class="btn button-product-cart"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a>
+                                    <a class="btn button-product-cart" @click="alert(product.productId,product.countryId,product.bloodgroupTypeId)"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -50,12 +50,26 @@ export default {
     name: "ProductView",
     data() {
         return {
+            selectedBloodGroupId:0,
+            selectedCountryId: 0,
             productsSearchRequest: {
                 buyerId: Number(sessionStorage.getItem('userId')),
                 categoryId: Number(useRoute().query.categoryId),
                 countryId: 0,
                 bloodgroupId: 0
             },
+            countries: [
+                {
+                    countryId: 0,
+                    countryName: ''
+                }
+            ],
+            bloodGroups:[
+                {
+                    bloodGroupTypeId: 0,
+                    bloodGroupTypeName: ''
+                }
+            ],
             products: [
                 {
                     productId: 0,
@@ -64,8 +78,10 @@ export default {
                     productAvailableAt: '',
                     productPrice: 0,
                     countryName: '',
+                    countryId: 0,
                     genderName: '',
                     bloodgroupType: '',
+                    bloodgroupTypeId: 0,
                     imageData: '',
                     isInFavourites: true
                 }
@@ -73,8 +89,41 @@ export default {
 
         }
     },
+    watch: {
+        selectedCountryId(newCountryId) {
+            this.productsSearchRequest.countryId = newCountryId;
+            this.getProducts();
+        },
+
+        selectedBloodGroupId(newBloodGroupId) {
+            this.productsSearchRequest.bloodgroupId = newBloodGroupId;
+            this.getProducts();
+        },
+    },
+
+
     methods: {
-        onMounted,
+
+        getBloodTypes() {
+            this.$http.get("/bloodgroup/all")
+                .then(response => {
+                    this.bloodGroups = response.data
+                })
+                .catch(error => {
+                    const errorResponseBody = error.response.data
+                })
+        },
+
+        getCountries() {
+            this.$http.get("/country/all")
+                .then(response => {
+                    this.countries = response.data
+                })
+                .catch(error => {
+                    router.push({name: 'errorRoute'})
+                })
+        },
+
         getProducts() {
             this.$http.post("/store/products", this.productsSearchRequest
             ).then(response => {
@@ -83,6 +132,8 @@ export default {
                 router.push({name: 'errorRoute'})
             })
         },
+
+        
         categoryNameGenerator() {
             let category = Number(useRoute().query.categoryId)
 
@@ -96,10 +147,11 @@ export default {
                 case 4:
                     return 'Liver';
             }
-
-        }
+        },
     },
     mounted() {
+        this.getCountries()
+        this.getBloodTypes()
         this.getProducts()
     }
 };
