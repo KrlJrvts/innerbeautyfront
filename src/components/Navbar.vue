@@ -9,7 +9,7 @@
                 Beauty</a>
         </div>
         <div class="col d-flex justify-content-end p-3">
-            <a class="homepage-btn-login">
+            <a class="homepage-btn-login" @click="pushToLogin">
                 <i class="fa-solid fa-arrow-right-to-bracket fa-3x"></i>
             </a>
         </div>
@@ -19,7 +19,8 @@
 export default {
     name: 'Navbar',
     props: {
-        pushToHome: {}
+        pushToHome: {},
+        pushToLogin: {}
     }
 }
 </script>
