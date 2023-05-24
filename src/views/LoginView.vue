@@ -6,7 +6,7 @@
                 <AlertDanger :message="message"/>
             </div>
         </div>
-        <div class="container content-container-login text-center">
+        <div  @keydown.enter="login" class="container content-container-login text-center">
             <div class="row mt-5">
                 <div class="col">
                     <h4>E-mail</h4>
