@@ -1,28 +1,30 @@
 <template>
     <section>
         <div class="container">
-            <div class="row d-flex justify-content-center products-select-row">
-                <select class="form-select w-25 m-3 country-select-products"
+            <div class="row d-flex justify-content-center products-select-row ">
+                <select class="form-select w-25 m-5 country-select-products"
                         aria-label="Default select example">
-                    <option selected>All Countries</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected value="0">All Countries</option>
+                    <option v-for="product in products"
+                            :key="product.countryName"
+                            :value="product.countryName">{{ product.countryName }}</option>
+
                 </select>
-                <select class="form-select w-25 m-3 bloodgroup-select-products"
+                <select class="form-select w-25 m-5 bloodgroup-select-products"
                         aria-label="Default select example">
-                    <option selected>All Bloodgroups</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected value="0">All Bloodgroups</option>
+                    <option v-for="product in products"
+                            :key="product.bloodgroupType"
+                            :value="product.bloodgroupType">{{ product.bloodgroupType }}</option>
                 </select>
                 <div class="row mt-5 px-0">
                     <div class="col-12">
                         <div class="row product-card-row ">
-                            <div class="card col-2 me-5 mt-5 product-card" style="width: 17rem;">
+                            <div v-for="product in products" :value="product.productId"
+                                 class="card col-2 me-5 mt-5 product-card" style="width: 17rem;">
                                 <img src="" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
+                                <div class="card-body d-block">
+                                    <h5 class="card-title">{{ }}</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
                                         the bulk
                                         of the card's content.</p>
