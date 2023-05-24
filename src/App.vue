@@ -11,7 +11,7 @@
                 </router-link>
             </div>
 
-                <div class="col d-flex justify-content-end p-3">
+                <div class="col d-flex justify-content-end p-2">
                     <div class="col p-0">
                         <router-link to="/add-item">addItem?</router-link>
                     </div>
