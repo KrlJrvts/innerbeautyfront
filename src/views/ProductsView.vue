@@ -19,7 +19,7 @@
                 <div class="row mt-5 px-0">
                     <div class="col-12">
                         <div class="row product-card-row ">
-                            <div class="card col-2 me-5 mt-5" style="width: 17rem;">
+                            <div class="card col-2 me-5 mt-5 product-card" style="width: 17rem;">
                                 <img src="" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
@@ -38,8 +38,50 @@
 </template>
 
 <script>
+import router from "@/router";
+import {useRoute} from "vue-router";
+
 export default {
-    name: "ProductView"
+    name: "ProductView",
+    data() {
+        return {
+            productsSearchRequest: {
+                buyerId: Number(sessionStorage.getItem('userId')),
+                categoryId: Number(useRoute().query.categoryId),
+                countryId: 0,
+                bloodgroupId: 0
+            },
+            products: [
+                {
+                    productId: 0,
+                    productAge: 0,
+                    productDescription: '',
+                    productAvailableAt: '',
+                    productPrice: 0,
+                    countryName: '',
+                    genderName: '',
+                    bloodgroupType: '',
+                    imageData: '',
+                    isInFavourites: true
+                }
+            ]
+
+        }
+    },
+    methods: {
+        getProducts: function () {
+            this.$http.post("/store/products", this.productsSearchRequest
+            ).then(response => {
+                this.products = response.data
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
+
+    },
+    mounted() {
+        this.getProducts()
+    }
 }
 </script>
 
@@ -48,29 +90,34 @@ export default {
 
 input {
     background-color: transparent !important;
-    /*background-color: grey;*/
     color: whitesmoke;
 }
+
 .products-select-row {
     position: relative;
     right: 2%;
 }
-.product-card-row{
+
+.product-card-row {
     position: relative;
     left: 3.5%;
 }
+
 .country-select-products {
-    background-color: transparent!important;
+    background-color: transparent !important;
     color: white;
 }
 
 .bloodgroup-select-products {
-    background-color: transparent!important;
+    background-color: transparent !important;
     color: white;
 }
 
-.account-button {
-    font-size: 15px !important;
+.product-card {
+    background-color: transparent;
+    color: white;
+    border-color: #660000;
+    border-radius: 30px;
 }
 
 input:focus {
