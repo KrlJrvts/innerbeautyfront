@@ -1,6 +1,6 @@
 <template>
     <section id="register">
-        <Navbar :push-to-home="pushToHome"/>
+        <Navbar :push-to-home="pushToHome" :push-to-login="pushToLogin"/>
 
         <div class="register-alert-container">
             <div class="col">
@@ -96,6 +96,9 @@ export default {
     methods: {
         pushToHome() {
             router.push({name: 'homeRoute'})
+        },
+        pushToLogin() {
+            router.push({name: 'loginRoute'})
         },
         handleImage(event) {
             const file = event.target.files[0];

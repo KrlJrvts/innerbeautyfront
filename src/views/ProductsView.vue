@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="container">
+        <div class="container products-container">
             <div class="row d-flex justify-content-center products-select-row ">
                 <select class="form-select w-25 m-5 country-select-products"
                         aria-label="Default select example">
@@ -23,11 +23,12 @@
                             <div v-for="product in products" :value="product.productId"
                                  class="card col-2 me-5 mt-5 product-card" style="width: 17rem;">
                                 <img src="" class="card-img-top" alt="...">
-                                <div class="card-body d-block">
-                                    <h5 class="card-title">{{ }}</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk
-                                        of the card's content.</p>
+                                <div class="card-body d-block pt-0">
+                                    <h5 class="card-title">{{ categoryNameGenerator() }}</h5>
+                                    <p class="card-text">Removing date: {{product.productAvailableAt}}</p>
+                                    <p class="card-text">Previous owner age: {{product.productAge}}</p>
+                                    <p class="card-text">Gender: {{product.genderName}}</p>
+                                    <p class="card-text"></p>
                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
@@ -42,6 +43,7 @@
 <script>
 import router from "@/router";
 import {useRoute} from "vue-router";
+import {onMounted} from "vue";
 
 export default {
     name: "ProductView",
@@ -71,7 +73,8 @@ export default {
         }
     },
     methods: {
-        getProducts: function () {
+        onMounted,
+        getProducts() {
             this.$http.post("/store/products", this.productsSearchRequest
             ).then(response => {
                 this.products = response.data
@@ -79,12 +82,26 @@ export default {
                 router.push({name: 'errorRoute'})
             })
         },
+        categoryNameGenerator() {
+            let category = Number(useRoute().query.categoryId)
 
+            switch (category) {
+                case 1:
+                    return 'Kidney';
+                case 2:
+                    return 'Heart';
+                case 3:
+                    return 'Lungs';
+                case 4:
+                    return 'Liver';
+            }
+
+        }
     },
     mounted() {
         this.getProducts()
     }
-}
+};
 </script>
 
 <style scoped>
@@ -93,6 +110,9 @@ export default {
 input {
     background-color: transparent !important;
     color: whitesmoke;
+}
+.products-container {
+
 }
 
 .products-select-row {
