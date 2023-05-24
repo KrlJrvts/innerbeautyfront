@@ -1,8 +1,8 @@
 <template>
     <nav v-if="!isHomepage && !isLoginPage && !isRegisterPage">
         <div class="row homepage-brand-row col-12">
-            <div class="col d-flex justify-content-start p-3">
-                <h3>LOGO? </h3>
+            <div class="col d-flex justify-content-start  mt-1">
+                <img src="./assets/Logo.jpg" style="height: 70px; width: 75px; opacity: 0.7">
             </div>
             <div class="col-6 d-flex justify-content-center p-2 ">
                 <router-link class="homepage-brand-name" to="/">Inner

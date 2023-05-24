@@ -1,5 +1,5 @@
-<template>
-    <section>
+<template xmlns="http://www.w3.org/1999/html">
+    <section id="product-view">
         <div class="container products-container">
             <div class="row d-flex justify-content-center products-select-row ">
                 <select v-model="selectedCountryId" class="form-select w-25 m-5 country-select-products"
@@ -8,7 +8,6 @@
                     <option v-for="country in countries"
                             :key="country.countryId"
                             :value="country.countryId">{{ country.countryName }}</option>
-
                 </select>
                 <select v-model="selectedBloodGroupId" class="form-select w-25 m-5 bloodgroup-select-products"
                         aria-label="Default select example">
@@ -38,6 +37,9 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section id="product-view-second">
+
     </section>
 </template>
 
@@ -103,7 +105,6 @@ export default {
 
 
     methods: {
-
         getBloodTypes() {
             this.$http.get("/bloodgroup/all")
                 .then(response => {
@@ -133,7 +134,7 @@ export default {
             })
         },
 
-        
+
         categoryNameGenerator() {
             let category = Number(useRoute().query.categoryId)
 
@@ -159,7 +160,14 @@ export default {
 
 <style scoped>
 
+#product-view {
+    height: 100vh;
 
+}
+#product-view-second {
+    background-image: url("../assets/grunge-black-concrete-textured-background.jpg");
+
+}
 
 .products-container {
 
@@ -167,7 +175,7 @@ export default {
 
 .products-select-row {
     position: relative;
-    right: 2%;
+    right: 1%;
 }
 
 .product-card-row {
