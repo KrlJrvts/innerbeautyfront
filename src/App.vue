@@ -12,8 +12,8 @@
             </div>
 
                 <div class="col d-flex justify-content-end p-2">
-                    <div class="col p-0">
-                        <router-link to="/add-item">addItem?</router-link>
+                    <div class="ps-4 pt-3">
+                        <router-link to="/add-item"><i class="fa-solid fa-plus fa-2xl"></i></router-link>
                     </div>
                     <div class="ps-4 pt-3">
                         <router-link to="/"><i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i></router-link>

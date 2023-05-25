@@ -27,7 +27,7 @@
                         <input v-model="newProduct.productPrice" type="number" class="form-control" placeholder="Price">
                     </div>
 
-                    <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button m-3">
+                    <button @click="cancelSelected" type="submit" class="btn btn-outline-light button-homepage account-button m-3">
                         Cancel
                     </button>
                     <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button mt">Save
@@ -43,11 +43,10 @@
                     </div>
                     <div class="row d-flex justify-content-center products-select-row">
                         <div class="col mt-3">
-                            <div class="mb-3 ms-5">
-                                <input v-model="newProduct.productDescription" type="text" class="col p-5 form-control"
-                                       placeholder="Description">
+                            <div class="form-floating">
+                                <textarea class="form-control add-item-textarea" placeholder="Product Description..." id="floatingTextarea" style="height: 135px"></textarea>
                             </div>
-                            <button @click="" type="submit"
+                            <button @click="test" type="submit"
                                     class="btn btn-outline-light button-homepage account-button mt-4">Choose
                                 file
                             </button>
@@ -65,6 +64,7 @@ import ProductGroupDropdown from "@/components/dropdowns/ProductGroupDropdown.vu
 import CountryDropdown from "@/components/dropdowns/CountryDropdown.vue";
 import BloodGroupDropdown from "@/components/dropdowns/BloodGroupDropdown.vue";
 import GenderDropdown from "@/components/dropdowns/GenderDropdown.vue";
+import router from "@/router";
 
 export default {
     name: "AddItemView",
@@ -73,7 +73,7 @@ export default {
     data() {
         return {
             newProduct: {
-                productSellerId: 0,
+                productSellerId: sessionStorage.getItem('userId'),
                 productCategoryId: 0,
                 productCountryId: 0,
                 productBloodgroupId: 0,
@@ -87,13 +87,15 @@ export default {
         }
     },
     methods: {
-
-        addItem: function () {
+        cancelSelected() {
+            router.push({name: 'storeRoute'})
+        },
+        addItem() {
             this.$http.post("/products/add", this.newProduct
             ).then(response => {
-                const responseBody = response.data
+                this.newProduct = response.data
             }).catch(error => {
-                const errorResponseBody = error.response.data
+                router.push({name: 'errorRoute'})
             })
         },
         setProductCountryId(selectedCountryId) {
@@ -105,8 +107,6 @@ export default {
         setProductGroupId(selectedProductGroupId) {
             this.newProduct.productCategoryId = selectedProductGroupId
         },
-
-
     }
 }
 </script>
@@ -118,7 +118,21 @@ section {
 small {
     color: #FF0000;
 }
-.add-item-container
+.add-item-textarea {
+    background: transparent!important;
+    color: #FF0000;
+}
+.add-item-textarea:focus{
+    color: #FF0000;
+    background: transparent!important;
+    border-color: #660000 !important;
+    box-shadow: 0px 0px 500px 10px #660000 !important;
+}
+.add-item-textarea::placeholder {
+    color: #FF0000!important;
+    background-color: transparent;
+}
+
 input {
     background-color: transparent !important;
     color: whitesmoke;
