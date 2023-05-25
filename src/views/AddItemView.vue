@@ -15,7 +15,7 @@
                     <div class="mb-0">
                         <GenderDropdown @event-emit-selected-category-id = "setProductGroupId"/>
                     </div>
-                    <div class="mb-3 mt-0 pt-0">
+                    <div class="mb-3 mt-1 pt-2">
                         <small>Enter Removal Date</small>
                         <input v-model="newProduct.productAvailableAt" type="date" class="form-control" placeholder="Removal date">
                     </div>
@@ -36,20 +36,18 @@
                 </div>
                 <div class="col col-3 mt-5">
                     <div class="row">
-                        <div class="col mb-0">
+                        <div class="col mb-2">
                             <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail account-image"
                                  style="width: 200px; height: 225px;">
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center products-select-row">
-                        <div class="col mt-3">
+                        <div class="col mt-3 ">
                             <div class="form-floating">
                                 <textarea class="form-control add-item-textarea" placeholder="Product Description..." id="floatingTextarea" style="height: 135px"></textarea>
                             </div>
-                            <button @click="test" type="submit"
-                                    class="btn btn-outline-light button-homepage account-button mt-4">Choose
-                                file
-                            </button>
+                            <input class="form-control w-75 registration-image-input mt-4" type="file"
+                                   accept="image/jpeg" id="imageInput" >
                         </div>
                     </div>
                 </div>

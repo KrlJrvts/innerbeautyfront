@@ -20,20 +20,20 @@
                 <div class="col-6">
                     <div class="row mb-3">
                         <div class="col-6">
-                            <input v-model="firstName" type="text" class="form-control" placeholder="First name">
+                            <input v-model="userRegister.contactFirstname" type="text" class="form-control" placeholder="First name">
                         </div>
                         <div class="col-6">
-                            <input v-model="lastName" type="text" class="form-control" placeholder="Last name">
+                            <input v-model="userRegister.contactLastname" type="text" class="form-control" placeholder="Last name">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-12">
-                            <input v-model="email" type="text" class="form-control" placeholder="Email">
+                            <input v-model="userRegister.userEmail" type="text" class="form-control" placeholder="Email">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-12">
-                            <input v-model="password" type="password" class="form-control" placeholder="Password">
+                            <input v-model="userRegister.userPassword" type="password" class="form-control" placeholder="Password">
                         </div>
                     </div>
                     <div class="row">
@@ -46,8 +46,7 @@
                 <div class="col-6 image-col">
                     <div class="row">
                         <div class="col-12 image-file mb-3">
-                            <img :src="image" class="img-thumbnail rounded-3 registration-image"
-                                 style="height: 180px; width: 150px" alt="...">
+                            <UserImage  :picture-data-base64="userRegister.userImage"/>
                         </div>
                     </div>
                     <div class="row">
@@ -73,20 +72,25 @@
 import AlertDanger from "@/components/AlertDanger.vue";
 import router from "@/router";
 import Navbar from "@/components/Navbar.vue";
+import UserImage from "@/components/Image/UserImage.vue";
 
 export default {
     name: "RegisterView",
-    components: {Navbar, AlertDanger},
+    components: {UserImage, Navbar, AlertDanger},
 
     data() {
         return {
             message: '',
-            email: '',
-            password: '',
             confirmPassword: '',
             image: '/userdefaultimage/defaultimage.jpeg',
-            firstName: '',
-            lastName: '',
+
+            userRegister: {
+            userEmail: '',
+            userPassword: '',
+            userImage: '',
+            contactFirstname: '',
+            contactLastname: ''
+            },
             errorResponse: {
                 message: '',
                 errorCode: 0
@@ -100,21 +104,21 @@ export default {
         pushToLogin() {
             router.push({name: 'loginRoute'})
         },
-        handleImage(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                this.image = e.target.result; // Save the base64 string to the 'image' data property
-            };
-
-            reader.readAsDataURL(file);
-        },
+        // handleImage(event) {
+        //     const file = event.target.files[0];
+        //     const reader = new FileReader();
+        //
+        //     reader.onload = (e) => {
+        //         this.image = e.target.result; // Save the base64 string to the 'image' data property
+        //     };
+        //
+        //     reader.readAsDataURL(file);
+        // },
 
         register() {
-            if (this.email == '' || this.password == '' || this.firstName == '' || this.lastName == '') {
+            if (this.userRegister.userEmail == '' || this.userRegister.userPassword == '' || this.userRegister.contactFirstname == '' || this.userRegister.contactLastname == '' || this.confirmPassword == '') {
                 this.message = 'Please fill all fields!';
-            } else if (this.confirmPassword !== this.password) {
+            } else if (this.confirmPassword !== this.userRegister.userPassword) {
                 this.message = 'Passwords do not match!'
             } else {
                 this.postRegisterUser()
@@ -210,11 +214,6 @@ alert-div {
 
 .registration-slogan {
     color: #660000;
-}
-
-.registration-image {
-    padding: 0;
-    border-color: #660000 !important;
 }
 
 .image-col {
