@@ -2,12 +2,8 @@
     <section>
         <div class="container account-container text-center">
             <AlertDanger :message="message"/>
-            <div class="row justify-content-center">
-                <div class="col col-3 mt-5">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">E-mail</label>
-                        <input v-model="email" type="text" class="form-control input" id="e-mail">
-                    </div>
+            <div class="row justify-content-center ">
+                <div class="col col-5 mt-5 ms-5 account-field-container ">
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input v-model="password" type="password" class="form-control" id="password">
@@ -19,11 +15,11 @@
                     <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button m-3">
                         Cancel
                     </button>
-                    <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button mt">Save
-                        changes
+                    <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button mt">
+                        Save changes
                     </button>
                 </div>
-                <div class="col col-3 mt-5">
+                <div class="col col-6 mt-5">
                     <div class="row">
                         <div class="col">
                             <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail account-image" style="width: 180px; height: 255px;">
@@ -76,8 +72,19 @@ input {
 .account-container {
     position: relative;
     top: 15%;
+    color: white;
+    width: 600px;
+    height: 460px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #1d1d1d;
+    background: rgba(0, 0, 0, .3);
 }
 
+.account-field-container {
+    position: relative;
+    top: 85px;
+}
 .account-button {
     font-size: 15px !important;
 }
