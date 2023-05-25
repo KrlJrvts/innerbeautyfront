@@ -59,10 +59,10 @@
 <script>
 
 
-import ProductGroupDropdown from "@/views/ProductGroupDropdown.vue";
-import CountryDropdown from "@/views/CountryDropdown.vue";
-import BloodGroupDropdown from "@/views/BloodGroupDropdown.vue";
-import GenderDropdown from "@/views/GenderDropdown.vue";
+import ProductGroupDropdown from "@/components/dropdowns/ProductGroupDropdown.vue";
+import CountryDropdown from "@/components/dropdowns/CountryDropdown.vue";
+import BloodGroupDropdown from "@/components/dropdowns/BloodGroupDropdown.vue";
+import GenderDropdown from "@/components/dropdowns/GenderDropdown.vue";
 
 export default {
     name: "AddItemView",
