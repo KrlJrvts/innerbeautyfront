@@ -1,5 +1,5 @@
 <template>
-    <div v-if="message !== ''" class="row justify-content-center">
+    <div v-if="message !== ''" class="row justify-content-center alert-row">
         <div class="col-5">
             <div class="alert alert-danger" role="alert">
                 {{ message }}
@@ -25,6 +25,10 @@ export default {
     background-color: transparent;
     border-color: crimson;
 
+}
+
+.alert-row {
+    margin: 0;
 }
 
 </style>

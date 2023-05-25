@@ -115,7 +115,7 @@ export default {
             if (this.email == '' || this.password == '' || this.firstName == '' || this.lastName == '') {
                 this.message = 'Please fill all fields!';
             } else if (this.confirmPassword !== this.password) {
-                this.message = 'Passwords do not match! '
+                this.message = 'Passwords do not match!'
             } else {
                 this.postRegisterUser()
             }
@@ -140,7 +140,7 @@ export default {
 
 
             this.$http
-                .post("/register", registrationBody)
+                .post("/user/register", registrationBody)
                 .then(response => {
                     router.push({name: 'loginRoute'})
                 }).catch(error => {

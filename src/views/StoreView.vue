@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         getCategories: function () {
-            this.$http.get("/store")
+            this.$http.get("/products/categories")
                 .then(response => {
                     this.categories = response.data
                 })

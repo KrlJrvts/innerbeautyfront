@@ -10,10 +10,10 @@
                         <CountryDropdown @event-emit-selected-country-id ="setProductCountryId"/>
                     </div>
                     <div class="mb-3">
-                        <BloodGroupDropdown/>
+                        <BloodGroupDropdown @event-emit-selected-blood-group-id ="setProductBloodGroupId"/>
                     </div>
                     <div class="mb-3">
-                        <GenderDropdown/>
+                        <GenderDropdown @event-emit-selected-category-id = "setProductGroupId"/>
                     </div>
                     <div class="mb-3">
                         <input v-model="newProduct.productAge" type="text" class="form-control" placeholder="Age">
@@ -96,6 +96,12 @@ export default {
         },
         setProductCountryId(selectedCountryId) {
             this.newProduct.productCountryId = selectedCountryId
+        },
+        setProductBloodGroupId(selectedBloodGroupId) {
+            this.newProduct.productBloodgroupId = selectedBloodGroupId
+        },
+        setProductGroupId(selectedProductGroupId) {
+            this.newProduct.productCategoryId = selectedProductGroupId
         },
 
 

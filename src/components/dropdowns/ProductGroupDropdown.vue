@@ -1,15 +1,51 @@
 <template>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Category</option>
-        <option value="1">Kidney</option>
-        <option value="2">Heart</option>
-        <option value="3">Lungs</option>
-        <option value="3">Liver</option>
+    <select v-model="selectedCategoryId" class="form-select" aria-label="Default select example">
+        <option v-if="firstOptionName === 'Category'" disabled selected value="0">Category</option>
+        <option v-else selected value="0">{{ firstOptionName }}</option>
+        <option v-for="category in categories" :key=category.categoryId  :value=category.categoryId>{{category.categoryName}}</option>
+
     </select>
 </template>
 <script>
+import router from "@/router";
+
 export default {
-    name: 'ProductGroupDropdown'
+    name: 'ProductGroupDropdown',
+    data() {
+        return {
+            selectedCategoryId: '0',
+            categories: [
+                {
+                    categoryId: 0,
+                    categoryName: ''
+                }
+            ],
+            firstOptionName: 'Category'
+
+        }
+    },
+
+    methods: {
+        getCategories: function () {
+            this.$http.get("/products/categories")
+                .then(response => {
+                    this.categories = response.data
+                })
+                .catch(error => {
+                    router.push({name: 'errorRoute'})
+                })
+        },
+        setFirstOptionName(firstOptionName) {
+            this.firstOptionName = firstOptionName
+        },
+        emitSelectedCountryId() {
+            this.$emit('event-emit-selected-category-id',Number(this.selectedCategoryId))
+        }
+    },
+    beforeMount() {
+        this.getCategories()
+    }
+
 }
 </script>
 <style scoped>
