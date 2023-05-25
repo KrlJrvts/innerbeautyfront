@@ -100,7 +100,6 @@ export default {
         pushToLogin() {
             router.push({name: 'loginRoute'})
         },
-
         handleImage(event) {
             const file = event.target.files[0];
             const reader = new FileReader();

@@ -1,7 +1,7 @@
 <template>
     <div class="row col-12">
-        <div class="col d-flex justify-content-start p-3">
-            <h3>LOGO? </h3>
+        <div class="col d-flex justify-content-start m-1">
+            <img src="../assets/Logo.jpg" style="height: 70px; width: 75px; opacity: 0.5">
         </div>
         <div class="col-6 d-flex justify-content-center p-2 ">
             <a class="homepage-brand-name" @click="pushToHome">Inner

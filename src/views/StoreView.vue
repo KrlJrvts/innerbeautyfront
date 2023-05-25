@@ -15,7 +15,6 @@
         </div>
     </section>
 </template>
-<!--http://localhost:8081/product?categoryId=1  TODO: panna urli categoryId, et saada see teiselt viewilt kätte-->
 <script>
 import {get} from "axios";
 import router from "@/router";
