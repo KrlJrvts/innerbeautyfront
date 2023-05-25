@@ -15,15 +15,15 @@
                     <div class="mb-3">
                         <GenderDropdown/>
                     </div>
-<!--                    <div class="mb-3">-->
-<!--                        <input v-model="productAge" type="text" class="form-control" placeholder="Age">-->
-<!--                    </div>-->
-<!--                    <div class="mb-3">-->
-<!--                        <input v-model="productAvailableAt" type="text" class="form-control" placeholder="Date">-->
-<!--                    </div>-->
-<!--                    <div class="mb-3">-->
-<!--                        <input v-model="productPrice" type="text" class="form-control" placeholder="Price">-->
-<!--                    </div>-->
+                    <div class="mb-3">
+                        <input v-model="newProduct.productAge" type="text" class="form-control" placeholder="Age">
+                    </div>
+                    <div class="mb-3">
+                        <input v-model="newProduct.productAvailableAt" type="text" class="form-control" placeholder="Date">
+                    </div>
+                    <div class="mb-3">
+                        <input v-model="newProduct.productPrice" type="text" class="form-control" placeholder="Price">
+                    </div>
 
                     <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button m-3">
                         Cancel
@@ -41,10 +41,10 @@
                     </div>
                     <div class="row d-flex justify-content-center products-select-row">
                         <div class="col mt-3">
-<!--                            <div class="mb-3 ms-5">-->
-<!--                                <input v-model="productDescription" type="text" class="col p-5 form-control"-->
-<!--                                       placeholder="Description">-->
-<!--                            </div>-->
+                            <div class="mb-3 ms-5">
+                                <input v-model="newProduct.productDescription" type="text" class="col p-5 form-control"
+                                       placeholder="Description">
+                            </div>
                             <button @click="" type="submit"
                                     class="btn btn-outline-light button-homepage account-button mt-4">Choose
                                 file
