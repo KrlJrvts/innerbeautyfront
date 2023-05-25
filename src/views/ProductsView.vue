@@ -106,7 +106,7 @@ export default {
 
     methods: {
         getBloodTypes() {
-            this.$http.get("/bloodgroup/all")
+            this.$http.get("/products/bloodgroups")
                 .then(response => {
                     this.bloodGroups = response.data
                 })
@@ -116,7 +116,7 @@ export default {
         },
 
         getCountries() {
-            this.$http.get("/country/all")
+            this.$http.get("/products/countries")
                 .then(response => {
                     this.countries = response.data
                 })
@@ -126,7 +126,7 @@ export default {
         },
 
         getProducts() {
-            this.$http.post("/store/products", this.productsSearchRequest
+            this.$http.post("/products/category-all", this.productsSearchRequest
             ).then(response => {
                 this.products = response.data
             }).catch(error => {

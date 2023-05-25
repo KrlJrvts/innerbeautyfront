@@ -77,7 +77,7 @@ export default {
         },
 
         sendLoginRequest() {
-            this.$http.get("/login", {
+            this.$http.get("/user/login", {
                     params: {
                         email: this.email,
                         password: this.password

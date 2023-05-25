@@ -140,7 +140,7 @@ export default {
 
 
             this.$http
-                .post("/register", registrationBody)
+                .post("/user/register", registrationBody)
                 .then(response => {
                     router.push({name: 'loginRoute'})
                 }).catch(error => {
