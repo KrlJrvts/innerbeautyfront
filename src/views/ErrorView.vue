@@ -2,7 +2,7 @@
     <section id="error">
             <div class="container account-container text-center">
                 <div class="row justify-content-center">
-                    <div class="col col-12 mt-5">
+                    <div class="col col-12 mt-5 d-flex justify-content-center">
                         <button @click="toHomePage" type="submit"
                                 class="btn btn-outline-light button-homepage account-button error-page-button">Go Back
                         </button>
@@ -41,7 +41,6 @@ h1 {
 .error-page-button {
     position: absolute;
     top: 80%;
-    right: 26%;
     width: 700px;
 
 
