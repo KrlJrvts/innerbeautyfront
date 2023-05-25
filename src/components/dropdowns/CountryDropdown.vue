@@ -35,7 +35,7 @@ export default {
                     router.push({name: 'errorRoute'})
                 })
         },
-        setFirstOptionName: function (firstOptionName) {
+        setFirstOptionName(firstOptionName) {
             this.firstOptionName = firstOptionName
         },
 
