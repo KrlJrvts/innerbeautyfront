@@ -12,17 +12,19 @@
                     <div class="mb-3">
                         <BloodGroupDropdown @event-emit-selected-blood-group-id ="setProductBloodGroupId"/>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-0">
                         <GenderDropdown @event-emit-selected-category-id = "setProductGroupId"/>
                     </div>
-                    <div class="mb-3">
-                        <input v-model="newProduct.productAge" type="text" class="form-control" placeholder="Age">
+                    <div class="mb-3 mt-0 pt-0">
+                        <small>Enter Removal Date</small>
+                        <input v-model="newProduct.productAvailableAt" type="date" class="form-control" placeholder="Removal date">
                     </div>
                     <div class="mb-3">
-                        <input v-model="newProduct.productAvailableAt" type="text" class="form-control" placeholder="Date">
+                        <input v-model="newProduct.productAge" type="number" class="form-control" placeholder="Organ Owner Age">
                     </div>
+
                     <div class="mb-3">
-                        <input v-model="newProduct.productPrice" type="text" class="form-control" placeholder="Price">
+                        <input v-model="newProduct.productPrice" type="number" class="form-control" placeholder="Price">
                     </div>
 
                     <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button m-3">
@@ -34,7 +36,7 @@
                 </div>
                 <div class="col col-3 mt-5">
                     <div class="row">
-                        <div class="col">
+                        <div class="col mb-0">
                             <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail account-image"
                                  style="width: 200px; height: 225px;">
                         </div>
@@ -76,10 +78,10 @@ export default {
                 productCountryId: 0,
                 productBloodgroupId: 0,
                 productGenderId: 0,
-                productAge: 0,
+                productAge: '',
                 productDescription: '',
                 productAvailableAt: '',
-                productPrice: 0,
+                productPrice: '',
                 productImage: ''
             },
         }
@@ -113,7 +115,9 @@ export default {
 section {
     color: black;
 }
-
+small {
+    color: #FF0000;
+}
 .add-item-container
 input {
     background-color: transparent !important;
