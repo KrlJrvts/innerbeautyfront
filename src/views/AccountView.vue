@@ -39,9 +39,6 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <img src="" class="rounded mx-auto d-block" alt="">
-            </div>
         </div>
     </section>
 </template>
