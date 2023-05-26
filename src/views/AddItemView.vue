@@ -89,7 +89,7 @@ export default {
         return {
             message: '',
             newProduct: {
-                productSellerId: sessionStorage.getItem('userId'),
+                productSellerId: Number(sessionStorage.getItem('userId')),
                 productCategoryId: 0,
                 productCountryId: 0,
                 productBloodgroupId: 0,
