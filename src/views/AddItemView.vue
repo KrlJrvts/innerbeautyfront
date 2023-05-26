@@ -37,20 +37,20 @@
                             class="btn btn-outline-light button-homepage account-button m-3">
                         Cancel
                     </button>
-                    <button @click="addProduct" type="submit"
+                    <button @click="addItemValidation" type="submit"
                             class="btn btn-outline-light button-homepage account-button mt">
                         Add Item
                     </button>
                 </div>
                 <div class="col col-3 mt-5">
                     <div class="row">
-                        <div class="col mb-1">
-                            <AddItemImage :picture-data-base64="newProduct.productImage"/>
+                        <div class="col mb-4">
+                            <AddItemImage :picture-data-base64="newProduct.productImage" style="height: 200px; width: 200px"/>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center products-select-row">
                         <div class="col mt-3 ">
-                            <div class="form-floating mb-2">
+                            <div class="form-floating mb-4 mt-2 ">
                                 <textarea v-model="newProduct.productDescription" class="form-control add-item-textarea"
                                           placeholder="Product Description..." id="floatingTextarea"
                                           style="height: 135px"></textarea>
@@ -121,16 +121,48 @@ export default {
         emitBase64(pictureDataBase64) {
             this.newProduct.productImage = pictureDataBase64;
         },
-        addProduct() {
-
-            this.addItem()
+        addItemValidation() {
+            this.dropdownValidation();
+            this.fieldValidation();
+            if (this.message === '') {
+                this.addItem();
+            }
 
         },
+        dropdownValidation() {
+            if (this.newProduct.productCategoryId == 0) {
+                this.message = 'Please choose Category'
+            } else if (this.newProduct.productCountryId == 0) {
+                this.message = 'Please choose Country'
+            } else if (this.newProduct.productBloodgroupId == 0) {
+                this.message = 'Please choose Blood Group'
+            } else if (this.newProduct.productGenderId == 0) {
+                this.message = 'Please choose Gender'
+            } else {
+                this.message = ''
+            }
+        },
+        fieldValidation() {
+            if (this.newProduct.productAvailableAt == '') {
+                this.message = 'Please enter Removal Date'
+            } else if (this.newProduct.productAge == '') {
+                this.message = 'Please enter Organ Owner Age'
+            } else if (this.newProduct.productPrice == '') {
+                this.message = 'Please enter Price'
+            } else if (this.newProduct.productDescription == '') {
+                this.message = 'Please enter Product Description'
+            } else {
+                this.message = ''
+            }
 
+        },
         addItem() {
             this.$http.post("/products/add", this.newProduct
             ).then(response => {
-                this.newProduct = response.data
+                if (response.status === 200) {
+                    this.message = 'Product is successfully added to store!'
+                    this.newProduct.productImage = ''
+                }
             }).catch(error => {
                 router.push({name: 'errorRoute'})
             })
