@@ -39,8 +39,8 @@ export default {
             this.firstOptionName = firstOptionName
         },
 
-        emitSelectedCountryId() {
-            this.$emit('event-emit-selected-gender-id', Number(this.selectedCountryId))
+        emitSelectedGenderId() {
+            this.$emit('event-emit-selected-gender-id', Number(this.selectedGenderId))
         },
     },
     beforeMount() {

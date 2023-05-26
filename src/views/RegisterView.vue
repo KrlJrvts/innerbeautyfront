@@ -51,10 +51,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="col">
-                                <input class="form-control w-75 registration-image-input" type="file"
-                                       accept="image/jpeg" id="imageInput" @change="handleImage">
-                            </div>
+                            <UserImageInput @event-emit-base64="emitBase64"/>
                         </div>
                     </div>
                 </div>
@@ -73,10 +70,11 @@ import AlertDanger from "@/components/AlertDanger.vue";
 import router from "@/router";
 import Navbar from "@/components/Navbar.vue";
 import UserImage from "@/components/Image/UserImage.vue";
+import UserImageInput from "@/components/Image/UserImageInput.vue";
 
 export default {
     name: "RegisterView",
-    components: {UserImage, Navbar, AlertDanger},
+    components: {UserImageInput, UserImage, Navbar, AlertDanger},
 
     data() {
         return {
@@ -104,16 +102,9 @@ export default {
         pushToLogin() {
             router.push({name: 'loginRoute'})
         },
-        // handleImage(event) {
-        //     const file = event.target.files[0];
-        //     const reader = new FileReader();
-        //
-        //     reader.onload = (e) => {
-        //         this.image = e.target.result; // Save the base64 string to the 'image' data property
-        //     };
-        //
-        //     reader.readAsDataURL(file);
-        // },
+        emitBase64(pictureDataBase64) {
+            this.userRegister.userImage = pictureDataBase64;
+        },
 
         register() {
             if (this.userRegister.userEmail == '' || this.userRegister.userPassword == '' || this.userRegister.contactFirstname == '' || this.userRegister.contactLastname == '' || this.confirmPassword == '') {
@@ -126,25 +117,8 @@ export default {
         },
 
         postRegisterUser() {
-
-            const registrationBody = {
-                userEmail: this.email,
-                userPassword: this.password,
-                userImage: '',
-                contactFirstname: this.firstName,
-                contactLastname: this.lastName
-
-            }
-            const hasSelectedImage = this.image !== '';
-            const isDefaultImage = this.image === '/userdefaultimage/defaultimage.jpeg';
-
-            if (hasSelectedImage && !isDefaultImage) {
-                registrationBody.userImage = this.image;
-            }
-
-
             this.$http
-                .post("/user/register", registrationBody)
+                .post("/user/register", this.userRegister)
                 .then(response => {
                     router.push({name: 'loginRoute'})
                 }).catch(error => {

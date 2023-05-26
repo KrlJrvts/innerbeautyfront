@@ -1,5 +1,5 @@
 <template>
-    <select v-model="selectedCategoryId" class="form-select" aria-label="Default select example">
+    <select v-model="selectedCategoryId" @change="emitSelectedCategoryId"  class="form-select" aria-label="Default select example">
         <option v-if="firstOptionName === 'Category'" disabled selected value="0">Category</option>
         <option v-else selected value="0">{{ firstOptionName }}</option>
         <option v-for="category in categories" :key=category.categoryId  :value=category.categoryId>{{category.categoryName}}</option>
@@ -38,7 +38,7 @@ export default {
         setFirstOptionName(firstOptionName) {
             this.firstOptionName = firstOptionName
         },
-        emitSelectedCountryId() {
+        emitSelectedCategoryId() {
             this.$emit('event-emit-selected-category-id',Number(this.selectedCategoryId))
         }
     },

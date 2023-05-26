@@ -1,53 +1,63 @@
 <template>
     <section id="Add-item">
+        <div class="register-alert-container">
+            <div class="col">
+                <AlertDanger :message="message"/>
+            </div>
+        </div>
         <div class="container add-item-container text-center">
             <div class="row d-flex justify-content-center products-select-row">
                 <div class="col col-3 mt-5">
                     <div class="mb-3">
-                        <ProductGroupDropdown />
+                        <ProductGroupDropdown @event-emit-selected-category-id="setProductGroupId"/>
                     </div>
                     <div class="mb-3">
-                        <CountryDropdown @event-emit-selected-country-id ="setProductCountryId"/>
+                        <CountryDropdown @event-emit-selected-country-id="setProductCountryId"/>
                     </div>
                     <div class="mb-3">
-                        <BloodGroupDropdown @event-emit-selected-blood-group-id ="setProductBloodGroupId"/>
+                        <BloodGroupDropdown @event-emit-selected-blood-group-id="setProductBloodGroupId"/>
                     </div>
                     <div class="mb-0">
-                        <GenderDropdown @event-emit-selected-category-id = "setProductGroupId"/>
+                        <GenderDropdown @event-emit-selected-gender-id="setProductGenderId"/>
                     </div>
                     <div class="mb-3 mt-1 pt-2">
                         <small>Enter Removal Date</small>
-                        <input v-model="newProduct.productAvailableAt" type="date" class="form-control" placeholder="Removal date">
+                        <input v-model="newProduct.productAvailableAt" type="date" class="form-control"
+                               placeholder="Removal date">
                     </div>
                     <div class="mb-3">
-                        <input v-model="newProduct.productAge" type="number" class="form-control" placeholder="Organ Owner Age">
+                        <input v-model="newProduct.productAge" type="number" class="form-control"
+                               placeholder="Organ Owner Age">
                     </div>
 
                     <div class="mb-3">
                         <input v-model="newProduct.productPrice" type="number" class="form-control" placeholder="Price">
                     </div>
-
-                    <button @click="cancelSelected" type="submit" class="btn btn-outline-light button-homepage account-button m-3">
+                    <button @click="cancelSelected" type="submit"
+                            class="btn btn-outline-light button-homepage account-button m-3">
                         Cancel
                     </button>
-                    <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button mt">Save
-                        changes
+                    <button @click="addProduct" type="submit"
+                            class="btn btn-outline-light button-homepage account-button mt">
+                        Add Item
                     </button>
                 </div>
                 <div class="col col-3 mt-5">
                     <div class="row">
-                        <div class="col mb-2">
-                            <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail account-image"
-                                 style="width: 200px; height: 225px;">
+                        <div class="col mb-1">
+                            <AddItemImage :picture-data-base64="newProduct.productImage"/>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center products-select-row">
                         <div class="col mt-3 ">
-                            <div class="form-floating">
-                                <textarea class="form-control add-item-textarea" placeholder="Product Description..." id="floatingTextarea" style="height: 135px"></textarea>
+                            <div class="form-floating mb-2">
+                                <textarea v-model="newProduct.productDescription" class="form-control add-item-textarea"
+                                          placeholder="Product Description..." id="floatingTextarea"
+                                          style="height: 135px"></textarea>
                             </div>
-                            <input class="form-control w-75 registration-image-input mt-4" type="file"
-                                   accept="image/jpeg" id="imageInput" >
+                            <div class="form-floating ms-5 pe-0">
+                                <UserImageInput @event-emit-base64="emitBase64"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,13 +74,20 @@ import BloodGroupDropdown from "@/components/dropdowns/BloodGroupDropdown.vue";
 import GenderDropdown from "@/components/dropdowns/GenderDropdown.vue";
 import router from "@/router";
 import AlertDanger from "@/components/AlertDanger.vue";
+import UserImage from "@/components/Image/UserImage.vue";
+import UserImageInput from "@/components/Image/UserImageInput.vue";
+import AddItemImage from "@/components/Image/AddItemImage.vue";
 
 export default {
     name: "AddItemView",
-    components: {AlertDanger, GenderDropdown, BloodGroupDropdown, CountryDropdown, ProductGroupDropdown},
+    components: {
+        AddItemImage, UserImageInput, UserImage, AlertDanger,
+        GenderDropdown, BloodGroupDropdown, CountryDropdown, ProductGroupDropdown
+    },
 
     data() {
         return {
+            message: '',
             newProduct: {
                 productSellerId: sessionStorage.getItem('userId'),
                 productCategoryId: 0,
@@ -89,14 +106,6 @@ export default {
         cancelSelected() {
             router.push({name: 'storeRoute'})
         },
-        addItem() {
-            this.$http.post("/products/add", this.newProduct
-            ).then(response => {
-                this.newProduct = response.data
-            }).catch(error => {
-                router.push({name: 'errorRoute'})
-            })
-        },
         setProductCountryId(selectedCountryId) {
             this.newProduct.productCountryId = selectedCountryId
         },
@@ -106,6 +115,26 @@ export default {
         setProductGroupId(selectedProductGroupId) {
             this.newProduct.productCategoryId = selectedProductGroupId
         },
+        setProductGenderId(selectedProductGenderId) {
+            this.newProduct.productGenderId = selectedProductGenderId
+        },
+        emitBase64(pictureDataBase64) {
+            this.newProduct.productImage = pictureDataBase64;
+        },
+        addProduct() {
+
+            this.addItem()
+
+        },
+
+        addItem() {
+            this.$http.post("/products/add", this.newProduct
+            ).then(response => {
+                this.newProduct = response.data
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
     }
 }
 </script>
@@ -114,21 +143,32 @@ export default {
 section {
     color: black;
 }
+
 small {
     color: #FF0000;
 }
+
+.add-item-container {
+    color: white;
+    position: relative;
+    top: 15%;
+
+}
+
 .add-item-textarea {
-    background: transparent!important;
+    background: transparent !important;
     color: #FF0000;
 }
-.add-item-textarea:focus{
+
+.add-item-textarea:focus {
     color: #FF0000;
-    background: transparent!important;
+    background: transparent !important;
     border-color: #660000 !important;
     box-shadow: 0px 0px 500px 10px #660000 !important;
 }
+
 .add-item-textarea::placeholder {
-    color: #FF0000!important;
+    color: #FF0000 !important;
     background-color: transparent;
 }
 
@@ -156,9 +196,13 @@ button:hover {
     font-size: 15px !important;
 }
 
-alert-div {
-    position: relative;
-    margin-top: 200px;
+.register-alert-container {
+    position: absolute;
+    top: 14%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    z-index: 1;
 }
 
 input[type="file"]::-webkit-file-upload-button {

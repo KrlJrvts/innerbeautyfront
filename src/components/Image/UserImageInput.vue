@@ -1,16 +1,38 @@
 <template>
-    <img v-if="pictureDataBase64 === ''" src="../../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail rounded-3 registration-image"
-         style="height: 188px; width: 170px">
-    <img v-else :src="pictureDataBase64" class="img-thumbnail rounded-3 registration-image"
-         style="height: 180px; width: 170px">
+    <div class="col">
+        <input type="file" @change="handleImage" class="form-control w-75 registration-image-input"
+               accept="image/x-png,image/jpeg,image/gif">
+    </div>
 </template>
 <script>
 export default {
-    name: 'UserImage',
-    props: {
-        pictureDataBase64: String
+    name: 'UserImageInput',
+    data() {
+        return {
+            pictureDataBase64: ''
+        }
     },
-}
+    methods: {
+        handleImage(event) {
+            const selectedImage = event.target.files[0];
+            this.emitBase64(selectedImage);
+        },
+
+        emitBase64(fileObject) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.pictureDataBase64 = reader.result;
+                this.$emit('event-emit-base64', this.pictureDataBase64)
+            };
+            reader.onerror = function (error) {
+                alert(error);
+            }
+            reader.readAsDataURL(fileObject);
+        },
+    },
+
+
+};
 </script>
 <style scoped>
 section {
@@ -40,11 +62,6 @@ button:hover {
 alert-div {
     position: relative;
     margin-top: 200px;
-}
-
-.registration-image {
-    padding: 0;
-    border-color: #660000 !important;
 }
 
 input[type="file"]::-webkit-file-upload-button {

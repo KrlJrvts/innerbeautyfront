@@ -21,7 +21,7 @@
                         <div class="row product-card-row ">
                             <div v-for="product in products" :value="product.productId"
                                  class="card col-2 me-5 mt-5 product-card" style="width: 17rem;">
-                                <img :src="product.imageData" class="card-img-top product-card-image" draggable="false">
+                                <img :src="product.imageData" class="card-img-top product-card-image" draggable="false" style="height: 200px; border-radius: 20px 20px 0px 0 ">
                                 <div class="card-body d-block pt-2 product-card-body">
                                     <h5 class="card-title">{{ categoryNameGenerator() }}</h5>
                                     <p class="card-text">Removing date: {{product.productAvailableAt}}</p>

@@ -5,29 +5,30 @@
                 <img src="./assets/Logo.jpg" style="height: 70px; width: 75px; opacity: 0.7">
             </div>
             <div class="col-6 d-flex justify-content-center p-2 ">
-                <router-link class="homepage-brand-name" to="/">Inner
+                <router-link class="homepage-brand-name" to="/store">Inner
                     <i class="fa-regular fa-heart fa-beat-fade fa-md"></i>
                     Beauty
                 </router-link>
             </div>
 
-                <div class="col d-flex justify-content-end p-2">
-                    <div class="ps-4 pt-3">
-                        <router-link to="/add-item"><i class="fa-solid fa-plus fa-2xl"></i></router-link>
-                    </div>
-                    <div class="ps-4 pt-3">
-                        <router-link to="/"><i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i></router-link>
-                    </div>
-                    <div class="ps-4 pt-3">
-                        <router-link to="/favorite"><i class="fa-regular fa-heart fa-2xl"></i></router-link>
-                    </div>
-                    <div class="ps-4 pt-3">
-                        <router-link to="/account"><i class="fa-regular fa-user fa-2xl"></i></router-link>
-                    </div>
-                    <div class="ps-4 pt-3">
-                        <router-link to="/cart"><i class="fa-solid fa-basket-shopping fa-2xl"></i></router-link>
-                    </div>
+            <div class="col d-flex justify-content-end p-2">
+                <div class="ps-4 pt-3">
+                    <router-link to="/add-item"><i class="fa-solid fa-plus fa-2xl"></i></router-link>
                 </div>
+                <div class="ps-4 pt-3">
+                    <router-link to="/" @click="clearSessionStorage"><i
+                            class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i></router-link>
+                </div>
+                <div class="ps-4 pt-3">
+                    <router-link to="/favorite"><i class="fa-regular fa-heart fa-2xl"></i></router-link>
+                </div>
+                <div class="ps-4 pt-3">
+                    <router-link to="/account"><i class="fa-regular fa-user fa-2xl"></i></router-link>
+                </div>
+                <div class="ps-4 pt-3">
+                    <router-link to="/cart"><i class="fa-solid fa-basket-shopping fa-2xl"></i></router-link>
+                </div>
+            </div>
 
         </div>
 
@@ -57,6 +58,7 @@ nav a {
     color: white;
 
 }
+
 nav a:hover {
     color: #660000;
 }
@@ -65,7 +67,8 @@ nav a.router-link-exact-active {
     color: #FF0000;
 
 }
-.homepage-brand-name{
+
+.homepage-brand-name {
     margin: 0;
 }
 </style>
@@ -81,9 +84,14 @@ export default {
         isRegisterPage() {
             return this.$route.path === '/register';
         },
-        isErrorPage(){
+        isErrorPage() {
             return this.$route.path === '/error';
         }
     },
+    methods: {
+        clearSessionStorage() {
+            sessionStorage.clear();
+        }
+    }
 };
 </script>

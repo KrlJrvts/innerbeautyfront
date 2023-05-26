@@ -53,7 +53,7 @@ export default {
             message: '',
             confirmPassword: '',
 
-            userRequestExtended: {
+            editUserAccount: {
                 userId: Number(sessionStorage.getItem('userId')),
                 userPassword: '',
                 userImage: ''
