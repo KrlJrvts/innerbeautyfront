@@ -4,7 +4,7 @@
             <div class="row d-flex justify-content-center products-select-row">
                 <div class="col col-3 mt-5">
                     <div class="mb-3">
-                        <ProductGroupDropdown/>
+                        <ProductGroupDropdown />
                     </div>
                     <div class="mb-3">
                         <CountryDropdown @event-emit-selected-country-id ="setProductCountryId"/>
@@ -63,10 +63,11 @@ import CountryDropdown from "@/components/dropdowns/CountryDropdown.vue";
 import BloodGroupDropdown from "@/components/dropdowns/BloodGroupDropdown.vue";
 import GenderDropdown from "@/components/dropdowns/GenderDropdown.vue";
 import router from "@/router";
+import AlertDanger from "@/components/AlertDanger.vue";
 
 export default {
     name: "AddItemView",
-    components: {GenderDropdown, BloodGroupDropdown, CountryDropdown, ProductGroupDropdown},
+    components: {AlertDanger, GenderDropdown, BloodGroupDropdown, CountryDropdown, ProductGroupDropdown},
 
     data() {
         return {
