@@ -1,18 +1,12 @@
 <template>
     <section id="cart">
     <div class="container text-center">
-        <div>
-            <h1>This is cart view</h1>
-        </div>
         <div class="row">
-            <div class="col">
-                Column
+            <div class="col-8">
+                <ProductCartComponent/>
             </div>
-            <div class="col">
-                Column
-            </div>
-            <div class="col">
-                Column
+            <div class="col-3">
+                Colum
             </div>
         </div>
     </div>
@@ -20,8 +14,11 @@
 </template>
 
 <script>
+import ProductCartComponent from "@/components/products-in-cart/ProductCartComponent.vue";
+
 export default {
-    name: "CartView"
+    name: "CartView",
+    components: {ProductCartComponent}
 }
 </script>
 
@@ -29,7 +26,7 @@ export default {
 
 
 section {
-    color: black;
+    color:whitesmoke;
 }
 
 .container {
@@ -37,10 +34,6 @@ section {
     top: 15%;
     height: 10%;
     width: 100%;
-
 }
-
-
-
 
 </style>
