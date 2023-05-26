@@ -4,7 +4,7 @@
             <div class="row d-flex justify-content-center products-select-row">
                 <div class="col col-3 mt-5">
                     <div class="mb-3">
-                        <ProductGroupDropdown/>
+                        <ProductGroupDropdown @event-emit-selected-category-id ="setProductGroupId"/>
                     </div>
                     <div class="mb-3">
                         <CountryDropdown @event-emit-selected-country-id ="setProductCountryId"/>
@@ -13,7 +13,7 @@
                         <BloodGroupDropdown @event-emit-selected-blood-group-id ="setProductBloodGroupId"/>
                     </div>
                     <div class="mb-3">
-                        <GenderDropdown @event-emit-selected-category-id = "setProductGroupId"/>
+                        <GenderDropdown @event-emit-selected-gender-id = "setProductGenderId"/>
                     </div>
                     <div class="mb-3">
                         <input v-model="newProduct.productAge" type="text" class="form-control" placeholder="Age">
@@ -76,10 +76,10 @@ export default {
                 productCountryId: 0,
                 productBloodgroupId: 0,
                 productGenderId: 0,
-                productAge: 0,
+                productAge: '',
                 productDescription: '',
                 productAvailableAt: '',
-                productPrice: 0,
+                productPrice: '',
                 productImage: ''
             },
         }
@@ -103,6 +103,9 @@ export default {
         setProductGroupId(selectedProductGroupId) {
             this.newProduct.productCategoryId = selectedProductGroupId
         },
+        setProductGenderId(selectedProductGenderId){
+            this.newProduct.productGenderId = selectedProductGenderId
+        }
 
 
     }
