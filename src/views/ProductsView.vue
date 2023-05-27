@@ -2,14 +2,15 @@
     <section id="product-view">
         <div class="container products-container">
             <div class="row d-flex justify-content-center products-select-row ">
-                <CountryDropdown  @event-emit-selected-country-id="setProductCountryId" class="form-select w-25 m-5 country-select-products"/>
-                <BloodGroupDropdown @event-emit-selected-blood-group-id="setProductBloodGroupId"    class="form-select w-25 m-5 bloodgroup-select-products"/>
+                <CountryDropdown ref="countryDropdownRef" @event-emit-selected-country-id="setProductCountryId" class="form-select w-25 m-5 country-select-products"/>
+                <BloodGroupDropdown ref="bloodGroupDropdown" @event-emit-selected-blood-group-id="setProductBloodGroupId"    class="form-select w-25 m-5 bloodgroup-select-products"/>
                 <div class="row mt-5 px-0">
                     <div class="col-12">
                         <div class="row product-card-row ">
                             <div v-for="product in products" :value="product.productId"
                                  class="card col-2 me-5 mt-5 product-card" style="width: 17rem;">
-                                <img :src="product.imageData" class="card-img-top product-card-image" draggable="false" style="height: 200px; border-radius: 20px 20px 0px 0 ">
+                                <img v-if="product.imageData == ''" src="../assets/accountpictures/thebox.jpeg" class="card-img-top product-card-image" draggable="false" style="height: 200px; border-radius: 20px 20px 0px 0 ">
+                                <img v-else :src="product.imageData" class="card-img-top product-card-image" draggable="false" style="height: 200px; border-radius: 20px 20px 0px 0 ">
                                 <div class="card-body d-block pt-2 product-card-body">
                                     <h5 class="card-title">{{ product.categoryName }}</h5>
                                     <p class="card-text">Removing date: {{product.productAvailableAt}}</p>
@@ -93,9 +94,16 @@ export default {
         },
 
     },
+    beforeMount() {
+        this.$nextTick(() => {
+            this.$refs.countryDropdownRef.setFirstOptionName('All Countries');
+            this.$refs.bloodGroupDropdown.setFirstOptionName('All Blood Groups')
+        });
+    },
     mounted() {
         this.getProducts()
     }
+
 }
 
 </script>
