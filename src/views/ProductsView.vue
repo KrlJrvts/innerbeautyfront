@@ -2,20 +2,9 @@
     <section id="product-view">
         <div class="container products-container">
             <div class="row d-flex justify-content-center products-select-row ">
-                <select v-model="selectedCountryId" class="form-select w-25 m-5 country-select-products"
-                        aria-label="Default select example">
-                    <option selected value="0">All Countries</option>
-                    <option v-for="country in countries"
-                            :key="country.countryId"
-                            :value="country.countryId">{{ country.countryName }}</option>
-                </select>
-                <select v-model="selectedBloodGroupId" class="form-select w-25 m-5 bloodgroup-select-products"
-                        aria-label="Default select example">
-                    <option selected value="0">All Blood Groups</option>
-                    <option v-for="bloodGroup in bloodGroups"
-                            :key="bloodGroup.bloodGroupTypeId"
-                            :value="bloodGroup.bloodGroupTypeId">{{ bloodGroup.bloodGroupTypeName }}</option>
-                </select>
+                <CountryDropdown  @event-emit-selected-country-id="setProductCountryId" class="form-select w-25 m-5 country-select-products"/>
+                <BloodGroupDropdown @event-emit-selected-blood-group-id="setProductBloodGroupId"    class="form-select w-25 m-5 bloodgroup-select-products"/>
+
                 <div class="row mt-5 px-0">
                     <div class="col-12">
                         <div class="row product-card-row ">
@@ -47,9 +36,12 @@
 import router from "@/router";
 import {useRoute} from "vue-router";
 import {onMounted} from "vue";
+import CountryDropdown from "@/components/dropdowns/CountryDropdown.vue";
+import BloodGroupDropdown from "@/components/dropdowns/BloodGroupDropdown.vue";
 
 export default {
     name: "ProductView",
+    components: {BloodGroupDropdown, CountryDropdown},
     data() {
         return {
             selectedBloodGroupId:0,
@@ -60,18 +52,7 @@ export default {
                 countryId: 0,
                 bloodgroupId: 0
             },
-            countries: [
-                {
-                    countryId: 0,
-                    countryName: ''
-                }
-            ],
-            bloodGroups:[
-                {
-                    bloodGroupTypeId: 0,
-                    bloodGroupTypeName: ''
-                }
-            ],
+
             products: [
                 {
                     productId: 0,
@@ -91,40 +72,16 @@ export default {
 
         }
     },
-    watch: {
-        selectedCountryId(newCountryId) {
-            this.productsSearchRequest.countryId = newCountryId;
-            this.getProducts();
-        },
-
-        selectedBloodGroupId(newBloodGroupId) {
-            this.productsSearchRequest.bloodgroupId = newBloodGroupId;
-            this.getProducts();
-        },
-    },
-
 
     methods: {
-        getBloodTypes() {
-            this.$http.get("/products/bloodgroups")
-                .then(response => {
-                    this.bloodGroups = response.data
-                })
-                .catch(error => {
-                    const errorResponseBody = error.response.data
-                })
+        setProductCountryId(selectedCountryId) {
+            this.productsSearchRequest.countryId = selectedCountryId;
+            this.getProducts()
         },
-
-        getCountries() {
-            this.$http.get("/products/countries")
-                .then(response => {
-                    this.countries = response.data
-                })
-                .catch(error => {
-                    router.push({name: 'errorRoute'})
-                })
+        setProductBloodGroupId(selectedBloodGroupId) {
+            this.productsSearchRequest.bloodgroupId = selectedBloodGroupId;
+            this.getProducts()
         },
-
         getProducts() {
             this.$http.post("/products/category-all", this.productsSearchRequest
             ).then(response => {
@@ -151,8 +108,6 @@ export default {
         },
     },
     mounted() {
-        this.getCountries()
-        this.getBloodTypes()
         this.getProducts()
     }
 };
