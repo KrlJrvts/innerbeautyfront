@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <ProductDescription :product-description="selectedProductDescription"/>
+                <ProductDescription ref="descriptionModal" :product-description="selectedProductDescription"/>
             </div>
         </div>
     </section>
@@ -37,7 +37,6 @@
 <script>
 import router from "@/router";
 import {useRoute} from "vue-router";
-import {onMounted} from "vue";
 import CountryDropdown from "@/components/dropdowns/CountryDropdown.vue";
 import BloodGroupDropdown from "@/components/dropdowns/BloodGroupDropdown.vue";
 import ProductDescription from "@/components/Modals/ProductDescription.vue";
@@ -81,6 +80,7 @@ export default {
     methods: {
         openProductDescriptionModal(description) {
             this.selectedProductDescription = description;
+            this.$refs.descriptionModal.openModal();
         },
         setProductCountryId(selectedCountryId) {
             this.productsSearchRequest.countryId = selectedCountryId;
@@ -157,6 +157,11 @@ export default {
     border-radius: 20px!important;
     padding: 0px;
 }
+.product-card:hover {
+    border-color: #FF0000;
+    scale: 1.05;
+    transition-duration: 600ms;
+}
 
 .product-card:hover .product-card-image {
     opacity: 1!important;
@@ -210,14 +215,5 @@ export default {
     transition:all 400ms ease-in-out!important;
 }
 
-input {
-    background-color: transparent !important;
-    color: whitesmoke;
-}
-input:focus {
-    color: white !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 300px 10px #660000 !important;
-}
 
 </style>

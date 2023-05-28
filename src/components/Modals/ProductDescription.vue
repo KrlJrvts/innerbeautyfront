@@ -1,5 +1,5 @@
 <template>
-    <div class="container content-container-product-description-modal text-center">
+    <div v-if="isOpen" class="container content-container-product-description-modal text-center">
         <div class="row mt-5">
             <div class="col">
                 <h3>Product Description:</h3>
@@ -13,7 +13,7 @@
         </div>
         <div class="row ">
             <div class="col d-flex justify-content-center gap-5">
-                <a class="btn button-product-description-close"><i class="fa-regular fa-circle-xmark fa-3x"></i></a>
+                <a class="btn button-product-description-close" @click="closeModal"><i class="fa-regular fa-circle-xmark fa-3x"></i></a>
                 <a class="btn button-product-favorite"><i class="fa-regular fa-heart fa-3x "></i></a>
                 <a class="btn button-product-cart"><i class="fa-solid fa-basket-shopping fa-3x"></i></a>
             </div>
@@ -28,18 +28,30 @@ export default {
         productDescription: {
             type: String,
             required: true,
-
         }
     },
+    data() {
+        return {
+         isOpen: false
+        }
+    },
+    methods: {
+      openModal() {
+          this.isOpen = true;
+      },
+      closeModal() {
+          this.isOpen = false;
+      }
+    }
 }
 </script>
 
 <style scoped>
 .content-container-product-description-modal {
     color: white;
-    position: absolute;
+    position: fixed;
     z-index: 1;
-    top: 10%;
+    top: 15%;
     width: 400px;
     height: 400px;
     border-radius: 15%;
