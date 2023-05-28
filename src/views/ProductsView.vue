@@ -17,13 +17,15 @@
                                     <p class="card-text">Previous owner age: {{product.productAge}}</p>
                                     <p class="card-text">Gender: {{product.genderName}}</p>
                                     <hr class="product-card-separator">
-                                    <a class="btn button-product-favorite"><i class="fa-regular fa-heart fa-2xl me-5"></i></a>
-                                    <a class="btn button-product-cart" @click="alert(product.productId,product.countryId,product.bloodgroupTypeId)"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a>
+                                    <a class="btn button-product-description" @click="openProductDescriptionModal(product.productDescription)"><i class="fa-solid fa-info fa-2xl m-3 "></i></a>
+                                    <a class="btn button-product-favorite"><i class="fa-regular fa-heart fa-2xl m-3"></i></a>
+                                    <a class="btn button-product-cart"><i class="fa-solid fa-basket-shopping fa-2xl ms-2"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <ProductDescription :product-description="selectedProductDescription"/>
             </div>
         </div>
     </section>
@@ -38,12 +40,14 @@ import {useRoute} from "vue-router";
 import {onMounted} from "vue";
 import CountryDropdown from "@/components/dropdowns/CountryDropdown.vue";
 import BloodGroupDropdown from "@/components/dropdowns/BloodGroupDropdown.vue";
+import ProductDescription from "@/components/Modals/ProductDescription.vue";
 
 export default {
     name: "ProductView",
-    components: {BloodGroupDropdown, CountryDropdown},
+    components: {ProductDescription, BloodGroupDropdown, CountryDropdown},
     data() {
         return {
+            selectedProductDescription:'',
             selectedBloodGroupId:0,
             selectedCountryId: 0,
             productsSearchRequest: {
@@ -75,6 +79,9 @@ export default {
     },
 
     methods: {
+        openProductDescriptionModal(description) {
+            this.selectedProductDescription = description;
+        },
         setProductCountryId(selectedCountryId) {
             this.productsSearchRequest.countryId = selectedCountryId;
             this.getProducts()
@@ -154,6 +161,7 @@ export default {
 .product-card:hover .product-card-image {
     opacity: 1!important;
     transition-duration: 600ms;
+
 }
 
 .product-card-image {
@@ -168,6 +176,15 @@ export default {
     border-style: dotted;
     border-width: 0 0 2px;
     color: rgba(255, 0, 0, 0.6);
+}
+.button-product-description {
+    padding: 12px!important;
+    color: #660000;
+}
+.button-product-description:hover {
+    color: #FF0000;
+    scale: 1.1;
+    transition:all 400ms ease-in-out!important;
 }
 
 .button-product-favorite {
