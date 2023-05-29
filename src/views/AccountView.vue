@@ -8,32 +8,34 @@
                 <div class="col col-5 mt-5 ms-5 account-field-container ">
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input v-model="userRequestExtended.userPassword" type="password" class="form-control"
+                        <input v-model="editUserData.userPassword" type="password" class="form-control"
                                id="password">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="password" class="form-label">Confirm Password</label>
                         <input v-model="confirmPassword" type="password" class="form-control" id="confirm-password">
                     </div>
-                    <button @click="" type="submit" class="btn btn-outline-light button-homepage account-button m-3">
-                        Cancel
-                    </button>
-                    <button @click="editAccount" type="submit"
-                            class="btn btn-outline-light button-homepage account-button mt">
-                        Save changes
-                    </button>
+                    <div class="mt-5">
+                        <button @click="cancelEdit" type="submit"
+                                class="btn btn-outline-light button-homepage account-button ms-0 me-3 ">
+                            Cancel
+                        </button>
+                        <button @click="saveChanges" type="submit"
+                                class="btn btn-outline-light button-homepage account-button">
+                            Save changes
+                        </button>
+                    </div>
                 </div>
                 <div class="col col-6 mt-5">
                     <div class="row">
-                        <div class="col">
-                            <img src="../assets/accountpictures/HoodedFigure.jpeg" class="img-thumbnail account-image w-75"
-                                 style="width: 180px; height: 255px;">
+                        <div class="col mb-2">
+                            <UserImage :picture-data-base64="editUserData.userImage"
+                                       style="height: 255px; width: 200px;"/>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col mt-3">
-                            <input class="form-control w-100 registration-image-input" type="file"
-                                   accept="image/jpeg" id="imageInput" @change="handleImage">
+                        <div class="col mt-4">
+                            <UserImageInput @event-emit-base64="emitBase64" style="width: 350px"/>
                         </div>
                     </div>
                 </div>
@@ -44,31 +46,53 @@
 
 <script>
 import AlertDanger from "@/components/AlertDanger.vue";
+import UserImage from "@/components/Image/UserImage.vue";
+import UserImageInput from "@/components/Image/UserImageInput.vue";
+import router from "@/router";
 
 export default {
     name: "AccountView",
-    components: {AlertDanger},
+    components: {UserImageInput, UserImage, AlertDanger},
     data() {
         return {
             message: '',
             confirmPassword: '',
-
-            userRequestExtended: {
-                userId: Number(sessionStorage.getItem('userId')),
+            editUserData: {
                 userPassword: '',
                 userImage: ''
             }
         }
     },
     methods: {
-        editAccount() {
-            if (this.userRequestExtended.userPassword == '' || this.confirmPassword == '') {
+        emitBase64(pictureDataBase64) {
+            this.editUserData.userImage = pictureDataBase64;
+        },
+        cancelEdit() {
+            router.push({name: 'storeRoute'})
+        },
+        saveChanges() {
+            if (this.editUserData.userPassword == '' || this.confirmPassword == '') {
                 this.message = 'Please fill all fields!'
-            } else if (this.password !== this.confirmPassword) {
+            } else if (this.editUserData.userPassword !== this.confirmPassword) {
                 this.message = 'Passwords do not match!'
             } else {
-
+                this.message = '';
+                this.editUserAccount();
             }
+        },
+        editUserAccount() {
+            this.$http.put("/user/edit", this.editUserData, {
+                    params: {
+                        userId: Number(sessionStorage.getItem('userId')),
+                    }
+                }
+            ).then(response => {
+                if (response.status === 200) {
+                    this.message = 'User edit completed successfully!'
+                }
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
         },
     }
 }
@@ -119,10 +143,4 @@ input:focus {
     box-shadow: 0px 0px 500px 10px #660000 !important;
 }
 
-.account-image {
-    border-color: #660000 !important;
-    border-style: solid;
-    border-width: 2px;
-    padding: 0;
-}
 </style>

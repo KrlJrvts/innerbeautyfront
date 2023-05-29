@@ -1,20 +1,6 @@
 <template>
     <section id="home">
-        <div class="row col-12">
-            <div class="col d-flex justify-content-start p-3">
-                <h3>LOGO? </h3>
-            </div>
-            <div class="col-6 d-flex justify-content-center p-2 ">
-                <a class="homepage-brand-name" @click="pushToHome">Inner
-                    <i class="fa-regular fa-heart fa-beat-fade fa-md"></i>
-                    Beauty</a>
-            </div>
-            <div class="col d-flex justify-content-end p-3">
-                <a class="homepage-btn-login" @click="pushToLogin">
-                    <i class="fa-solid fa-arrow-right-to-bracket fa-3x"></i>
-                </a>
-            </div>
-        </div>
+        <Navbar :push-to-home="pushToHome" :push-to-login="pushToLogin"/>
         <div class="container homepage-data">
             <div class="row mb-5">
                 <div class="col">
@@ -44,13 +30,14 @@
 
 import router from "@/router";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import Navbar from "@/components/Navbar.vue";
 
 export default {
     name: 'HomeView',
     computed: {
 
     },
-    components: {FontAwesomeIcon},
+    components: {Navbar, FontAwesomeIcon},
     data() {
         return {
             sloganA: 'Transform Lives, Save Lives: Organ Selling Made Easy.',
@@ -59,6 +46,7 @@ export default {
         }
     },
     methods: {
+
         pushToHome() {
             router.push({name: 'homeRoute'})
         },

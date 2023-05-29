@@ -1,5 +1,5 @@
 <template>
-    <select v-model="selectedBloodGroupId" class="form-select" aria-label="Default select example">
+    <select v-model="selectedBloodGroupId" @change="emitSelectedBloodGroupId" class="form-select" aria-label="Default select example">
         <option v-if="firstOptionName === 'Blood Group'" disabled selected value ="0">Blood Group</option>
         <option v-else selected value="0">{{firstOptionName}}</option>
         <option v-for="bloodGroup in bloodGroups" :key=bloodGroup.bloodGroupTypeId :value=bloodGroup.bloodGroupTypeId>{{bloodGroup.bloodGroupTypeName}}</option>

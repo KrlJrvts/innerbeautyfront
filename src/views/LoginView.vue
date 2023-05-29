@@ -130,7 +130,6 @@ section {
 
 input {
     background-color: transparent !important;
-    /*background-color: grey;*/
     color: whitesmoke;
 }
 
