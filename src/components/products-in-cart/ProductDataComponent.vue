@@ -5,10 +5,11 @@
         <div class="container py-2 mb-4 product-data-component">
             <div class="row ps-0">
                 <div class="col-3 d-flex align-items-center">
-                    <img v-if="favoriteProduct.imageData == ''" src="../../assets/accountpictures/thebox.jpeg"
-                         style="height: 200px; width: 200px;border-radius: 20px">
-                    <img v-else :src="favoriteProduct.imageData"
-                         style="height: 200px; width: 200px;border-radius: 20px">
+                    <AddItemImage :picture-data-base64="favoriteProduct.imageData" style="height: 200px; width: 200px;"/>
+<!--                    <img v-if="favoriteProduct.imageData == ''" src="../../assets/accountpictures/thebox.jpeg"-->
+<!--                         style="height: 200px; width: 200px;border-radius: 20px">-->
+<!--                    <img v-else :src="favoriteProduct.imageData"-->
+<!--                         style="height: 200px; width: 200px;border-radius: 20px">-->
                 </div>
                 <div class="col">
                     <div class="row d-flex justify-content-center">

@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-
+            <LogOutModal/>
 
     </section>
     <section id="testimonials">
@@ -31,13 +31,14 @@
 import router from "@/router";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import Navbar from "@/components/Navbar.vue";
+import LogOutModal from "@/components/Modals/LogOutModal.vue";
 
 export default {
     name: 'HomeView',
     computed: {
 
     },
-    components: {Navbar, FontAwesomeIcon},
+    components: {Navbar, FontAwesomeIcon, LogOutModal},
     data() {
         return {
             sloganA: 'Transform Lives, Save Lives: Organ Selling Made Easy.',
