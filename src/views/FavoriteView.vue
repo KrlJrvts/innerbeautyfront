@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section id="favorite-view">
         <div class="d-flex justify-content-center col-12 favorite-table">
             <table class="table" style="width: 900px">
                 <thead>
@@ -27,5 +27,9 @@ export default {
 
 table {
     color: white !important;
+}
+#favorite-view {
+    min-height: 100vh;
+    height: max-content;
 }
 </style>

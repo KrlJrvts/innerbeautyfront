@@ -1,30 +1,33 @@
 <template>
     <tbody>
-    <tr v-for="favoriteProduct in favoriteProducts" :value="favoriteProduct.productId" class="pb-3" style="height: 200px;">
+    <tr v-for="favoriteProduct in favoriteProducts" :value="favoriteProduct.productId" class="pb-3"
+        style="height: 200px;">
         <div class="container py-2 mb-4 product-data-component">
             <div class="row ps-0">
                 <div class="col-3 d-flex align-items-center">
-                    <img src="../../assets/accountpictures/thebox.jpeg"
+                    <img v-if="favoriteProduct.imageData == ''" src="../../assets/accountpictures/thebox.jpeg"
+                         style="height: 200px; width: 200px;border-radius: 20px">
+                    <img v-else :src="favoriteProduct.imageData"
                          style="height: 200px; width: 200px;border-radius: 20px">
                 </div>
                 <div class="col">
                     <div class="row d-flex justify-content-center">
-                        <h3>{{favoriteProduct.productName}}</h3>
+                        <h3>{{ favoriteProduct.productName }}</h3>
                         <div class="row mt-4">
                             <div class="col d-flex justify-content-start ps-0">
-                                <p>Country: {{favoriteProduct.countryName}} </p>
+                                <p>Country: {{ favoriteProduct.countryName }} </p>
                             </div>
                             <div class="col d-flex justify-content-center ">
-                                <p>Product age: {{favoriteProduct.productAge}} Years</p>
+                                <p>Product age: {{ favoriteProduct.productAge }} Years</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-start ps-0">
-                                <p>Removal date: {{favoriteProduct.productAvailableAt}}</p>
+                                <p>Removal date: {{ favoriteProduct.productAvailableAt }}</p>
                             </div>
 
                             <div class="col d-flex justify-content-center">
-                                <p>Blood group: {{favoriteProduct.bloodgroupType}}</p>
+                                <p>Blood group: {{ favoriteProduct.bloodgroupType }}</p>
                             </div>
                         </div>
                         <div class="row h-25" style="height: 20px">
@@ -38,11 +41,15 @@
                     </div>
                 </div>
                 <div class="col-2 p-0 d-flex justify-content-start align-items-center">
-                    Price:<span class="price-span ms-1">{{favoriteProduct.productPrice}}$</span>
+                    Price:<span class="price-span ms-1">{{ favoriteProduct.productPrice }}$</span>
                 </div>
-                <div class="col-1 button-column">
-                    <a class="button-cart-remove"><i class="fa-solid fa-xmark fa-3x mt-5 mb-5"></i></a>
-                    <i class="fa-solid fa-cart-shopping fa-2x button-cart-buy"></i>
+                <div class="col-1 button-column ">
+                    <div>
+                        <a class="button-cart-remove"><i class="fa-solid fa-xmark fa-3x mt-5 mb-5"></i></a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-cart-shopping fa-2x button-cart-buy"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,21 +139,21 @@ export default {
     transition: all 400ms ease-in-out;
 }
 
-.button-column {
-
-    margin-right: 4px;
-}
-
 .description-box {
     word-wrap: break-word;
     white-space: pre-wrap;
     word-break: break-word;
 }
 
+.button-column {
+    margin-top: 20px;
+}
+
 .product-data-component {
 
     border-style: solid;
-    border-color: #FF0000;
+    border-width: 1px;
+    border-color: rgb(255, 0, 0,.4);
     background: rgba(0, 0, 0, .5);
 }
 </style>

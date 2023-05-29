@@ -60,6 +60,10 @@ export default {
             editUserData: {
                 userPassword: '',
                 userImage: ''
+            },
+            userData: {
+                userPassword: '',
+                userImage: ''
             }
         }
     },
@@ -94,6 +98,9 @@ export default {
                 router.push({name: 'errorRoute'})
             })
         },
+    },
+    mounted() {
+        this.editUserAccount()
     }
 }
 </script>

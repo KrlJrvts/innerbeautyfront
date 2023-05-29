@@ -1,11 +1,11 @@
 <template>
-    <div class="container text-center card-padding">
+    <div  class="container text-center card-padding">
         <div class="row h-25">
             <div class="col">
-                Country:
+                Country: {{product.countryName}}
             </div>
             <div class="col">
-                Product age
+                Product age: {{product.productAge}}
             </div>
             <div class="col">
                 Price
@@ -35,10 +35,11 @@ import router from "@/router";
 export default {
     name: 'CardDataComponent',
     props: {
-        products: {
-            type: Array,
+        product:{
+            type: Object,
             required: true
-        }
+            }
+
     }
 }
 </script>

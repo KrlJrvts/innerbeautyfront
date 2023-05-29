@@ -1,6 +1,6 @@
 <template>
     <div v-for="product in products" :key="product.productId" class="card mb-3 cart-product" style="max-width: 800px;">
-        <div class="row g-0">
+        <div  class="row g-0">
             <div class="col-md-4">
                 <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
             </div>
@@ -11,8 +11,8 @@
                         <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon"
                                                               @click="removeProductFromCart"></i></a>
                     </div>
-                    <div class="card-body">
-                        <CardDataComponent/>
+                    <div  class="card-body">
+                        <CardDataComponent  :product="product"/>
                     </div>
                 </div>
             </div>
