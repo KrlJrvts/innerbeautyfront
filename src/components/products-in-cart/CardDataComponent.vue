@@ -34,6 +34,12 @@ import router from "@/router";
 
 export default {
     name: 'CardDataComponent',
+    props: {
+        products: {
+            type: Array,
+            required: true
+        }
+    }
 }
 </script>
 <style scoped>

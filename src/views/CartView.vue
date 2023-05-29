@@ -1,6 +1,6 @@
 <template>
     <section id="cart">
-        <div class="container text-center">
+        <div class="container cart-container text-center">
             <div class="row">
                 <div class="col-8">
                     <ProductCartComponent/>
@@ -42,7 +42,14 @@ export default {
 
 <style scoped>
 
-
+#cart {
+    min-height: 100vh;
+    height: fit-content;
+}
+.cart-container {
+    background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
+    height: fit-content;
+}
 section {
     color: whitesmoke;
 }

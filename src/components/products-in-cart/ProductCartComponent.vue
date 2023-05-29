@@ -1,5 +1,5 @@
 <template>
-    <div class="card mb-3 cart-product" style="max-width: 800px;">
+    <div v-for="product in products" :key="product.productId" class="card mb-3 cart-product" style="max-width: 800px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
@@ -31,6 +31,7 @@ export default {
         return {
             products: [
                 {
+                    productId: 0,
                     productName: '',
                     countryName: '',
                     productAge: 0,

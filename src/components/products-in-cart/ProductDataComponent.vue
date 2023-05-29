@@ -1,0 +1,128 @@
+<template>
+    <tbody>
+    <tr style="height: 200px;">
+        <div class="container py-0 product-data-component">
+            <div class="row ps-0">
+                <div class="col-3 d-flex align-items-center">
+                    <img src="../../assets/accountpictures/thebox.jpeg" style="height: 200px; width: 200px;border-radius: 20px">
+                </div>
+                <div class="col">
+                    <div class="row d-flex justify-content-center">
+                        <h5>Heart</h5>
+                        <div class="row">
+                            <div class="col d-flex justify-content-start ps-0">
+                                <p>Country: </p>
+                            </div>
+                            <div class="col d-flex justify-content-center ">
+                                <p>Product age: </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-start ps-0">
+                                <p>Removal date: 22/01/1995</p>
+                            </div>
+
+                            <div class="col d-flex justify-content-center">
+                                <p>Blood group: </p>
+                            </div>
+                        </div>
+                        <div class="row h-25" style="height: 20px">
+                            <div class="col d-flex justify-content-center">
+                                <p>Description:</p>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-start description-box" style="height: 100px">
+                            <p>adadsadsads</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 p-0 d-flex justify-content-start align-items-center">
+                    Price:<span class="price-span ms-1">2000000$</span>
+                </div>
+                <div class="col-1 button-column">
+                    <a class="button-cart-remove"><i class="fa-solid fa-xmark fa-3x mt-5 mb-5"></i></a>
+                    <i class="fa-solid fa-cart-shopping fa-2x button-cart-buy"></i>
+                </div>
+            </div>
+        </div>
+    </tr>
+    </tbody>
+</template>
+<script>
+import AddItemImage from "@/components/Image/AddItemImage.vue"
+
+export default {
+    name: 'ProductDataComponent',
+    components: {AddItemImage},
+    data() {
+        return {
+            favoriteProduct: [
+                {
+                    productName: '',
+                    productAge: 0,
+                    productDescription: '',
+                    productPrice: 0,
+                    countryName: '',
+                    genderName: '',
+                    bloodgroupType: '',
+                    imageData: '',
+                    productAvailableAt: ''
+                }
+            ]
+
+        }
+    },
+
+}
+</script>
+<style scoped>
+
+.price-span {
+    font-size: 20px;
+    color: #FF0000;
+    padding: 10px;
+}
+
+.price-span:hover {
+    transform: rotate(360deg);
+    transition-duration: 2s;
+}
+
+.button-cart-remove {
+    color: #660000;
+
+}
+
+.button-cart-remove:hover i {
+    cursor: pointer;
+    color: #FF0000;
+    transform: scale(1.2);
+    transition: all 400ms ease-in-out;
+}
+
+.button-cart-buy {
+    color: #660000;
+}
+
+.button-cart-buy:hover {
+    cursor: pointer;
+    color: #FF0000;
+    transform: scale(1.2);
+    transition: all 400ms ease-in-out;
+}
+.button-column {
+
+    margin-right: 4px;
+}
+.description-box {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.product-data-component {
+
+    border-style: solid;
+    border-color: #FF0000;
+    background: rgba(0, 0, 0, .5);
+}
+</style>
