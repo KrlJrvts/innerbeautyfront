@@ -2,9 +2,8 @@
     <nav v-if="!isHomepage && !isLoginPage && !isRegisterPage && !isErrorPage">
         <div class="row homepage-brand-row col-12">
             <div class="col d-flex justify-content-start  mt-1">
-                <img src="./assets/Logo.jpg" style="height: 70px; width: 75px; opacity: 0.7">
             </div>
-            <div class="col-6 d-flex justify-content-center p-2 ">
+            <div class="col d-flex justify-content-center p-2 ">
                 <router-link class="homepage-brand-name" to="/store">Inner
                     <i class="fa-regular fa-heart fa-beat-fade fa-md"></i>
                     Beauty
@@ -16,8 +15,9 @@
                     <router-link to="/add-item"><i class="fa-solid fa-plus fa-2xl"></i></router-link>
                 </div>
                 <div class="ps-4 pt-3">
-                    <router-link to="/" @click="clearSessionStorage"><i
-                            class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i></router-link>
+                    <router-link to="/" @click="clearSessionStorage">
+                        <i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
+                    </router-link>
                 </div>
                 <div class="ps-4 pt-3">
                     <router-link to="/favorite"><i class="fa-regular fa-heart fa-2xl"></i></router-link>
