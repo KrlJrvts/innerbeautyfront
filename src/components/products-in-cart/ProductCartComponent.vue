@@ -21,6 +21,7 @@
 </template>
 <script>
 import CardDataComponent from "@/components/products-in-cart/CardDataComponent.vue";
+import router from "@/router";
 
 export default {
     name: 'ProductCartComponent',
@@ -55,7 +56,21 @@ export default {
                     const errorResponseBody = error.response.data
                 })
         },
-
+        getCartProducts: function () {
+            this.$http.get("/products/cart", {
+                    params: {
+                        buyerId: Number(sessionStorage.getItem('userId')),
+                    }
+                }
+            ).then(response => {
+                this.products = response.data
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
+    },
+    beforeMount() {
+        this.getCartProducts()
     }
 }
 

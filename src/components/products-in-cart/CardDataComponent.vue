@@ -2,7 +2,7 @@
     <div class="container text-center card-padding">
         <div class="row h-25">
             <div class="col">
-                Country
+                Country:
             </div>
             <div class="col">
                 Product age
@@ -30,8 +30,10 @@
     </div>
 </template>
 <script>
+import router from "@/router";
+
 export default {
-    name: 'CardDataComponent'
+    name: 'CardDataComponent',
 }
 </script>
 <style scoped>
