@@ -56,7 +56,7 @@ export default {
     color: white;
     position: fixed;
     z-index: 1;
-    top: 15%;
+    top: 19%;
     width: 400px;
     height: 400px;
     border-radius: 15%;

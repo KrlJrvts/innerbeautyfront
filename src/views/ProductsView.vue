@@ -113,7 +113,7 @@ export default {
         clearMessage() {
             setTimeout(() => {
                 this.message = '';
-            }, 3000);
+            }, 4000);
         },
         openProductDescriptionModal(productDescription, productId) {
             this.selectedProductDescription = productDescription;
