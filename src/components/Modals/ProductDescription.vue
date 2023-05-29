@@ -15,7 +15,7 @@
             <div class="col d-flex justify-content-center gap-5">
                 <a class="btn button-product-description-close" @click="closeModal"><i class="fa-regular fa-circle-xmark fa-3x"></i></a>
                 <a class="btn button-product-favorite"><i class="fa-regular fa-heart fa-3x "></i></a>
-                <a class="btn button-product-cart"><i class="fa-solid fa-basket-shopping fa-3x"></i></a>
+                <a class="btn button-product-cart" @click="addToCart(chosenProductId)"><i class="fa-solid fa-basket-shopping fa-3x"></i></a>
             </div>
         </div>
     </div>
@@ -32,16 +32,21 @@ export default {
     },
     data() {
         return {
-         isOpen: false
+         isOpen: false,
+            chosenProductId: null,
         }
     },
     methods: {
-      openModal() {
+      openModal(productId) {
           this.isOpen = true;
+          this.chosenProductId = productId;
       },
       closeModal() {
           this.isOpen = false;
-      }
+      },
+        addToCart(productId){
+          this.$emit('event-add-to-cart', productId)
+        }
     }
 }
 </script>
