@@ -25,28 +25,41 @@
                                 <div class="card-body d-block pt-1 product-card-body">
                                     <h5 class="card-title mb-1">{{ product.categoryName }}</h5>
                                     <p class="card-text mb-1">Location: {{ product.countryName }}</p>
-                                    <p class="card-text mb-1">Blood Group: {{ product.bloodgroupType}}</p>
+                                    <p class="card-text mb-1">Blood Group: {{ product.bloodgroupType }}</p>
                                     <p class="card-text mb-1">Removing date: {{ product.productAvailableAt }}</p>
                                     <p class="card-text mb-1">Previous owner age: {{ product.productAge }}</p>
                                     <p class="card-text mb-4">Gender: {{ product.genderName }}</p>
-                                    <p class="card-text mb-1">Price:  <span class="product-price">{{ product.productPrice }}.- € </span></p>
+                                    <p class="card-text mb-1">Price:
+                                        <span class="product-price">{{product.productPrice }}.- € </span>
+                                    </p>
                                     <hr class="product-card-separator">
                                     <a class="btn button-product-description"
-                                       @click="openProductDescriptionModal(product.productDescription, product.productId)"><i
-                                            class="fa-solid fa-info fa-2xl m-3 "></i></a>
-                                    <a class="btn button-product-favorite"><i
-                                            class="fa-regular fa-heart fa-2xl m-3"></i></a>
-                                    <a class="btn button-product-cart" @click="addToCart(product.productId)">
+                                       @click="openProductDescriptionModal(product.productDescription, product.productId,product.isInFavourites,product.status)">
+                                        <i class="fa-solid fa-info fa-2xl m-3 "></i></a>
+
+                                    <a v-if="product.isInFavourites == false" class="btn button-product-favorite" @click="addToFavorites(product.productId)">
+                                        <i class="fa-regular fa-heart fa-2xl m-3"></i></a>
+                                    <a v-else-if="product.isInFavourites == true" class="btn button-product-favorite" @click="removeFromFavorites(product.productId)">
+                                        <i class="fa-solid fa-heart-circle-check fa-2xl m-3"></i></a>
+
+                                    <a v-if="product.status == 'A'" class="btn button-product-cart"
+                                       @click="addToCart(product.productId)">
                                         <i class="fa-solid fa-basket-shopping fa-2xl ms-2"></i></a>
+                                    <a v-else-if="product.status == 'C'" class="btn button-product-cart">
+                                        <i class="fa-solid fa-check fa-2xl ms-2"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <ProductDescription
-                    ref="descriptionModal"
-                    :product-description="selectedProductDescription"
-                    @event-add-to-cart="addToCart"/>
+                        ref="descriptionModal"
+                        :product-description="selectedProductDescription"
+                        :cart-status="cartStatus"
+                        @event-add-to-cart="addToCart"
+                        @event-add-to-favorites="addToFavorites"
+                        @event-remove-from-favorites="removeFromFavorites"/>
+
             </div>
         </div>
     </section>
@@ -72,6 +85,7 @@ export default {
             selectedProductDescription: '',
             selectedBloodGroupId: 0,
             selectedCountryId: 0,
+            cartStatus: '',
             productsSearchRequest: {
                 buyerId: Number(sessionStorage.getItem('userId')),
                 categoryId: Number(useRoute().query.categoryId),
@@ -92,10 +106,15 @@ export default {
                     bloodgroupType: '',
                     bloodgroupTypeId: 0,
                     imageData: '',
-                    isInFavourites: true
+                    isInFavourites: true,
+                    status: '',
                 }
             ],
             cartProduct: {
+                buyerId: Number(sessionStorage.getItem('userId')),
+                productId: 0,
+            },
+            favoriteProduct: {
                 buyerId: Number(sessionStorage.getItem('userId')),
                 productId: 0,
             },
@@ -108,19 +127,38 @@ export default {
     },
 
     methods: {
+
         addToCart(productId) {
             this.cartProduct.productId = productId;
             this.addProductToCart();
             this.clearMessage();
         },
+
+        addToFavorites(productId) {
+            this.favoriteProduct.productId = productId;
+            this.addProductToFavorite()
+            this.message = 'Product successfully added to favorites'
+            this.clearMessage()
+        },
+
+        removeFromFavorites(productId) {
+            this.favoriteProduct.productId = productId;
+            this.addProductToFavorite()
+            this.message = 'Product successfully removed from favorites'
+            this.clearMessage()
+        },
+
         clearMessage() {
             setTimeout(() => {
                 this.message = '';
-            }, 4000);
+                window.location.reload()
+            }, 3000);
         },
-        openProductDescriptionModal(productDescription, productId) {
+        openProductDescriptionModal(productDescription, productId, isInFavorites, status) {
             this.selectedProductDescription = productDescription;
-            this.$refs.descriptionModal.openModal(productId);
+            this.cartStatus = status,
+                this.$refs.descriptionModal.openModal(productId, isInFavorites, status);
+
         },
         setProductCountryId(selectedCountryId) {
             this.productsSearchRequest.countryId = selectedCountryId;
@@ -129,15 +167,6 @@ export default {
         setProductBloodGroupId(selectedBloodGroupId) {
             this.productsSearchRequest.bloodgroupId = selectedBloodGroupId;
             this.getProducts()
-        },
-
-        getProducts() {
-            this.$http.post("/products/category-all", this.productsSearchRequest
-            ).then(response => {
-                this.products = response.data
-            }).catch(error => {
-                router.push({name: 'errorRoute'})
-            })
         },
 
         addProductToCart() {
@@ -156,6 +185,29 @@ export default {
             })
         },
 
+        addProductToFavorite() {
+            this.$http.patch("/products/favorite-add", null, {
+                    params: {
+                        buyerId: this.favoriteProduct.buyerId,
+                        productId: this.favoriteProduct.productId
+                    }
+                }
+            ).then(response => {
+
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
+
+
+        getProducts() {
+            this.$http.post("/products/category-all", this.productsSearchRequest
+            ).then(response => {
+                this.products = response.data
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
     },
     beforeMount() {
         this.$nextTick(() => {
@@ -272,9 +324,10 @@ export default {
     scale: 1.1;
     transition: all 400ms ease-in-out !important;
 }
+
 .product-price {
     font-size: 25px;
-    color: red ;
+    color: red;
 }
 
 </style>
