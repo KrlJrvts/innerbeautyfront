@@ -29,7 +29,6 @@
                         <input v-model="newProduct.productAge" type="number" class="form-control"
                                placeholder="Organ Owner Age">
                     </div>
-
                     <div class="mb-3">
                         <input v-model="newProduct.productPrice" type="number" class="form-control" placeholder="Price">
                     </div>
@@ -45,7 +44,8 @@
                 <div class="col col-3 mt-5">
                     <div class="row">
                         <div class="col mb-4">
-                            <AddItemImage :picture-data-base64="newProduct.productImage" style="height: 200px; width: 200px"/>
+                            <AddItemImage :picture-data-base64="newProduct.productImage"
+                                          style="height: 200px; width: 200px"/>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center products-select-row">
@@ -147,8 +147,12 @@ export default {
                 this.message = 'Please enter Removal Date'
             } else if (this.newProduct.productAge == '') {
                 this.message = 'Please enter Organ Owner Age'
+            } else if (this.newProduct.productAge < 0) {
+                this.message = 'Organ Owner Age cannot be a negative number'
             } else if (this.newProduct.productPrice == '') {
                 this.message = 'Please enter Price'
+            } else if (this.newProduct.productPrice < 0) {
+                this.message = 'Ehh... Are you up for charity? '
             } else if (this.newProduct.productDescription == '') {
                 this.message = 'Please enter Product Description'
             } else {
