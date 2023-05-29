@@ -50,10 +50,6 @@ export default {
 </script>
 <style scoped>
 
-.form-select option:checked {
-    color: yellow!important;
-    background-color: yellow!important;
-}
 
 
 

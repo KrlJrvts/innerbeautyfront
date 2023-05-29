@@ -53,6 +53,7 @@ export default {
 
 </script>
 <style scoped>
+
 section {
     color: black;
 }
@@ -78,10 +79,6 @@ button:hover {
     box-shadow: 0px 0px 300px 10px #660000;
 }
 
-alert-div {
-    position: relative;
-    margin-top: 200px;
-}
 
 input[type="file"]::-webkit-file-upload-button {
     padding: 8px 16px; /* Adjust the padding as needed */
@@ -91,5 +88,7 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 4px; /* Add border radius if desired */
     font-family: inherit;
 }
+
+
 
 </style>
