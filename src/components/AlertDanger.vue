@@ -24,11 +24,11 @@ export default {
     color: white;
     background-color: transparent;
     border-color: crimson;
-
 }
 
 .alert-row {
     margin: 0;
 }
+
 
 </style>

@@ -16,25 +16,28 @@
                     <div class="col-12">
                         <div class="row product-card-row ">
                             <div v-for="product in products" :value="product.productId"
-                                 class="card col-2 me-5 mt-5 product-card" style="width: 17rem;">
+                                 class="card col-2 me-5 mt-3 product-card" style="width: 17rem;">
                                 <img v-if="product.imageData == ''" src="../assets/accountpictures/thebox.jpeg"
                                      class="card-img-top product-card-image" draggable="false"
                                      style="height: 200px; border-radius: 20px 20px 0px 0 ">
                                 <img v-else :src="product.imageData" class="card-img-top product-card-image"
                                      draggable="false" style="height: 200px; border-radius: 20px 20px 0px 0 ">
-                                <div class="card-body d-block pt-2 product-card-body">
-                                    <h5 class="card-title">{{ product.categoryName }}</h5>
-                                    <p class="card-text">Removing date: {{ product.productAvailableAt }}</p>
-                                    <p class="card-text">Previous owner age: {{ product.productAge }}</p>
-                                    <p class="card-text">Gender: {{ product.genderName }}</p>
+                                <div class="card-body d-block pt-1 product-card-body">
+                                    <h5 class="card-title mb-1">{{ product.categoryName }}</h5>
+                                    <p class="card-text mb-1">Location: {{ product.countryName }}</p>
+                                    <p class="card-text mb-1">Blood Group: {{ product.bloodgroupType}}</p>
+                                    <p class="card-text mb-1">Removing date: {{ product.productAvailableAt }}</p>
+                                    <p class="card-text mb-1">Previous owner age: {{ product.productAge }}</p>
+                                    <p class="card-text mb-4">Gender: {{ product.genderName }}</p>
+                                    <p class="card-text mb-1">Price:  <span class="product-price">{{ product.productPrice }}.- € </span></p>
                                     <hr class="product-card-separator">
                                     <a class="btn button-product-description"
                                        @click="openProductDescriptionModal(product.productDescription, product.productId)"><i
                                             class="fa-solid fa-info fa-2xl m-3 "></i></a>
                                     <a class="btn button-product-favorite"><i
                                             class="fa-regular fa-heart fa-2xl m-3"></i></a>
-                                    <a class="btn button-product-cart" @click="addToCart(product.productId)"><i
-                                            class="fa-solid fa-basket-shopping fa-2xl ms-2"></i></a>
+                                    <a class="btn button-product-cart" @click="addToCart(product.productId)">
+                                        <i class="fa-solid fa-basket-shopping fa-2xl ms-2"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -269,6 +272,9 @@ export default {
     scale: 1.1;
     transition: all 400ms ease-in-out !important;
 }
-
+.product-price {
+    font-size: 25px;
+    color: red ;
+}
 
 </style>
