@@ -1,6 +1,6 @@
 <template>
   <div v-for="product in totalProducts.products" :key="product.productId" class="card mb-3 cart-product" >
-    <div class="row g-0">
+    <div class="row g-0 product-data-component">
       <div class="col-md-4">
         <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
       </div>
@@ -88,5 +88,13 @@ section {
 .button-product-cart {
   padding: 12px !important;
   color: #660000;
+}
+
+.product-data-component {
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(255, 0, 0,.4);
+  background: rgba(0, 0, 0, .5);
 }
 </style>

@@ -1,20 +1,25 @@
 section {
     background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
+
     height: 100vh;
 
 }
+
 body {
     margin: 0px;
 }
-h1,h2,h3,h4,h5 {
+
+h1, h2, h3, h4, h5 {
     color: white;
     font-family: 'Playfair Display', serif;
 }
+
 .form-select {
     background-color: transparent !important;
-    color: white!important;
+    color: white !important;
 
 }
+
 .form-select:focus {
     color: white !important;
     border-color: #660000 !important;

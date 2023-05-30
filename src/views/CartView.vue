@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-3 mt-5">
                     <div class="card border-dark cart-product" style="max-width: 20rem;">
-                        <div class="card-body">
+                        <div class="card-body product-data-component">
                             <div class="container text-center">
                                 <div class="row">
                                     <div class="col">
@@ -75,5 +75,13 @@ section {
     transform: scale(1.1) !important;
     border-color: #660000 !important;
     box-shadow: 0px 0px 300px 10px #660000;
+}
+
+.product-data-component {
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(255, 0, 0,.4);
+  background: rgba(0, 0, 0, .5);
 }
 </style>
