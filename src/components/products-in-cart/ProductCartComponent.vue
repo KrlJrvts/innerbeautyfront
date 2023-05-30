@@ -9,7 +9,7 @@
           <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-title col-9">{{ product.productName }}</h5>
             <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon"
-                                                  @click="removeProductFromCart"></i></a>
+                                                  @click="removeProductFromCart(product)"></i></a>
           </div>
           <div class="card-body">
             <CardDataComponent :product="product"/>
@@ -38,15 +38,17 @@ export default {
   },
 
   methods: {
-    removeProductFromCart() {
+    deleteProductFromCart() {
       this.$http.delete("/products/cart-delete")
           .then(response => {
+            buyerId: Number(sessionStorage.getItem('userId')),
             router.push({name: 'cartRoute'})
           })
           .catch(error => {
             router.push({name: 'errorRoute'})
           })
     },
+
 
     getCartProducts() {
       this.$http.get("/products/cart", {
@@ -60,6 +62,20 @@ export default {
           .catch(error => {
             router.push({name: 'errorRoute'})
           })
+    },
+
+    removeProductFromCart (product) {
+      this.$http.put("/products/cart-remove", null, {
+            params: {
+              buyerId: Number(sessionStorage.getItem('userId')),
+              productId: Number(product.productId)
+            }
+          }
+      ).then(response => {
+        router.push({name: 'cartRoute'})
+      }).catch(error => {
+        router.push({name: 'errorRoute'})
+      })
     },
   },
 
