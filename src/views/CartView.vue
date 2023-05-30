@@ -3,7 +3,7 @@
     <div class="container cart-container text-center">
       <div class="row">
         <div class="col-9 mt-5">
-          <ProductCartComponent/>
+          <ProductCartComponent @total-price="updateTotalPrice" />
         </div>
         <div class="col-3 mt-5">
           <div class="card border-dark cart-product" style="max-width: 20rem;">
@@ -11,9 +11,7 @@
               <div class="container text-center">
                 <div class="row">
                   <div class="col">
-                    <button @click="deleteProductFromCart" class="btn btn-outline-light button-checkout mb-5">Check
-                      out
-                    </button>
+                    <button @click="deleteProductFromCart" class="btn btn-outline-light button-checkout mb-5">Check out</button>
                   </div>
                 </div>
                 <div class="row">
@@ -21,8 +19,7 @@
                     Subtotal
                   </div>
                   <div class="col">
-                    <ProductCartComponent @total-price-updated="updateTotalPrice"/>
-                    {{totalPrice}}
+                    {{ totalPrice }} €
                   </div>
                 </div>
               </div>
@@ -40,36 +37,33 @@ import router from "@/router";
 
 export default {
   name: "CartView",
-  components: {ProductCartComponent},
+  components: { ProductCartComponent },
 
   data() {
     return {
-      totalPrice: 0,
-    }
+      totalPrice: 200000,
+    };
   },
 
   methods: {
     deleteProductFromCart() {
       this.$http.delete("/products/cart-delete")
-          .then(response => {
-            buyerId: Number(sessionStorage.getItem('userId')),
-                router.push({name: 'cartRoute'})
+          .then((response) => {
+            router.push({ name: 'cartRoute' });
           })
-          .catch(error => {
-            router.push({name: 'errorRoute'})
-          })
+          .catch((error) => {
+            router.push({ name: 'errorRoute' });
+          });
     },
+
     updateTotalPrice(newPrice) {
-      this.totalCartProducts.totalPrice = newPrice
-    }
-  }
-}
-
-
+      this.totalPrice = newPrice;
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 #cart {
   min-height: 100vh;
   height: fit-content;
@@ -108,10 +102,9 @@ section {
 }
 
 .product-data-component {
-
   border-style: solid;
   border-width: 1px;
-  border-color: rgb(255, 0, 0, .4);
+  border-color: rgba(255, 0, 0, .4);
   background: rgba(0, 0, 0, .5);
 }
 </style>
