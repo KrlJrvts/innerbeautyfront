@@ -14,7 +14,7 @@
                                     class="form-select w-25 m-5 bloodgroup-select-products"/>
                 <div class="row mt-5 px-0">
                     <div class="col-12">
-                        <div class="row product-card-row ">
+                        <div class="row product-card-row pro ">
                             <div v-for="product in products" :value="product.productId"
                                  class="card col-2 me-5 mt-3 product-card" style="width: 17rem;">
                                 <img v-if="product.imageData == ''" src="../assets/accountpictures/thebox.jpeg"
@@ -227,6 +227,7 @@ export default {
 
 <style scoped>
 
+
 #product-view {
     height: 100vh;
 
@@ -284,7 +285,7 @@ export default {
 }
 
 .product-card-body {
-    background: rgba(20, 0, 0, .2) !important;
+    background: rgba(20, 0, 0, .4) !important;
 }
 
 .product-card-separator {
