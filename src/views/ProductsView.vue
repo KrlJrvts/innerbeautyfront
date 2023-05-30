@@ -30,7 +30,7 @@
                                     <p class="card-text mb-1">Previous owner age: {{ product.productAge }}</p>
                                     <p class="card-text mb-4">Gender: {{ product.genderName }}</p>
                                     <p class="card-text mb-1">Price:
-                                        <span class="product-price">{{ product.productPrice }}.- € </span>
+                                        <span class="product-price">{{ product.productPrice }} € </span>
                                     </p>
                                     <hr class="product-card-separator">
                                     <a class="btn button-product-description"
