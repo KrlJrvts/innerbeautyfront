@@ -9,7 +9,7 @@
           <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-title col-9">{{ product.productName }}</h5>
             <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon"
-                                                  @click="removeProductFromCart(product)"></i></a>
+                                                  @click="removeProductFromCart(product.productId)"></i></a>
           </div>
           <div class="card-body">
             <CardDataComponent :product="product"/>
@@ -64,11 +64,12 @@ export default {
           })
     },
 
-    removeProductFromCart (product) {
-      this.$http.put("/products/cart-remove", null, {
+    removeProductFromCart(productId) {
+
+      this.$http.patch("/products/cart-remove", null, {
             params: {
               buyerId: Number(sessionStorage.getItem('userId')),
-              productId: Number(product.productId)
+              productId: Number(productId)
             }
           }
       ).then(response => {
@@ -76,7 +77,9 @@ export default {
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })
+      this.getCartProducts()
     },
+
   },
 
   beforeMount() {
