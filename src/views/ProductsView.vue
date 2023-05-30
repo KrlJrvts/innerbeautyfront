@@ -14,7 +14,7 @@
                                     class="form-select w-25 m-5 bloodgroup-select-products"/>
                 <div class="row mt-5 px-0">
                     <div class="col-12">
-                        <div class="row product-card-row pro ">
+                        <div class="row product-card-row ">
                             <div v-for="product in products" :value="product.productId"
                                  class="card col-2 me-5 mt-3 product-card" style="width: 17rem;">
                                 <img v-if="product.imageData == ''" src="../assets/accountpictures/thebox.jpeg"
@@ -30,7 +30,7 @@
                                     <p class="card-text mb-1">Previous owner age: {{ product.productAge }}</p>
                                     <p class="card-text mb-4">Gender: {{ product.genderName }}</p>
                                     <p class="card-text mb-1">Price:
-                                        <span class="product-price">{{ product.productPrice }} € </span>
+                                        <span class="product-price">{{ product.productPrice }}.- € </span>
                                     </p>
                                     <hr class="product-card-separator">
                                     <a class="btn button-product-description"
@@ -227,7 +227,6 @@ export default {
 
 <style scoped>
 
-
 #product-view {
     height: 100vh;
 
@@ -285,7 +284,8 @@ export default {
 }
 
 .product-card-body {
-    background: rgba(20, 0, 0, .4) !important;
+    background: rgba(0, 0, 0, .5);
+    border-radius: 20px !important;
 }
 
 .product-card-separator {
