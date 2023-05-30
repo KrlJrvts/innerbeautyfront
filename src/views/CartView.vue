@@ -2,10 +2,10 @@
     <section id="cart">
         <div class="container cart-container text-center">
             <div class="row">
-                <div class="col-9">
+                <div class="col-9 mt-5">
                     <ProductCartComponent/>
                 </div>
-                <div class="col-3">
+                <div class="col-3 mt-5">
                     <div class="card border-dark cart-product" style="max-width: 20rem;">
                         <div class="card-body">
                             <div class="container text-center">
