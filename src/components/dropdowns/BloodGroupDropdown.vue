@@ -43,6 +43,10 @@ export default {
         emitSelectedBloodGroupId() {
             this.$emit('event-emit-selected-blood-group-id', Number(this.selectedBloodGroupId))
         },
+        setFirstBloodGroupSelected() {
+            this.selectedBloodGroupId = '0'
+            this.emitSelectedBloodGroupId()
+        }
     },
     beforeMount() {
         this.getBloodGroups()

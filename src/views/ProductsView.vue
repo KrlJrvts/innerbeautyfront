@@ -12,6 +12,7 @@
                 <BloodGroupDropdown ref="bloodGroupDropdown"
                                     @event-emit-selected-blood-group-id="setProductBloodGroupId"
                                     class="form-select w-25 m-5 bloodgroup-select-products"/>
+              <button @click="resetFilters" class="btn btn-outline-light button-search-products m-5 w-25">Reset Filters</button>
                 <div class="row mt-5 px-0">
                     <div class="col-12">
                         <div class="row product-card-row ">
@@ -210,6 +211,10 @@ export default {
                 router.push({name: 'errorRoute'})
             })
         },
+      resetFilters() {
+            this.$refs.countryDropdownRef.setFirstCountrySelected();
+            this.$refs.bloodGroupDropdown.setFirstBloodGroupSelected();
+        }
     },
     beforeMount() {
         this.$nextTick(() => {
