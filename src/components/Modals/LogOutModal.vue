@@ -7,7 +7,7 @@
         </div>
         <div class="row" style="height: 200px">
             <div class="col-6 d-flex align-items-end">
-                <button id="runaway-btn" class="btn button-modal w-75 ms-5">Cancel</button>
+                <button @click="closeModal" id="runaway-btn" class="btn button-modal w-75 ms-5">Cancel</button>
             </div>
             <div class="col-6 d-flex align-items-end">
                 <button class="btn button-modal w-75" >Yes</button>
@@ -35,6 +35,9 @@ export default {
     },
 
     methods: {
+        closeModal() {
+            this.isOpen = false;
+        }
     }
 }
 </script>

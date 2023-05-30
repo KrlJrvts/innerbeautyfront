@@ -15,7 +15,7 @@
                     <router-link to="/add-item"><i class="fa-solid fa-plus fa-2xl"></i></router-link>
                 </div>
                 <div class="ps-4 pt-3">
-                    <router-link to="/" @click="clearSessionStorage">
+                    <router-link to="" @click="clearSessionStorage">
                         <i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
                     </router-link>
                 </div>
@@ -29,7 +29,6 @@
                     <router-link to="/cart"><i class="fa-solid fa-basket-shopping fa-2xl"></i></router-link>
                 </div>
             </div>
-
         </div>
 
 
@@ -73,7 +72,11 @@ nav a.router-link-exact-active {
 }
 </style>
 <script>
+
+import LogOutModal from "@/components/Modals/LogOutModal.vue";
+
 export default {
+    components: {LogOutModal},
     computed: {
         isHomepage() {
             return this.$route.path === '/';
