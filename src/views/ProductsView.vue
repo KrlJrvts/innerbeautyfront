@@ -284,7 +284,8 @@ export default {
 }
 
 .product-card-body {
-    background: rgba(20, 0, 0, .2) !important;
+    background: rgba(0, 0, 0, .5);
+    border-radius: 20px !important;
 }
 
 .product-card-separator {
