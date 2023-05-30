@@ -155,6 +155,8 @@ export default {
                 this.message = 'Ehh... Are you up for charity? '
             } else if (this.newProduct.productDescription == '') {
                 this.message = 'Please enter Product Description'
+            } else if (this.newProduct.productAvailableAt.length !== 10) {
+                this.message = 'Date format wrong dd.mm.yyyy'
             } else {
                 this.message = ''
             }
