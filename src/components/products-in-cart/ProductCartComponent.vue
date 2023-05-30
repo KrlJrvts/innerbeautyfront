@@ -1,5 +1,5 @@
 <template>
-  <div v-for="product in totalProducts.products" :key="product.productId" class="card mb-3 cart-product" >
+  <div v-for="product in totalCartProducts.products" :key="product.productId" class="card mb-3 cart-product">
     <div class="row g-0 product-data-component">
       <div class="col-md-4">
         <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
@@ -8,7 +8,8 @@
         <div class="card-body card-padding">
           <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-title col-9">{{ product.productName }}</h5>
-            <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon" @click="removeProductFromCart"></i></a>
+            <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon"
+                                                  @click="removeProductFromCart(product)"></i></a>
           </div>
           <div class="card-body">
             <CardDataComponent :product="product"/>
@@ -29,23 +30,25 @@ export default {
 
   data() {
     return {
-      totalProducts: {
+      totalCartProducts: {
         totalPrice: 0,
-        products: []
+        cartProducts: []
       }
     }
   },
 
   methods: {
-    removeProductFromCart() {
+    deleteProductFromCart() {
       this.$http.delete("/products/cart-delete")
           .then(response => {
+            buyerId: Number(sessionStorage.getItem('userId')),
             router.push({name: 'cartRoute'})
           })
           .catch(error => {
             router.push({name: 'errorRoute'})
           })
     },
+
 
     getCartProducts() {
       this.$http.get("/products/cart", {
@@ -54,11 +57,25 @@ export default {
         }
       })
           .then(response => {
-            this.totalProducts = response.data
+            this.totalCartProducts = response.data
           })
           .catch(error => {
             router.push({name: 'errorRoute'})
           })
+    },
+
+    removeProductFromCart (product) {
+      this.$http.put("/products/cart-remove", null, {
+            params: {
+              buyerId: Number(sessionStorage.getItem('userId')),
+              productId: Number(product.productId)
+            }
+          }
+      ).then(response => {
+        router.push({name: 'cartRoute'})
+      }).catch(error => {
+        router.push({name: 'errorRoute'})
+      })
     },
   },
 
@@ -94,7 +111,7 @@ section {
 
   border-style: solid;
   border-width: 1px;
-  border-color: rgb(255, 0, 0,.4);
+  border-color: rgb(255, 0, 0, .4);
   background: rgba(0, 0, 0, .5);
 }
 </style>
