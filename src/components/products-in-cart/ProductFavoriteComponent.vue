@@ -28,7 +28,7 @@
                         </div>
                         <div class="row h-25" style="height: 20px">
                             <div class="col d-flex justify-content-start ps-0">
-                                <p>Gender: {{product.genderName}} </p>
+                                <p>Gender: {{ product.genderName }} </p>
                             </div>
                         </div>
                         <div class="row h-25" style="height: 20px">
@@ -42,14 +42,16 @@
                     </div>
                 </div>
                 <div class="col-2 p-0 d-flex justify-content-start align-items-center">
-                    Price:<span class="price-span">{{product.productPrice }}€</span>
+                    Price:<span class="price-span">{{ product.productPrice }}€</span>
                 </div>
                 <div class="col-1 button-column ">
                     <div>
-                        <a @click="removeProduct(product.productId)" class="button-cart-remove"><i class="fa-solid fa-heart-circle-minus fa-2x mt-5 mb-5"></i></a>
+                        <a @click="removeProduct(product.productId)" class="button-cart-remove"><i
+                                class="fa-solid fa-heart-circle-minus fa-2x mt-5 mb-5"></i></a>
                     </div>
                     <div>
-                        <i v-if="product.status == 'A'" class="fa-solid fa-cart-shopping fa-2x button-cart-buy mt-5"></i>
+                        <i v-if="product.status == 'A'"
+                           class="fa-solid fa-cart-shopping fa-2x button-cart-buy mt-5"></i>
                         <i v-else-if="product.status == 'C'" class="fa-solid fa-check fa-3x button-checked mt-4"></i>
                     </div>
                 </div>
@@ -79,7 +81,7 @@ export default {
                     bloodgroupType: '',
                     imageData: '',
                     productAvailableAt: '',
-                    status:''
+                    status: ''
                 }
             ],
             removedFavoriteProduct: {
@@ -97,7 +99,7 @@ export default {
                     }
                 }
             ).then(response => {
-                this.favoriteProducts = response.data
+                    this.favoriteProducts = response.data
             }).catch(error => {
                 router.push({name: 'errorRoute'})
             })
@@ -132,6 +134,7 @@ export default {
 .product-data-component {
     border-radius: 30px;
 }
+
 .price-span {
     font-size: 20px;
     color: #FF0000;
@@ -153,9 +156,11 @@ export default {
 .button-cart-buy {
     color: #660000;
 }
+
 .button-checked {
     color: #FF0000;
 }
+
 .button-cart-buy:hover {
     cursor: pointer;
     color: #FF0000;
@@ -170,14 +175,14 @@ export default {
 }
 
 .button-column {
-    margin-top: 30px!important;
+    margin-top: 30px !important;
 }
 
 .product-data-component {
 
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(255, 0, 0,.4);
+    border-color: rgb(255, 0, 0, .4);
     background: rgba(0, 0, 0, .5);
 }
 </style>
