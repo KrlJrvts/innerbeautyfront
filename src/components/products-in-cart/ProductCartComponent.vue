@@ -20,6 +20,7 @@
     </div>
 </template>
 <script>
+
 import CardDataComponent from "@/components/products-in-cart/CardDataComponent.vue";
 import router from "@/router";
 
@@ -51,7 +52,7 @@ export default {
         removeProductFromCart: function () {
             this.$http.delete("/some/path")
                 .then(response => {
-                    router.push({name: 'CartView'})
+                    router.push({name: 'cartRoute'})
                 })
                 .catch(error => {
                     const errorResponseBody = error.response.data
