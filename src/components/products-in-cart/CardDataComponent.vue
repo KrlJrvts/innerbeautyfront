@@ -1,64 +1,98 @@
 <template>
-    <div  class="container text-start card-padding">
-        <div class="row h-25">
-            <div class="col">
-                Country: {{product.countryName}}
-            </div>
-            <div class="col">
-                Product age: {{product.productAge}}
-            </div>
-            <div class="col">
-                Price: {{product.productPrice}}
-            </div>
+  <div class="container text-start card-padding">
+    <div class="row h-25 mb-3">
+      <div class="col">
+        <div>
+          Country:
         </div>
-        <div class="row h-25">
-            <div class="col-4">
-                Remove date: {{product.productAvailableAt}}
-            </div>
-            <div class="col-4">
-                Bloodgroup: {{product.bloodgroupType}}
-            </div>
+        <div>
+          {{ product.countryName }}
         </div>
-        <div class="row" style="height: 10vh; position: relative;">
-            <div class="col-8">
-                Description: {{product.productDescription}}
-            </div>
-            <div class="col-4 d-flex align-items-end justify-content-center" style="position: absolute; bottom: 0; right: 0;">
-                Seller: {{product.sellerEmail}}
-            </div>
+      </div>
+      <div class="col">
+        <div>
+          Product age:
         </div>
+        <div>
+          {{ product.productAge }} Years
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          Price:
+        </div>
+        <div>
+          {{ product.productPrice }} €
+        </div>
+      </div>
     </div>
+    <div class="row h-25 mb-3">
+      <div class="col-4">
+        <div>
+          Remove date:
+        </div>
+        <div>
+          {{ product.productAvailableAt }}
+        </div>
+      </div>
+      <div class="col-4">
+        <div>
+          Bloodgroup:
+        </div>
+        <div>
+          {{ product.bloodgroupType }}
+        </div>
+      </div>
+    </div>
+    <div class="row" style="height: 10vh; position: relative;">
+      <div class="col-8">
+        <div>
+          Description:
+        </div>
+        <div>
+          {{ product.productDescription }}
+        </div>
+      </div>
+      <div class="col-4 d-flex align-items-end justify-content-center" style="position: absolute; bottom: 0; right: 0;">
+        <div>
+          Seller:
+          {{ product.sellerEmail }}
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 
 
 export default {
-    name: 'CardDataComponent',
-    props: {
-        product:{
-            type: Object,
-            required: true
-            }
-
+  name: 'CardDataComponent',
+  props: {
+    product: {
+      type: Object,
+      required: true
     }
+
+  }
 }
 </script>
 <style scoped>
 
 
 section {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 .container {
-    position: relative;
-    top: 15%;
-    height: 10%;
-    width: 100%;
+  position: relative;
+  top: 15%;
+  height: 10%;
+  width: 100%;
 }
+
 .card-padding {
-    padding: 0 !important;
-    margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 </style>

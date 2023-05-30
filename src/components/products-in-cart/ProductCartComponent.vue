@@ -1,5 +1,5 @@
 <template>
-  <div v-for="product in totalProducts.products" :key="product.productId" class="card mb-3 cart-product" style="max-width: 800px;">
+  <div v-for="product in totalProducts.products" :key="product.productId" class="card mb-3 cart-product" >
     <div class="row g-0">
       <div class="col-md-4">
         <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
