@@ -11,7 +11,7 @@
               <div class="container text-center">
                 <div class="row">
                   <div class="col">
-                    <button @click="deleteProductFromCart" class="btn btn-outline-light button-checkout mb-5">Check out</button>
+                    <button @click="buyProductsFromCart" class="btn btn-outline-light button-checkout mb-5">Check out</button>
                   </div>
                 </div>
                 <div class="row">
@@ -41,19 +41,22 @@ export default {
 
   data() {
     return {
-      totalPrice: 200000,
+      totalPrice: 0,
     };
   },
 
   methods: {
-    deleteProductFromCart() {
-      this.$http.delete("/products/cart-delete")
-          .then((response) => {
-            router.push({ name: 'cartRoute' });
-          })
-          .catch((error) => {
-            router.push({ name: 'errorRoute' });
-          });
+    buyProductsFromCart: function () {
+      this.$http.patch("/products/cart-buy", null, {
+            params: {
+              buyerId: Number(sessionStorage.getItem('userId'))
+            }
+          }
+      ).then(response => {
+        router.push({name: 'storeRoute'})
+      }).catch(error => {
+        router.push({name: 'errorRoute'})
+      })
     },
 
     updateTotalPrice(newPrice) {
