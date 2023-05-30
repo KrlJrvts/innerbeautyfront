@@ -8,23 +8,23 @@
                 Product age: {{product.productAge}}
             </div>
             <div class="col">
-                Price
+                Price: {{product.productPrice}}
             </div>
         </div>
         <div class="row h-25">
             <div class="col-4">
-                Remove date
+                Remove date: {{product.productAvailableAt}}
             </div>
             <div class="col-4">
-                Bloodgroup
+                Bloodgroup: {{product.bloodgroupType}}
             </div>
         </div>
         <div class="row" style="height: 10vh; position: relative;">
             <div class="col-8">
-                Description
+                Description: {{product.productDescription}}
             </div>
             <div class="col-4 d-flex align-items-end justify-content-center" style="position: absolute; bottom: 0; right: 0;">
-                Seller
+                Seller: {{product.sellerEmail}}
             </div>
         </div>
     </div>

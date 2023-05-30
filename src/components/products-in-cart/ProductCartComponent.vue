@@ -49,9 +49,9 @@ export default {
     },
     methods: {
         removeProductFromCart: function () {
-            this.$http.delete("/some/path")
+            this.$http.delete("/products/cart-delete")
                 .then(response => {
-                    router.push({name: 'CartView'})
+                    router.push({name: 'cartRoute'})
                 })
                 .catch(error => {
                     const errorResponseBody = error.response.data
