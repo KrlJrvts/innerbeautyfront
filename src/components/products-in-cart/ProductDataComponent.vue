@@ -6,10 +6,6 @@
             <div class="row ps-0">
                 <div class="col-3 d-flex align-items-center">
                     <AddItemImage :picture-data-base64="favoriteProduct.imageData" style="height: 200px; width: 200px;"/>
-<!--                    <img v-if="favoriteProduct.imageData == ''" src="../../assets/accountpictures/thebox.jpeg"-->
-<!--                         style="height: 200px; width: 200px;border-radius: 20px">-->
-<!--                    <img v-else :src="favoriteProduct.imageData"-->
-<!--                         style="height: 200px; width: 200px;border-radius: 20px">-->
                 </div>
                 <div class="col">
                     <div class="row d-flex justify-content-center">
@@ -42,11 +38,11 @@
                     </div>
                 </div>
                 <div class="col-2 p-0 d-flex justify-content-start align-items-center">
-                    Price:<span class="price-span ms-1">{{ favoriteProduct.productPrice }}$</span>
+                    Price:<span class="price-span">{{favoriteProduct.productPrice }}€</span>
                 </div>
                 <div class="col-1 button-column ">
                     <div>
-                        <a class="button-cart-remove"><i class="fa-solid fa-xmark fa-3x mt-5 mb-5"></i></a>
+                        <a class="button-cart-remove"><i class="fa-solid fa-heart-circle-minus fa-2x mt-5 mb-5"></i></a>
                     </div>
                     <div>
                         <i class="fa-solid fa-cart-shopping fa-2x button-cart-buy"></i>
@@ -112,11 +108,6 @@ export default {
     padding: 10px;
 }
 
-.price-span:hover {
-    transform: rotate(360deg);
-    transition-duration: 2s;
-}
-
 .button-cart-remove {
     color: #660000;
 
@@ -126,7 +117,7 @@ export default {
     cursor: pointer;
     color: #FF0000;
     transform: scale(1.2);
-    transition: all 400ms ease-in-out;
+    transition: all 300ms ease-in-out;
 }
 
 .button-cart-buy {
@@ -137,7 +128,7 @@ export default {
     cursor: pointer;
     color: #FF0000;
     transform: scale(1.2);
-    transition: all 400ms ease-in-out;
+    transition: all 300ms ease-in-out;
 }
 
 .description-box {

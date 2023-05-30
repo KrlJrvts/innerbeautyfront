@@ -5,8 +5,14 @@
         </div>
         <div class="container account-container text-center">
             <div class="row justify-content-center ">
-                <div class="col col-5 mt-5 ms-5 account-field-container ">
-                    <div class="mb-3">
+                <div class="col col-5 ms-5 mt-5 account-field-container ">
+
+                    <div class="mb-5">
+                        <label for="password" class="form-label">Current Password</label>
+                        <input v-model="currentPasswordValidation" type="password" class="form-control"
+                               id="confirm-password">
+                    </div>
+                    <div class="mb-2">
                         <label for="password" class="form-label">Password</label>
                         <input v-model="editUserData.userPassword" type="password" class="form-control"
                                id="password">
@@ -15,7 +21,7 @@
                         <label for="password" class="form-label">Confirm Password</label>
                         <input v-model="confirmPassword" type="password" class="form-control" id="confirm-password">
                     </div>
-                    <div class="mt-5">
+                    <div class="">
                         <button @click="cancelEdit" type="submit"
                                 class="btn btn-outline-light button-homepage account-button ms-0 me-3 ">
                             Cancel
@@ -29,7 +35,7 @@
                 <div class="col col-6 mt-5">
                     <div class="row">
                         <div class="col mb-2">
-                            <UserImage :picture-data-base64="editUserData.userImage"
+                            <UserImage :picture-data-base64="userData.userImage"
                                        style="height: 255px; width: 200px;"/>
                         </div>
                     </div>
@@ -56,6 +62,7 @@ export default {
     data() {
         return {
             message: '',
+            currentPasswordValidation: '',
             confirmPassword: '',
             editUserData: {
                 userPassword: '',
@@ -68,14 +75,23 @@ export default {
         }
     },
     methods: {
+        clearMessage() {
+            setTimeout(() => {
+                this.message = '';
+                window.location.reload()
+            }, 2000);
+        },
         emitBase64(pictureDataBase64) {
+            this.userData.userImage = pictureDataBase64;
             this.editUserData.userImage = pictureDataBase64;
         },
         cancelEdit() {
             router.push({name: 'storeRoute'})
         },
         saveChanges() {
-            if (this.editUserData.userPassword == '' || this.confirmPassword == '') {
+            if (this.userData.userPassword !== this.currentPasswordValidation) {
+                this.message = 'Invalid current password!'
+            } else if (this.editUserData.userPassword == '' || this.confirmPassword == '') {
                 this.message = 'Please fill all fields!'
             } else if (this.editUserData.userPassword !== this.confirmPassword) {
                 this.message = 'Passwords do not match!'
@@ -94,13 +110,27 @@ export default {
                 if (response.status === 200) {
                     this.message = 'User edit completed successfully!'
                 }
+                this.clearMessage()
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
+        getUserData: function () {
+            this.$http.get("/user/get-data/", {
+                    params: {
+                        userId: Number(sessionStorage.getItem('userId')),
+                    }
+                }
+            ).then(response => {
+                this.userData = response.data
             }).catch(error => {
                 router.push({name: 'errorRoute'})
             })
         },
     },
-    mounted() {
-        this.editUserAccount()
+
+    beforeMount() {
+        this.getUserData()
     }
 }
 </script>
@@ -136,8 +166,7 @@ input {
 }
 
 .account-field-container {
-    position: relative;
-    top: 85px;
+
 }
 
 .account-button {
