@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="card-body card-padding">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="card-title col-9">Card title</h5>
+                        <h5 class="card-title col-9">{{product.productName}}</h5>
                         <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon"
                                                               @click="removeProductFromCart"></i></a>
                     </div>
