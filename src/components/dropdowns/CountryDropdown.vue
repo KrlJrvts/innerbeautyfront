@@ -42,6 +42,10 @@ export default {
         emitSelectedCountryId() {
             this.$emit('event-emit-selected-country-id', Number(this.selectedCountryId))
         },
+      setFirstCountrySelected() {
+        this.selectedCountryId = '0'
+        this.emitSelectedCountryId()
+      }
     },
     beforeMount() {
         this.getCountries()
