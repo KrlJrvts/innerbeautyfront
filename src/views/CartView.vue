@@ -16,10 +16,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        Column
+                                        Subtotal
                                     </div>
                                     <div class="col">
-                                        Column
+                                        EUR ...
                                     </div>
                                 </div>
                             </div>

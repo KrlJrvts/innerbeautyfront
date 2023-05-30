@@ -1,18 +1,18 @@
 <template>
-    <div v-for="product in products" :key="product.productId" class="card mb-3 cart-product" style="max-width: 800px;">
-        <div  class="row g-0">
+    <div v-for="product in totalProducts" :key="totalProducts.products.productId" class="card mb-3 cart-product" style="max-width: 800px;">
+        <div class="row g-0">
             <div class="col-md-4">
                 <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
             </div>
             <div class="col-md-8">
                 <div class="card-body card-padding">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="card-title col-9">{{product.productName}}</h5>
+                        <h5 class="card-title col-9">{{totalProducts.products.productName}}</h5>
                         <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon"
                                                               @click="removeProductFromCart"></i></a>
                     </div>
-                    <div  class="card-body">
-                        <CardDataComponent  :product="product"/>
+                    <div class="card-body">
+                        <CardDataComponent :product="product"/>
                     </div>
                 </div>
             </div>
@@ -29,20 +29,25 @@ export default {
 
     data() {
         return {
-            products: [
+            totalProducts: [
                 {
-                    productId: 0,
-                    productName: '',
-                    countryName: '',
-                    productAge: 0,
-                    productDescription: '',
-                    productPrice: 0,
-                    genderName: '',
-                    bloodgroupType: '',
-                    imageData: '',
-                    sellerEmail: '',
-                    productAvailableAt: ''
-                }
+                totalPrice: 0,
+                products: [
+                    {
+                        productId: 0,
+                        productName: '',
+                        countryName: '',
+                        productAge: 0,
+                        productDescription: '',
+                        productPrice: 0,
+                        genderName: '',
+                        bloodgroupType: '',
+                        imageData: '',
+                        sellerEmail: '',
+                        productAvailableAt: ''
+                    }
+                ]
+            }
             ]
         }
 
