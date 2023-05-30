@@ -18,15 +18,17 @@
       </div>
     </div>
   </div>
+    <ProductCartEmptyComponent v-if="totalCartProducts.products.length === 0"/>
 </template>
 
 <script>
 import CardDataComponent from "@/components/products-in-cart/CardDataComponent.vue";
 import router from "@/router";
+import ProductCartEmptyComponent from "@/components/products-in-cart/ProductCartEmptyComponent.vue";
 
 export default {
   name: 'ProductCartComponent',
-  components: {CardDataComponent},
+  components: {ProductCartEmptyComponent, CardDataComponent},
 
   data() {
     return {
