@@ -10,7 +10,7 @@
                 <button @click="closeModal" id="runaway-btn" class="btn button-modal w-75 ms-5">Cancel</button>
             </div>
             <div class="col-6 d-flex align-items-end">
-                <button class="btn button-modal w-75" >Yes</button>
+                <button class="btn button-modal w-75" @click="logOut" >Yes</button>
             </div>
         </div>
     </div>
@@ -19,25 +19,30 @@
 
 <script>
 
-export default {
-    name: "ProductDescription",
-    props: {
-        productDescription: {
-            type: String,
-            required: true,
-        },
+import router from "@/router";
 
-    },
+export default {
+    name: "LogOutModal",
     data() {
         return {
-            isOpen: true,
+            isOpen: false,
         }
     },
 
     methods: {
         closeModal() {
             this.isOpen = false;
-        }
+            this.$emit('modal-closed')
+        },
+        openModal() {
+            this.isOpen = true;
+            this.$emit('modal-opened')
+        },
+        logOut() {
+            sessionStorage.clear();
+            this.closeModal()
+            router.push({name: 'homeRoute'})
+        },
     }
 }
 </script>

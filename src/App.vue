@@ -15,8 +15,11 @@
                     <router-link to="/add-item"><i class="fa-solid fa-plus fa-2xl"></i></router-link>
                 </div>
                 <div class="ps-4 pt-3">
-                    <router-link to="" @click="clearSessionStorage">
-                        <i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
+                    <router-link to="" @click="openLogOutModal">
+                        <i
+                            class="fa-solid fa-arrow-right-from-bracket fa-2xl logout"
+                            :class="{ 'logout-active': isModalOpen }"
+                        ></i>
                     </router-link>
                 </div>
                 <div class="ps-4 pt-3">
@@ -30,12 +33,52 @@
                 </div>
             </div>
         </div>
-
-
     </nav>
+    <LogOutModal ref="logOutModal" @modal-opened="handleModalOpened" @modal-closed="handleModalClosed"/>
     <router-view/>
 </template>
 
+
+<script>
+
+import LogOutModal from "@/components/Modals/LogOutModal.vue";
+import router from "@/router";
+
+export default {
+    components: {LogOutModal},
+    data() {
+        return {
+            isModalOpen: false
+        }
+    },
+    computed: {
+        isHomepage() {
+            return this.$route.path === '/';
+        },
+        isLoginPage() {
+            return this.$route.path === '/login';
+        },
+        isRegisterPage() {
+            return this.$route.path === '/register';
+        },
+        isErrorPage() {
+            return this.$route.path === '/error';
+        }
+    },
+    methods: {
+        openLogOutModal() {
+            this.isModalOpen = true
+            this.$refs.logOutModal.openModal();
+        },
+        handleModalOpened() {
+            this.isModalOpen = true;
+        },
+        handleModalClosed() {
+            this.isModalOpen = false;
+        },
+    }
+};
+</script>
 <style>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -57,7 +100,15 @@ nav a {
     color: white;
 
 }
-
+.logout {
+    color: white;
+}
+.logout:hover {
+    color: #660000;
+}
+.logout-active {
+    color: #FF0000;
+}
 nav a:hover {
     color: #660000;
 }
@@ -71,30 +122,3 @@ nav a.router-link-exact-active {
     margin: 0;
 }
 </style>
-<script>
-
-import LogOutModal from "@/components/Modals/LogOutModal.vue";
-
-export default {
-    components: {LogOutModal},
-    computed: {
-        isHomepage() {
-            return this.$route.path === '/';
-        },
-        isLoginPage() {
-            return this.$route.path === '/login';
-        },
-        isRegisterPage() {
-            return this.$route.path === '/register';
-        },
-        isErrorPage() {
-            return this.$route.path === '/error';
-        }
-    },
-    methods: {
-        clearSessionStorage() {
-            sessionStorage.clear();
-        }
-    }
-};
-</script>
