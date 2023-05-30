@@ -1,5 +1,5 @@
 <template>
-  <div v-for="product in products" :key="totalProducts.product.productId" class="card mb-3 cart-product" style="max-width: 800px;">
+  <div v-for="product in totalProducts.products" :key="product.productId" class="card mb-3 cart-product" style="max-width: 800px;">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
@@ -7,9 +7,8 @@
       <div class="col-md-8">
         <div class="card-body card-padding">
           <div class="d-flex justify-content-between align-items-center">
-            <h5 class="card-title col-9">Card title</h5>
-            <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon"
-                                                  @click="removeProductFromCart"></i></a>
+            <h5 class="card-title col-9">{{ product.productName }}</h5>
+            <a class="btn button-product-cart"><i class="fa-solid fa-xmark fa-lg clickable-icon" @click="removeProductFromCart"></i></a>
           </div>
           <div class="card-body">
             <CardDataComponent :product="product"/>
@@ -19,8 +18,8 @@
     </div>
   </div>
 </template>
-<script>
 
+<script>
 import CardDataComponent from "@/components/products-in-cart/CardDataComponent.vue";
 import router from "@/router";
 
@@ -30,32 +29,15 @@ export default {
 
   data() {
     return {
-      totalProducts: [{
-        totalPrices: 0,
-        products: [
-          {
-            productId: 0,
-            productName: '',
-            countryName: '',
-            productAge: 0,
-            productDescription: '',
-            productPrice: 0,
-            genderName: '',
-            bloodgroupType: '',
-            imageData: '',
-            sellerEmail: '',
-            productAvailableAt: ''
-          }
-        ]
-
-
-      }]
-
+      totalProducts: {
+        totalPrice: 0,
+        products: []
+      }
     }
-
   },
+
   methods: {
-    removeProductFromCart: function () {
+    removeProductFromCart() {
       this.$http.delete("/products/cart-delete")
           .then(response => {
             router.push({name: 'cartRoute'})
@@ -64,29 +46,29 @@ export default {
             router.push({name: 'errorRoute'})
           })
     },
-    getCartProducts: function () {
+
+    getCartProducts() {
       this.$http.get("/products/cart", {
-            params: {
-              buyerId: Number(sessionStorage.getItem('userId')),
-            }
-          }
-      ).then(response => {
-        this.totalProducts = response.data
-      }).catch(error => {
-        router.push({name: 'errorRoute'})
+        params: {
+          buyerId: Number(sessionStorage.getItem('userId')),
+        }
       })
+          .then(response => {
+            this.totalProducts = response.data
+          })
+          .catch(error => {
+            router.push({name: 'errorRoute'})
+          })
     },
   },
+
   beforeMount() {
     this.getCartProducts()
   }
 }
-
-
 </script>
+
 <style scoped>
-
-
 section {
   color: whitesmoke;
 }
@@ -107,5 +89,4 @@ section {
   padding: 12px !important;
   color: #660000;
 }
-
 </style>
