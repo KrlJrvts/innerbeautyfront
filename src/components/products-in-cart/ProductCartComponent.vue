@@ -32,7 +32,7 @@ export default {
     return {
       totalCartProducts: {
         totalPrice: 0,
-        cartProducts: []
+        products: []
       }
     }
   },
@@ -48,6 +48,7 @@ export default {
       })
           .then(response => {
             this.totalCartProducts = response.data
+            this.emitTotalPrice()
           })
           .catch(error => {
             router.push({name: 'errorRoute'})
@@ -63,20 +64,22 @@ export default {
             }
           }
       ).then(response => {
-        router.push({name: 'cartRoute'})
+        this.getCartProducts()
+        this.emitTotalPrice()
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })
-      this.getCartProducts()
+
     },
     emitTotalPrice() {
-      this.$emit('totalPrice', this.totalCartProducts.totalPrice)
+      this.$emit('total-price', this.totalCartProducts.totalPrice)
     }
 
   },
 
   beforeMount() {
     this.getCartProducts()
+
   }
 }
 </script>
