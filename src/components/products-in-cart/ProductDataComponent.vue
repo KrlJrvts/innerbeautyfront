@@ -1,30 +1,34 @@
 <template>
     <tbody>
-    <tr v-for="favoriteProduct in favoriteProducts" :value="favoriteProduct.productId" class="pb-3"
+    <tr v-for="product in favoriteProducts" :value="product.productId" :key="product.productId" class="pb-3"
         style="height: 200px;">
         <div class="container py-2 mb-4 product-data-component">
             <div class="row ps-0">
                 <div class="col-3 d-flex align-items-center">
-                    <AddItemImage :picture-data-base64="favoriteProduct.imageData" style="height: 200px; width: 200px;"/>
+                    <AddItemImage :picture-data-base64="product.imageData" style="height: 200px; width: 200px;"/>
                 </div>
                 <div class="col">
                     <div class="row d-flex justify-content-center">
-                        <h3>{{ favoriteProduct.productName }}</h3>
+                        <h3>{{ product.productName }}</h3>
                         <div class="row mt-4">
                             <div class="col d-flex justify-content-start ps-0">
-                                <p>Country: {{ favoriteProduct.countryName }} </p>
+                                <p>Country: {{ product.countryName }} </p>
                             </div>
                             <div class="col d-flex justify-content-center ">
-                                <p>Product age: {{ favoriteProduct.productAge }} Years</p>
+                                <p>Product age: {{ product.productAge }} Years</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-start ps-0">
-                                <p>Removal date: {{ favoriteProduct.productAvailableAt }}</p>
+                                <p>Removal date: {{ product.productAvailableAt }}</p>
                             </div>
-
-                            <div class="col d-flex justify-content-center">
-                                <p>Blood group: {{ favoriteProduct.bloodgroupType }}</p>
+                            <div class="col d-flex justify-content-center ps-0">
+                                <p>Blood group: {{ product.bloodgroupType }}</p>
+                            </div>
+                        </div>
+                        <div class="row h-25" style="height: 20px">
+                            <div class="col d-flex justify-content-start ps-0">
+                                <p>Gender: {{product.genderName}} </p>
                             </div>
                         </div>
                         <div class="row h-25" style="height: 20px">
@@ -33,19 +37,20 @@
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-start description-box" style="height: 100px">
-                            <p>{{ favoriteProduct.productDescription }}</p>
+                            <p>{{ product.productDescription }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-2 p-0 d-flex justify-content-start align-items-center">
-                    Price:<span class="price-span">{{favoriteProduct.productPrice }}€</span>
+                    Price:<span class="price-span">{{product.productPrice }}€</span>
                 </div>
                 <div class="col-1 button-column ">
                     <div>
-                        <a class="button-cart-remove"><i class="fa-solid fa-heart-circle-minus fa-2x mt-5 mb-5"></i></a>
+                        <a @click="removeProduct(product.productId)" class="button-cart-remove"><i class="fa-solid fa-heart-circle-minus fa-2x mt-5 mb-5"></i></a>
                     </div>
                     <div>
-                        <i class="fa-solid fa-cart-shopping fa-2x button-cart-buy"></i>
+                        <i v-if="product.status == 'A'" class="fa-solid fa-cart-shopping fa-2x button-cart-buy mt-5"></i>
+                        <i v-else-if="product.status == 'C'" class="fa-solid fa-check fa-3x button-checked mt-4"></i>
                     </div>
                 </div>
             </div>
@@ -73,9 +78,14 @@ export default {
                     genderName: '',
                     bloodgroupType: '',
                     imageData: '',
-                    productAvailableAt: ''
+                    productAvailableAt: '',
+                    status:''
                 }
-            ]
+            ],
+            removedFavoriteProduct: {
+                buyerId: Number(sessionStorage.getItem('userId')),
+                productId: 0,
+            },
 
         }
     },
@@ -88,6 +98,24 @@ export default {
                 }
             ).then(response => {
                 this.favoriteProducts = response.data
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
+        removeProduct(productId) {
+            this.removedFavoriteProduct.productId = productId;
+            this.removeProductFromFavorite();
+
+        },
+        removeProductFromFavorite() {
+            this.$http.patch("/products/favorite-add", null, {
+                    params: {
+                        buyerId: this.removedFavoriteProduct.buyerId,
+                        productId: this.removedFavoriteProduct.productId
+                    }
+                }
+            ).then(response => {
+                this.getCartProducts()
             }).catch(error => {
                 router.push({name: 'errorRoute'})
             })
@@ -123,7 +151,9 @@ export default {
 .button-cart-buy {
     color: #660000;
 }
-
+.button-checked {
+    color: #FF0000;
+}
 .button-cart-buy:hover {
     cursor: pointer;
     color: #FF0000;
@@ -138,7 +168,7 @@ export default {
 }
 
 .button-column {
-    margin-top: 20px;
+    margin-top: 30px!important;
 }
 
 .product-data-component {

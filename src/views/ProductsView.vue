@@ -30,16 +30,18 @@
                                     <p class="card-text mb-1">Previous owner age: {{ product.productAge }}</p>
                                     <p class="card-text mb-4">Gender: {{ product.genderName }}</p>
                                     <p class="card-text mb-1">Price:
-                                        <span class="product-price">{{product.productPrice }}.- € </span>
+                                        <span class="product-price">{{ product.productPrice }}.- € </span>
                                     </p>
                                     <hr class="product-card-separator">
                                     <a class="btn button-product-description"
                                        @click="openProductDescriptionModal(product.productDescription, product.productId,product.isInFavourites,product.status)">
                                         <i class="fa-solid fa-info fa-2xl m-3 "></i></a>
 
-                                    <a v-if="product.isInFavourites == false" class="btn button-product-favorite" @click="addToFavorites(product.productId)">
+                                    <a v-if="product.isInFavourites == false" class="btn button-product-favorite"
+                                       @click="addToFavorites(product.productId)">
                                         <i class="fa-regular fa-heart fa-2xl m-3"></i></a>
-                                    <a v-else-if="product.isInFavourites == true" class="btn button-product-favorite" @click="removeFromFavorites(product.productId)">
+                                    <a v-else-if="product.isInFavourites == true" class="btn button-product-favorite"
+                                       @click="removeFromFavorites(product.productId)">
                                         <i class="fa-solid fa-heart-circle-check fa-2xl m-3"></i></a>
 
                                     <a v-if="product.status == 'A'" class="btn button-product-cart"
@@ -136,14 +138,14 @@ export default {
 
         addToFavorites(productId) {
             this.favoriteProduct.productId = productId;
-            this.addProductToFavorite()
+            this.addOrRemoveProductToFavorite()
             this.message = 'Product successfully added to favorites'
             this.clearMessage()
         },
 
         removeFromFavorites(productId) {
             this.favoriteProduct.productId = productId;
-            this.addProductToFavorite()
+            this.addOrRemoveProductToFavorite()
             this.message = 'Product successfully removed from favorites'
             this.clearMessage()
         },
@@ -152,7 +154,7 @@ export default {
             setTimeout(() => {
                 this.message = '';
                 window.location.reload()
-            }, 3000);
+            }, 1500);
         },
         openProductDescriptionModal(productDescription, productId, isInFavorites, status) {
             this.selectedProductDescription = productDescription;
@@ -185,7 +187,7 @@ export default {
             })
         },
 
-        addProductToFavorite() {
+        addOrRemoveProductToFavorite() {
             this.$http.patch("/products/favorite-add", null, {
                     params: {
                         buyerId: this.favoriteProduct.buyerId,
