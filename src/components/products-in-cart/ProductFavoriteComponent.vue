@@ -1,5 +1,6 @@
 <template>
-    <tbody>
+    <ProductFavoriteEmptyComponent v-if="favoriteProducts.length === 0"/>
+    <tbody v-else>
     <tr v-for="product in favoriteProducts" :value="product.productId" :key="product.productId" class="pb-3"
         style="height: 200px;">
         <div class="container py-2 mb-4 product-data-component">
@@ -63,10 +64,11 @@
 <script>
 import AddItemImage from "@/components/Image/AddItemImage.vue"
 import router from "@/router";
+import ProductFavoriteEmptyComponent from "@/components/products-in-cart/ProductFavoriteEmptyComponent.vue";
 
 export default {
     name: 'ProductFavoriteComponent',
-    components: {AddItemImage},
+    components: {ProductFavoriteEmptyComponent, AddItemImage},
     data() {
         return {
             favoriteProducts: [
