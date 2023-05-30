@@ -1,5 +1,5 @@
 <template>
-    <div  class="container text-center card-padding">
+    <div  class="container text-start card-padding">
         <div class="row h-25">
             <div class="col">
                 Country: {{product.countryName}}
@@ -30,7 +30,7 @@
     </div>
 </template>
 <script>
-import router from "@/router";
+
 
 export default {
     name: 'CardDataComponent',
