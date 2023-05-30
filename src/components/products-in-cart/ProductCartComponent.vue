@@ -49,7 +49,6 @@ export default {
           })
     },
 
-
     getCartProducts() {
       this.$http.get("/products/cart", {
         params: {
