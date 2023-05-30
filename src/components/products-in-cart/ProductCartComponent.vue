@@ -38,16 +38,7 @@ export default {
   },
 
   methods: {
-    deleteProductFromCart() {
-      this.$http.delete("/products/cart-delete")
-          .then(response => {
-            buyerId: Number(sessionStorage.getItem('userId')),
-            router.push({name: 'cartRoute'})
-          })
-          .catch(error => {
-            router.push({name: 'errorRoute'})
-          })
-    },
+
 
     getCartProducts() {
       this.$http.get("/products/cart", {
@@ -78,6 +69,9 @@ export default {
       })
       this.getCartProducts()
     },
+    emitTotalPrice() {
+      this.$emit('totalPrice', this.totalCartProducts.totalPrice)
+    }
 
   },
 
