@@ -63,7 +63,7 @@ import AddItemImage from "@/components/Image/AddItemImage.vue"
 import router from "@/router";
 
 export default {
-    name: 'ProductDataComponent',
+    name: 'ProductFavoriteComponent',
     components: {AddItemImage},
     data() {
         return {
@@ -129,7 +129,9 @@ export default {
 
 </script>
 <style scoped>
-
+.product-data-component {
+    border-radius: 30px;
+}
 .price-span {
     font-size: 20px;
     color: #FF0000;
