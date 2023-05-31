@@ -1,7 +1,12 @@
 section {
     background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
-    min-height: 100vh;
+    min-height: 100vh !important;
     height: fit-content !important;
+}
+
+#product-id {
+    height: max-content !important;
+
 }
 
 body {
@@ -11,6 +16,7 @@ body {
 .card-padding {
     padding: 0 !important;
     margin: 0 !important;
+    min-height: 250px !important;
 }
 
 .container {
@@ -291,7 +297,6 @@ button:hover {
 
 .product-card-row {
     position: relative;
-    justify-content: space-around;
     left: 3.5%;
     top: 5%;
 }
@@ -441,11 +446,11 @@ small {
 
 .add-item-textarea {
     background: transparent !important;
-    color: #FF0000;
+    color: #FF0000 !important;
 }
 
 .add-item-textarea:focus {
-    color: #FF0000;
+    color: #FF0000 !important;
     background: transparent !important;
     border-color: #660000 !important;
     box-shadow: 0 0 500px 10px #660000 !important;
@@ -613,7 +618,7 @@ button:hover {
 }
 
 .product-description-modal-text {
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .button-product-description-close {

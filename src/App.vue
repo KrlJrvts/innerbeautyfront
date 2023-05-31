@@ -3,7 +3,7 @@
         <div class="row homepage-brand-row col-12">
             <div class="col d-flex justify-content-start  mt-1">
             </div>
-            <div class="col d-flex justify-content-center p-2 ">
+            <div class="col d-flex justify-content-center p-2 ps-5">
                 <router-link class="homepage-brand-name" to="/store">Inner
                     <i class="fa-regular fa-heart fa-beat-fade fa-md"></i>
                     Beauty

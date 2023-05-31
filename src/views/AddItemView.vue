@@ -53,7 +53,7 @@
                             <div class="form-floating mb-4 mt-2 ">
                                 <textarea v-model="newProduct.productDescription" class="form-control add-item-textarea"
                                           placeholder="Product Description..." id="floatingTextarea"
-                                          style="height: 135px"></textarea>
+                                          style="height: 135px" maxlength="200"></textarea>
                             </div>
                             <div class="form-floating ms-5 pe-0">
                                 <UserImageInput @event-emit-base64="emitBase64"/>
