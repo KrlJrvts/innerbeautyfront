@@ -355,7 +355,7 @@ button:hover {
 }
 
 .product-alert-container {
-    position: absolute !important;
+    position: fixed!important;
     top: 23% !important;
     left: 0;
     right: 0;
