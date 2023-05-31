@@ -1,6 +1,6 @@
 <template xmlns="http://www.w3.org/1999/html">
     <section id="product-view">
-        <div class="container register-alert-container">
+        <div class="container product-alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
@@ -8,10 +8,10 @@
         <div class="container products-container">
             <div class="row d-flex justify-content-center products-select-row ">
                 <CountryDropdown ref="countryDropdownRef" @event-emit-selected-country-id="setProductCountryId"
-                                 class="form-select w-25 m-5 country-select-products"/>
+                                 class="form-select w-25 m-5 select-products"/>
                 <BloodGroupDropdown ref="bloodGroupDropdown"
                                     @event-emit-selected-blood-group-id="setProductBloodGroupId"
-                                    class="form-select w-25 m-5 bloodgroup-select-products"/>
+                                    class="form-select w-25 m-5 select-products"/>
               <button @click="resetFilters" class="btn btn-outline-light button-search-products m-5 w-25">Reset Filters</button>
                 <div class="row mt-5 px-0">
                     <div class="col-12">
@@ -34,21 +34,21 @@
                                         <span class="product-price">{{ product.productPrice }} € </span>
                                     </p>
                                     <hr class="product-card-separator">
-                                    <a class="btn button-product-description"
+                                    <a class="btn button-product"
                                        @click="openProductDescriptionModal(product.productDescription, product.productId,product.isInFavourites,product.status)">
                                         <i class="fa-solid fa-info fa-2xl m-3 "></i></a>
 
-                                    <a v-if="product.isInFavourites == false" class="btn button-product-favorite"
+                                    <a v-if="product.isInFavourites == false" class="btn button-product"
                                        @click="addToFavorites(product.productId)">
                                         <i class="fa-regular fa-heart fa-2xl m-3"></i></a>
-                                    <a v-else-if="product.isInFavourites == true" class="btn button-product-favorite"
+                                    <a v-else-if="product.isInFavourites == true" class="btn button-product"
                                        @click="removeFromFavorites(product.productId)">
                                         <i class="fa-solid fa-heart-circle-check fa-2xl m-3"></i></a>
 
-                                    <a v-if="product.status == 'A'" class="btn button-product-cart"
+                                    <a v-if="product.status == 'A'" class="btn button-product"
                                        @click="addToCart(product.productId)">
                                         <i class="fa-solid fa-basket-shopping fa-2xl ms-2"></i></a>
-                                    <a v-else-if="product.status == 'C'" class="btn button-product-cart">
+                                    <a v-else-if="product.status == 'C'" class="btn button-product">
                                         <i class="fa-solid fa-check fa-2xl ms-2"></i></a>
                                 </div>
                             </div>
@@ -66,9 +66,7 @@
             </div>
         </div>
     </section>
-    <section id="product-view-second">
 
-    </section>
 </template>
 
 <script>
@@ -155,7 +153,7 @@ export default {
             setTimeout(() => {
                 this.message = '';
                 window.location.reload()
-            }, 1500);
+            }, 2500);
         },
         openProductDescriptionModal(productDescription, productId, isInFavorites, status) {
             this.selectedProductDescription = productDescription;
@@ -232,110 +230,6 @@ export default {
 
 <style scoped>
 
-#product-view {
-    height: 100vh;
 
-}
-
-#product-view-second {
-    background-image: url("../assets/grunge-black-concrete-textured-background.jpg");
-
-}
-
-
-.products-select-row {
-    position: relative;
-    right: 1%;
-}
-
-.product-card-row {
-    position: relative;
-    left: 3.5%;
-}
-
-.country-select-products {
-    background-color: transparent !important;
-    color: white;
-}
-
-.bloodgroup-select-products {
-    background-color: transparent !important;
-    color: white;
-}
-
-.product-card {
-    background-color: transparent;
-    color: white;
-    border-color: #660000;
-    border-radius: 20px !important;
-    padding: 0px;
-}
-
-.product-card:hover {
-    border-color: #FF0000;
-    scale: 1.05;
-    transition-duration: 600ms;
-}
-
-.product-card:hover .product-card-image {
-    opacity: 1 !important;
-    transition-duration: 600ms;
-
-}
-
-.product-card-image {
-    border-radius: 20px 20px 0px 0 !important;
-    opacity: 0.5 !important;
-}
-
-.product-card-body {
-    background: rgba(0, 0, 0, .5);
-    border-radius: 20px !important;
-}
-
-.product-card-separator {
-    border-style: dotted;
-    border-width: 0 0 2px;
-    color: rgba(255, 0, 0, 0.6);
-}
-
-.button-product-description {
-    padding: 12px !important;
-    color: #660000;
-}
-
-.button-product-description:hover {
-    color: #FF0000;
-    scale: 1.1;
-    transition: all 400ms ease-in-out !important;
-}
-
-.button-product-favorite {
-    padding: 12px !important;
-    color: #660000;
-}
-
-.button-product-favorite:hover {
-    color: #FF0000;
-    scale: 1.1;
-    transition: all 400ms ease-in-out !important;
-
-}
-
-.button-product-cart {
-    padding: 12px !important;
-    color: #660000;
-}
-
-.button-product-cart:hover {
-    color: #FF0000;
-    scale: 1.1;
-    transition: all 400ms ease-in-out !important;
-}
-
-.product-price {
-    font-size: 25px;
-    color: red;
-}
 
 </style>

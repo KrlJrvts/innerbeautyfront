@@ -43,6 +43,26 @@ input:focus {
     box-shadow: 0 0 500px 10px #660000 !important;
 }
 
+select {
+    color: whitesmoke !important;
+}
+
+
+select:focus {
+    background: rgba(0, 0, 0, .8) !important;
+    color: whitesmoke !important;
+}
+
+select:focus option {
+    background: rgba(0, 0, 0, .8) !important;
+    color: whitesmoke !important;
+}
+
+select:hover:focus {
+    background: rgba(0, 0, 0, .8) !important;
+    color: whitesmoke !important;
+}
+
 /* Home view */
 
 
@@ -226,6 +246,87 @@ input[type="file"]::-webkit-file-upload-button {
 .store-card-image {
     height: 250px !important;
     width: 284px !important;
+}
+
+/* Product view */
+
+
+.products-select-row {
+    position: relative;
+    right: 1%;
+}
+
+.product-card-row {
+    position: relative;
+    justify-content: space-around;
+    left: 3.5%;
+    top: 5%;
+}
+
+.select-products {
+    background-color: transparent !important;
+    color: white;
+}
+
+.product-card {
+    background-color: transparent !important;
+    color: white;
+    border-color: #660000 !important;
+    border-radius: 20px !important;
+    padding: 0px !important;
+}
+
+.product-card:hover {
+    border-color: #FF0000 !important;
+    scale: 1.05;
+    transition-duration: 600ms;
+}
+
+.product-card:hover .product-card-image {
+    opacity: 1 !important;
+    transition-duration: 600ms;
+
+}
+
+.product-card-image {
+    border-radius: 20px 20px 0 0 !important;
+    opacity: 0.5 !important;
+}
+
+.product-card-body {
+    background: rgba(0, 0, 0, .5);
+    border-radius: 0 0 20px 20px !important;
+}
+
+.product-card-separator {
+    border-style: dotted;
+    border-width: 0 0 2px;
+    color: rgba(255, 0, 0, 0.6);
+}
+
+.button-product {
+    padding: 12px !important;
+    color: #660000 !important;
+}
+
+.button-product:hover {
+    color: #FF0000  !important;
+    scale: 1.1 !important;
+    transition: all 400ms ease-in-out !important;
+}
+
+.product-price {
+    font-size: 25px;
+    color: red;
+}
+
+.product-alert-container {
+    position: absolute;
+    top: 23%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    z-index: 2;
 }
 
 
