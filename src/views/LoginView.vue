@@ -69,7 +69,7 @@ export default {
         },
         login() {
             this.message = '';
-            if (this.email == '' || this.password == '') {
+            if (this.email === '' || this.password === '') {
                 this.message = 'Please fill in all the required fields';
             } else {
                 this.sendLoginRequest();
