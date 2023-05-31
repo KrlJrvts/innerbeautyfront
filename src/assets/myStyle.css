@@ -443,10 +443,22 @@ button:hover {
 
 /* Account view */
 
+.account-container {
+    position: relative;
+    transform: translateY(30%) !important;
+    color: white;
+    width: 600px !important;
+    height: 460px !important;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #1d1d1d;
+    background: rgba(0, 0, 0, .5);
+}
 
 
-
-
+.account-button {
+    font-size: 15px !important;
+}
 
 
 
