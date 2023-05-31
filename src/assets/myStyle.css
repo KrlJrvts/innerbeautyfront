@@ -505,7 +505,9 @@ button:hover {
     color: white !important;
     background-color: black !important;
     border-color: crimson !important;
-
+}
+.alert-row {
+    margin: 0!important;
 }
 
 /* Product card component */
@@ -677,4 +679,3 @@ button:hover {
         transform: rotate(0deg);
     }
 }
-
