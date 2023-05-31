@@ -18,18 +18,7 @@ export default {
 </script>
 
 <style scoped>
-.alert {
-    font-size: x-large;
-    font-weight: bold;
-    color: white;
-    background-color: black;
-    border-color: crimson;
 
-}
-
-.alert-row {
-    margin: 0;
-}
 
 
 </style>

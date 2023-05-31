@@ -460,5 +460,15 @@ button:hover {
     font-size: 15px !important;
 }
 
-/* Navbar */
+/* Alert */
+
+.alert {
+    font-size: x-large;
+    font-weight: bold;
+    color: white !important;
+    background-color: black !important;
+    border-color: crimson !important;
+
+}
+
 
