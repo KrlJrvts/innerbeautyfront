@@ -329,6 +329,13 @@ input[type="file"]::-webkit-file-upload-button {
     z-index: 2;
 }
 
+/* favorites view */
+
+.favorite-table {
+    color: white !important;
+    width: 900px !important;
+}
+
 
 
 
