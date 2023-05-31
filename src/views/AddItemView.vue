@@ -130,31 +130,33 @@ export default {
 
         },
         dropdownValidation() {
-            if (this.newProduct.productCategoryId == 0) {
+            if (this.newProduct.productCategoryId === 0) {
                 this.message = 'Please choose Category'
-            } else if (this.newProduct.productCountryId == 0) {
+            } else if (this.newProduct.productCountryId === 0) {
                 this.message = 'Please choose Country'
-            } else if (this.newProduct.productBloodgroupId == 0) {
+            } else if (this.newProduct.productBloodgroupId === 0) {
                 this.message = 'Please choose Blood Group'
-            } else if (this.newProduct.productGenderId == 0) {
+            } else if (this.newProduct.productGenderId === 0) {
                 this.message = 'Please choose Gender'
             } else {
                 this.message = ''
             }
         },
         fieldValidation() {
-            if (this.newProduct.productAvailableAt == '') {
+            if (this.newProduct.productAvailableAt === '') {
                 this.message = 'Please enter Removal Date'
-            } else if (this.newProduct.productAge == '') {
+            } else if (this.newProduct.productAge === '') {
                 this.message = 'Please enter Organ Owner Age'
             } else if (this.newProduct.productAge < 0) {
                 this.message = 'Organ Owner Age cannot be a negative number'
-            } else if (this.newProduct.productPrice == '') {
+            } else if (this.newProduct.productPrice === '') {
                 this.message = 'Please enter Price'
             } else if (this.newProduct.productPrice < 0) {
                 this.message = 'Ehh... Are you up for charity? '
-            } else if (this.newProduct.productDescription == '') {
+            } else if (this.newProduct.productDescription === '') {
                 this.message = 'Please enter Product Description'
+            } else if (this.newProduct.productAvailableAt.length !== 10) {
+                this.message = 'Date format wrong. Please use the format dd.mm.yyyy'
             } else {
                 this.message = ''
             }

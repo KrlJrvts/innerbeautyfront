@@ -1,5 +1,6 @@
 <template>
-    <tbody>
+    <ProductFavoriteEmptyComponent v-if="favoriteProducts.length === 0"/>
+    <tbody v-else>
     <tr v-for="product in favoriteProducts" :value="product.productId" :key="product.productId" class="pb-3"
         style="height: 200px;">
         <div class="container py-2 mb-4 product-data-component">
@@ -50,7 +51,7 @@
                                 class="fa-solid fa-heart-circle-minus fa-2x mt-5 mb-5"></i></a>
                     </div>
                     <div>
-                        <i v-if="product.status == 'A'"
+                        <i @click="addFavoriteProductToCart(product.productId)" v-if="product.status == 'A'"
                            class="fa-solid fa-cart-shopping fa-2x button-cart-buy mt-5"></i>
                         <i v-else-if="product.status == 'C'" class="fa-solid fa-check fa-3x button-checked mt-4"></i>
                     </div>
@@ -63,10 +64,11 @@
 <script>
 import AddItemImage from "@/components/Image/AddItemImage.vue"
 import router from "@/router";
+import ProductFavoriteEmptyComponent from "@/components/products-in-cart/ProductFavoriteEmptyComponent.vue";
 
 export default {
     name: 'ProductFavoriteComponent',
-    components: {AddItemImage},
+    components: {ProductFavoriteEmptyComponent, AddItemImage},
     data() {
         return {
             favoriteProducts: [
@@ -89,10 +91,24 @@ export default {
                 productId: 0,
             },
 
+
         }
     },
     methods: {
-        getCartProducts: function () {
+        addFavoriteProductToCart(productId) {
+            this.$http.patch("/products/cart-add", null, {
+                    params: {
+                        buyerId: Number(sessionStorage.getItem('userId')),
+                        productId: Number(productId)
+                    }
+                }
+            ).then(response => {
+                this.getCartProducts();
+            }).catch(error => {
+                router.push({name: 'errorRoute'})
+            })
+        },
+        getCartProducts() {
             this.$http.get("/products/favorite", {
                     params: {
                         buyerId: Number(sessionStorage.getItem('userId')),
