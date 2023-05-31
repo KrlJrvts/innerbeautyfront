@@ -78,6 +78,19 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 
+.card-padding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+.container {
+    position: relative;
+    top: 15%;
+    height: 10%;
+    width: 100%;
+}
+
 /* Home view */
 
 
@@ -355,12 +368,7 @@ button:hover {
     height: fit-content;
 }
 
-.container {
-    position: relative;
-    top: 15%;
-    height: 10%;
-    width: 100%;
-}
+
 
 .cart-product {
     background: transparent !important;
@@ -480,10 +488,7 @@ button:hover {
     border-color: #660000;
 }
 
-.card-padding {
-    padding: 0 !important;
-    margin: 0 !important;
-}
+
 
 .button-product-cart {
     padding: 12px !important;
@@ -509,7 +514,6 @@ button:hover {
     max-height: 250px;
     max-width: 350px;
 }
-
 
 
 
