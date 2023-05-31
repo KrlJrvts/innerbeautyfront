@@ -2,17 +2,32 @@ section {
     background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
     min-height: 100vh;
     height: fit-content !important;
-    /*background-size: cover;*/
 }
 
 body {
     margin: 0;
 }
 
+.card-padding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.container {
+    position: relative;
+    top: 15%;
+    height: 10%;
+    width: 100%;
+}
+
+/* Header */
+
 h1, h2, h3, h4, h5 {
     color: white;
     font-family: 'Playfair Display', serif;
 }
+
+/* Forms */
 
 .form-select {
     background-color: transparent !important;
@@ -29,6 +44,9 @@ select.form-select,
 select.form-select option {
     color: black;
 }
+
+/* Input */
+
 input {
     background-color: transparent !important;
     color: whitesmoke !important;
@@ -39,6 +57,17 @@ input:focus {
     border-color: #660000 !important;
     box-shadow: 0 0 500px 10px #660000 !important;
 }
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* Select */
 
 select {
     color: whitesmoke !important;
@@ -59,14 +88,7 @@ select:hover:focus {
     color: whitesmoke !important;
 }
 
-input[type="file"]::-webkit-file-upload-button {
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color: black;
-    color: white;
-    border-radius: 4px;
-    font-family: inherit;
-}
+/* Alert */
 
 .alert-container {
     position: absolute !important;
@@ -77,22 +99,28 @@ input[type="file"]::-webkit-file-upload-button {
     z-index: 1 !important;
 }
 
+/* Modal */
 
-.card-padding {
-    padding: 0 !important;
-    margin: 0 !important;
+.modal-style {
+    color: white;
+    position: fixed;
+    z-index: 1;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 400px !important;
+    height: 400px !important;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #FF0000;
+    background: rgba(0, 0, 0, .9);
 }
 
-
-.container {
-    position: relative;
-    top: 15%;
-    height: 10%;
-    width: 100%;
+.modal-order-logout  {
+    z-index: 2;
 }
 
 /* Home view */
-
 
 .homepage-brand-name {
     text-decoration: none !important;
@@ -124,14 +152,14 @@ input[type="file"]::-webkit-file-upload-button {
     transform: translateY(75%) !important;
 }
 
-.homepage-btn-login {
+.homepage-button-login {
     color: #660000 !important;
     transition: all 500ms ease !important;
     transform: scale(1) !important;
 }
 
-.homepage-btn-login:hover {
-    transform: scale(1.3) perspective(1px) !important;
+.homepage-button-login:hover {
+    transform: scale(1.2) perspective(1px) !important;
     cursor: pointer;
 }
 
@@ -553,20 +581,7 @@ button:hover {
 
 /* Logout modal */
 
-.log-out-modal {
-    color: white;
-    position: fixed;
-    z-index: 1;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 400px !important;
-    height: 400px !important;
-    border-radius: 50px;
-    border-style: solid;
-    border-color: #FF0000;
-    background: rgba(0, 0, 0, .9);
-}
+
 
 .button-modal {
     background-color: transparent;
@@ -582,4 +597,83 @@ button:hover {
     border-color: #FF0000!important;
 }
 
+
+/* Product modal */
+
+.product-description-modal-hr {
+    border-style: dotted;
+    border-width: 0 0 5px;
+    color: rgba(255, 0, 0, 1);
+}
+
+.description-container {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.product-description-modal-text {
+    font-size: 23px;
+}
+
+.button-product-description-close {
+    padding: 12px !important;
+    color: #660000 !important;
+}
+
+.button-product-description-close:hover {
+    color: #FF0000 !important;
+    scale: 1.1;
+    rotate: 360deg;
+    transition: all 400ms ease-in-out !important;
+}
+
+.button-product-favorite {
+    padding: 12px !important;
+    color: #660000 !important;
+}
+
+.button-product-favorite:hover {
+    color: #FF0000 !important;
+    animation: heartbeat 1s infinite !important;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.button-product-cart {
+    padding: 12px !important;
+    color: #660000 !important;
+}
+
+.button-product-cart:hover {
+    color: #FF0000 !important;
+    scale: 1.1;
+    transition: all 400ms ease-in-out !important;
+    animation: swing 1s infinite;
+}
+
+@keyframes swing {
+    20% {
+        transform: rotate(15deg);
+    }
+    40% {
+        transform: rotate(-10deg);
+    }
+    60% {
+        transform: rotate(5deg);
+    }
+    80% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
 

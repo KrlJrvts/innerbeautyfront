@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isOpen" class="container log-out-modal text-center">
+    <div v-if="isOpen" class="container modal-style modal-order-logout text-center">
         <div class="row mt-5">
             <div class="col">
                 <h3>Are you really going to leave?</h3>

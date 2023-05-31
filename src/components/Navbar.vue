@@ -8,7 +8,7 @@
                 Beauty</a>
         </div>
         <div class="col d-flex justify-content-end p-3">
-            <a class="homepage-btn-login" @click="pushToLogin">
+            <a class="homepage-button-login" @click="pushToLogin">
                 <i class="fa-solid fa-arrow-right-to-bracket fa-3x"></i>
             </a>
         </div>
