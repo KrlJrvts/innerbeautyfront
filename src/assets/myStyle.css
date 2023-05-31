@@ -1,7 +1,7 @@
 section {
     background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
-
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content;
 
 }
 
@@ -32,6 +32,110 @@ select.form-select option {
 }
 
 /* Home view */
+
+
+.homepage-brand-name {
+    text-decoration: none !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 225%;
+    color: white;
+    transform: scale(1) !important;
+    transition: all 700ms ease !important;
+}
+
+.homepage-brand-name:hover {
+    cursor: pointer;
+    color: #660000;
+    transform: scale(1.1) !important;
+}
+
+.homepage-brand-name .fa-heart {
+    color: #660000;
+    transform: scale(1) !important;
+
+}
+
+.homepage-brand-name:hover .fa-heart {
+    color: white;
+    transition: all 2s ease !important;
+
+}
+
+.homepage-data {
+    position: relative;
+    transform: translateY(75%) !important;
+}
+
+.homepage-btn-login {
+    color: #660000 !important;
+    transition: all 500ms ease !important;
+    transform: scale(1) !important;
+}
+
+.homepage-btn-login:hover {
+    transform: scale(1.3) perspective(1px) !important;
+    cursor: pointer;
+}
+
+.button-homepage {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 120% !important;
+}
+
+.button-homepage:hover {
+    background-color: #660000 !important;
+    color: white !important;
+    transition: all 700ms ease !important;
+    transform: scale(1.1) !important;
+    border-color: #660000 !important;
+    box-shadow: 0 0 300px 10px #660000;
+}
+
+/* Login view */
+
+
+
+.login-alert-container {
+    position: relative;
+    transform: translateY(75%) !important;
+    padding: 0;
+    z-index: 1;
+}
+.content-container-login {
+    color: white;
+    position: relative;
+    transform: translateY(50%) !important;
+    padding: 0;
+    width: 400px !important;
+    height: 400px !important;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #1d1d1d;
+    background: rgba(0, 0, 0, .5) !important;
+}
+
+input {
+    background-color: transparent !important;
+    color: whitesmoke !important;
+}
+
+input:focus {
+    color: white !important;
+    border-color: #660000 !important;
+    box-shadow: 0 0 500px 10px #660000 !important;
+}
+
+.button-login:hover {
+    background-color: #660000 !important;
+    color: white !important;
+    transition: all 700ms ease !important;
+    transform: scale(1.1) !important;
+    border-color: #660000 !important;
+    box-shadow: 0 0 300px 20px #660000;
+}
+
+
+
 
 
 
