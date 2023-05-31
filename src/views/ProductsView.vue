@@ -5,7 +5,7 @@
         <AlertDanger :message="message"/>
       </div>
     </div>
-    <div class="container products-container">
+    <div class="container products-container pb-5">
       <div class="row d-flex justify-content-center products-select-row ">
         <CountryDropdown ref="countryDropdownRef" @event-emit-selected-country-id="setProductCountryId"
                          class="form-select w-25 m-5 select-products"/>
@@ -14,7 +14,7 @@
                             class="form-select w-25 m-5 select-products"/>
         <button @click="resetFilters" class="btn btn-outline-light button-search-products m-5 w-25">Reset Filters
         </button>
-        <div class="row mt-5 px-0">
+        <div class="row px-0 mb-5 pb-5">
           <div class="col-12">
             <div class="row product-card-row ">
               <div v-for="product in products" :value="product.productId"
@@ -39,17 +39,17 @@
                      @click="openProductDescriptionModal(product.productDescription, product.productId,product.isInFavourites,product.status)">
                     <i class="fa-solid fa-info fa-2xl m-3 "></i></a>
 
-                  <a v-if="product.isInFavourites == false" class="btn button-product"
+                  <a v-if="product.isInFavourites === false" class="btn button-product"
                      @click="addToFavorites(product.productId)">
                     <i class="fa-regular fa-heart fa-2xl m-3"></i></a>
-                  <a v-else-if="product.isInFavourites == true" class="btn button-product"
+                  <a v-else-if="product.isInFavourites === true" class="btn button-product"
                      @click="removeFromFavorites(product.productId)">
                     <i class="fa-solid fa-heart-circle-check fa-2xl m-3"></i></a>
 
-                  <a v-if="product.status == 'A'" class="btn button-product"
+                  <a v-if="product.status === 'A'" class="btn button-product"
                      @click="addToCart(product.productId)">
                     <i class="fa-solid fa-basket-shopping fa-2xl ms-2"></i></a>
-                  <a v-else-if="product.status == 'C'" class="btn button-product">
+                  <a v-else-if="product.status === 'C'" class="btn button-product">
                     <i class="fa-solid fa-check fa-2xl ms-2"></i></a>
                 </div>
               </div>
@@ -227,8 +227,3 @@ export default {
 }
 
 </script>
-
-<style scoped>
-
-
-</style>

@@ -2,12 +2,14 @@ section {
     background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
     min-height: 100vh !important;
     height: fit-content !important;
+
 }
 
 #product-id {
-    height: max-content !important;
-
+    min-height: 100vh !important;
+    height: fit-content !important;
 }
+
 
 body {
     margin: 0;
@@ -19,12 +21,12 @@ body {
     min-height: 250px !important;
 }
 
-.container {
-    position: relative;
-    top: 15%;
-    height: 10%;
-    width: 100%;
-}
+/*.container {*/
+/*    position: relative;*/
+/*    !*top: 15%;*!*/
+/*    height: 10%;*/
+/*    width: 100%;*/
+/*}*/
 
 /* Header */
 
@@ -233,11 +235,6 @@ button:hover {
     box-shadow: 0 0 300px 10px #660000;
 }
 
-/*alert-div {*/
-/*    position: relative;*/
-/*    margin-top: 200px;*/
-/*}*/
-
 .registration-slogan {
     color: #660000;
 }
@@ -252,8 +249,6 @@ button:hover {
     position: relative;
     right: 8%;
 }
-
-
 
 /* Store view */
 
@@ -298,7 +293,8 @@ button:hover {
 .product-card-row {
     position: relative;
     left: 3.5%;
-    top: 5%;
+    top: 80px
+
 }
 
 .select-products {
