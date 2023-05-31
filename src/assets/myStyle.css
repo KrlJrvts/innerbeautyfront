@@ -3,11 +3,10 @@ section {
     min-height: 100vh;
     height: fit-content !important;
     /*background-size: cover;*/
-
 }
 
 body {
-    margin: 0px;
+    margin: 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -18,20 +17,18 @@ h1, h2, h3, h4, h5 {
 .form-select {
     background-color: transparent !important;
     color: white !important;
-
 }
 
 .form-select:focus {
     color: white !important;
     border-color: #660000 !important;
-    box-shadow: 0px 0px 500px 10px #660000 !important;
+    box-shadow: 0 0 500px 10px #660000 !important;
 }
 
 select.form-select,
 select.form-select option {
     color: black;
 }
-
 input {
     background-color: transparent !important;
     color: whitesmoke !important;
@@ -47,7 +44,6 @@ select {
     color: whitesmoke !important;
 }
 
-
 select:focus {
     background: rgba(0, 0, 0, .8) !important;
     color: whitesmoke !important;
@@ -62,6 +58,25 @@ select:hover:focus {
     background: rgba(0, 0, 0, .8) !important;
     color: whitesmoke !important;
 }
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.alert-container {
+    position: absolute !important;
+    top: 14% !important;
+    left: 0;
+    right: 0;
+    padding: 0;
+    z-index: 1 !important;
+}
+
 
 /* Home view */
 
@@ -123,15 +138,6 @@ select:hover:focus {
 
 /* Login view */
 
-.login-alert-container {
-    position: absolute !important;
-    top: 14% !important;
-    left: 0;
-    right: 0;
-    padding: 0;
-    z-index: 1 !important;
-}
-
 .content-container-login {
     color: white;
     position: relative;
@@ -156,14 +162,7 @@ select:hover:focus {
 
 /* Register view */
 
-.register-alert-container {
-    position: absolute;
-    top: 14%;
-    left: 0;
-    right: 0;
-    padding: 0;
-    z-index: 1;
-}
+
 
 .content-container-register {
     color: white;
@@ -207,14 +206,7 @@ button:hover {
     right: 8%;
 }
 
-input[type="file"]::-webkit-file-upload-button {
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color: black;
-    color: white;
-    border-radius: 4px;
-    font-family: inherit;
-}
+
 
 /* Store view */
 
@@ -273,7 +265,7 @@ input[type="file"]::-webkit-file-upload-button {
     color: white;
     border-color: #660000 !important;
     border-radius: 20px !important;
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 .product-card:hover {
@@ -321,15 +313,15 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .product-alert-container {
-    position: absolute;
-    top: 23%;
+    position: absolute !important;
+    top: 23% !important;
     left: 0;
     right: 0;
     padding: 0;
-    z-index: 2;
+    z-index: 2 !important;
 }
 
-/* favorites view */
+/* Favorites view */
 
 .favorite-table {
     color: white !important;
@@ -363,8 +355,6 @@ input[type="file"]::-webkit-file-upload-button {
     height: fit-content;
 }
 
-
-
 .container {
     position: relative;
     top: 15%;
@@ -394,6 +384,65 @@ input[type="file"]::-webkit-file-upload-button {
     background: rgba(0, 0, 0, .5);
     border-radius: 20px;
 }
+
+/* add product view */
+
+small {
+    color: #FF0000;
+}
+
+.add-item-container {
+    color: white;
+    position: relative;
+    transform: translateY(25%) !important;
+    background: rgba(0, 0, 0, .5);
+    width: 900px !important;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #1d1d1d;
+    padding: 0 !important;
+}
+
+.add-item-textarea {
+    background: transparent !important;
+    color: #FF0000;
+}
+
+.add-item-textarea:focus {
+    color: #FF0000;
+    background: transparent !important;
+    border-color: #660000 !important;
+    box-shadow: 0 0 500px 10px #660000 !important;
+}
+
+.add-item-textarea::placeholder {
+    color: #FF0000 !important;
+    background-color: transparent;
+}
+
+button:hover {
+    background-color: #660000 !important;
+    color: white !important;
+    transition: all 700ms ease !important;
+    transform: scale(1.1) !important;
+    border-color: #660000 !important;
+    box-shadow: 0 0 300px 10px #660000;
+}
+
+.account-button {
+    font-size: 15px !important;
+}
+
+.account-image {
+    border-color: #660000 !important;
+    border-style: solid;
+    border-width: 2px;
+    padding: 0;
+}
+
+
+/* Account view */
+
 
 
 

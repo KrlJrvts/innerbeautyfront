@@ -2,7 +2,7 @@
     <section id="register">
         <Navbar :push-to-home="pushToHome" :push-to-login="pushToLogin"/>
 
-        <div class="register-alert-container">
+        <div class="alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>

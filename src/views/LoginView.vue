@@ -1,7 +1,7 @@
 <template>
     <section>
         <Navbar :push-to-home="pushToHome"/>
-        <div class="container login-alert-container">
+        <div class="container alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
