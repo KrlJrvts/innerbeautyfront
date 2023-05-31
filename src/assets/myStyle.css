@@ -1,7 +1,8 @@
 section {
     background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
     min-height: 100vh;
-    height: fit-content;
+    height: fit-content !important;
+    /*background-size: cover;*/
 
 }
 
@@ -63,13 +64,11 @@ input:focus {
 .homepage-brand-name .fa-heart {
     color: #660000;
     transform: scale(1) !important;
-
 }
 
 .homepage-brand-name:hover .fa-heart {
     color: white;
     transition: all 2s ease !important;
-
 }
 
 .homepage-data {
@@ -104,7 +103,6 @@ input:focus {
 
 /* Login view */
 
-
 .login-alert-container {
     position: absolute !important;
     top: 14% !important;
@@ -113,6 +111,7 @@ input:focus {
     padding: 0;
     z-index: 1 !important;
 }
+
 .content-container-login {
     color: white;
     position: relative;
@@ -136,7 +135,6 @@ input:focus {
 }
 
 /* Register view */
-
 
 .register-alert-container {
     position: absolute;
@@ -196,6 +194,38 @@ input[type="file"]::-webkit-file-upload-button {
     color: white;
     border-radius: 4px;
     font-family: inherit;
+}
+
+/* Store view */
+
+.store-container {
+    position: relative;
+    transform: translateY(50%) !important;
+}
+
+.store-card {
+    border-style: solid !important;
+    border-width: 2px !important;
+    border-color: #660000 !important;
+    transform: scale(1) !important;
+    width: 288px !important;
+}
+
+.store-card:hover {
+    cursor: pointer;
+    transform: scale(1.1) !important;
+    transition: all 800ms ease !important;
+    border-color: crimson !important;
+}
+
+.store-card-body {
+    background: rgba(40, 0, 0, .3) !important;
+
+}
+
+.store-card-image {
+    height: 250px !important;
+    width: 284px !important;
 }
 
 
