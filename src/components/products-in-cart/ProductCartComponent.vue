@@ -88,38 +88,5 @@ export default {
 </script>
 
 <style scoped>
-section {
-  color: whitesmoke;
-}
 
-.cart-product {
-  background: transparent;
-  color: white;
-  border-style: solid;
-  border-color: #660000;
-}
-
-.card-padding {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.button-product-cart {
-  padding: 12px !important;
-  color: #660000;
-}
-
-.product-data-component {
-
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(255, 0, 0, .4);
-  background: rgba(0, 0, 0, .5);
-  align-items: center;
-}
-
-.product-cart-image{
-  max-height: 250px;
-  max-width: 350px;
-}
 </style>
