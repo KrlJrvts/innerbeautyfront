@@ -18,7 +18,7 @@
           <div class="col-12">
             <div class="row product-card-row ">
               <div v-for="product in products" :value="product.productId"
-                   class="card col-2 me-5 mt-3 product-card" style="width: 17rem;">
+                   class="card col-2 me-5 mt-3 mb-4 product-card" style="width: 17rem;">
                 <img v-if="product.imageData == ''" src="../assets/accountpictures/thebox.jpeg"
                      class="card-img-top product-card-image" draggable="false"
                      style="height: 200px; border-radius: 20px 20px 0px 0 ">
