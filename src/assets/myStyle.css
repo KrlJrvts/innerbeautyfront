@@ -679,3 +679,11 @@ button:hover {
         transform: rotate(0deg);
     }
 }
+
+
+/* Add item image */
+
+.registration-image {
+    padding: 0 !important;
+    border-color: #660000 !important;
+}
