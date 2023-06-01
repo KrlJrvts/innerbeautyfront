@@ -76,23 +76,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-
-
-section {
-  color: whitesmoke;
-}
-
-.container {
-  position: relative;
-  top: 15%;
-  height: 10%;
-  width: 100%;
-}
-
-.card-padding {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-</style>

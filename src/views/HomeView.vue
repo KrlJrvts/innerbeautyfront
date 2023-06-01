@@ -3,7 +3,7 @@
         <Navbar :push-to-home="pushToHome" :push-to-login="pushToLogin"/>
         <div class="container homepage-data">
             <div class="row mb-5">
-                <div class="col">
+                <div class="col mt-5  ">
                     <h1>{{ sloganGenerator() }}</h1>
                 </div>
             </div>
@@ -72,73 +72,3 @@ export default {
 }
 </script>
 
-
-<style>
-
-h1 {
-    color: white;
-    font-family: 'Playfair Display', serif;
-
-}
-
-.homepage-brand-name {
-    text-decoration: none !important;
-    font-family: 'Playfair Display', serif;
-    font-size: 225%;
-    color: white;
-    transform: scale(1) !important;
-    transition: all 700ms ease !important;
-}
-
-.homepage-brand-name:hover {
-    cursor: pointer;
-    color: #FF0000;
-    transform: scale(1.1) !important;
-}
-
-.homepage-brand-name .fa-heart {
-    color: #660000;
-    transform: scale(1) !important;
-
-}
-
-.homepage-brand-name:hover .fa-heart {
-    color: white;
-    transition: all 2s ease !important;
-
-}
-
-.homepage-data {
-    position: relative;
-    top: 18%;
-}
-
-.homepage-btn-login {
-    color: #660000 !important;
-    transition: all 500ms ease !important;
-    transform: scale(1) !important;
-}
-
-.homepage-btn-login:hover {
-    /*transition-duration: 1000ms!important;*/
-    transform: scale(1.3) perspective(1px) !important;
-    cursor: pointer;
-}
-
-.button-homepage {
-    font-family: 'Playfair Display', serif !important;
-    font-size: 120% !important;
-}
-
-.button-homepage:hover {
-    background-color: #660000 !important;
-    color: white !important;
-    transition: all 700ms ease !important;
-    transform: scale(1.1) !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 300px 10px #660000;
-}
-
-
-
-</style>

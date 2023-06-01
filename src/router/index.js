@@ -1,7 +1,6 @@
-import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
-import AdminView from "@/views/AdminView.vue";
 import AddItemView from "@/views/AddItemView.vue";
 import StoreView from "@/views/StoreView.vue";
 import CartView from "@/views/CartView.vue";
@@ -22,11 +21,6 @@ const routes = [
     path: '/login',
     name: 'loginRoute',
     component: LoginView
-  },
-  {
-    path: '/edit',
-    name: 'registerRoute',
-    component: AdminView
   },
   {
     path: '/add-item',

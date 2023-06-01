@@ -3,10 +3,10 @@
         <div class="container store-container">
             <div class="row store-view-row gx-5 ">
                 <div v-for="category in categories" :key="category.categoryId" :value="category.categoryId"
-                     class="col-3 ">
-                    <div @click="navigateToCategory(category.categoryId)" class="card store-card bg-transparent" style="width: 100%; height: 100%;">
+                     class="col mb-5">
+                    <div @click="navigateToCategory(category.categoryId)" class="card store-card bg-transparent" >
                         <img :src="getCategoryImage(category)" class="store-card-image" draggable="false" >
-                        <div class="card-body store-card-body bg-dark">
+                        <div class="card-body store-card-body">
                             <h2 class="card-text">{{ category.categoryName }}</h2>
                         </div>
                     </div>
@@ -66,46 +66,3 @@ export default {
 }
 
 </script>
-
-<style scoped>
-
-
-.card-body {
-    color: white;
-}
-
-.store-container {
-    position: relative;
-    top: 20%;
-}
-
-.store-card {
-    border-style: solid !important;
-    border-width: 2px !important;
-    border-color: #660000;
-    transform: scale(1);
-}
-.store-card:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: all 800ms ease;
-    border-color: crimson;
-
-}
-
-
-
-.store-card-body {
-    border-color: #1d1d1d !important;
-    background: rgba(40, 0, 0, .3)!important;
-
-}
-
-.store-card-image {
-    height: 250px;
-    width: 100%;
-
-}
-
-
-</style>

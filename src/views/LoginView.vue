@@ -1,7 +1,7 @@
 <template>
-    <section id="login">
+    <section>
         <Navbar :push-to-home="pushToHome"/>
-        <div class="container register-alert-container">
+        <div class="container alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
@@ -69,7 +69,7 @@ export default {
         },
         login() {
             this.message = '';
-            if (this.email == '' || this.password == '') {
+            if (this.email === '' || this.password === '') {
                 this.message = 'Please fill in all the required fields';
             } else {
                 this.sendLoginRequest();
@@ -101,55 +101,3 @@ export default {
 }
 
 </script>
-
-<style scoped>
-
-section {
-    color: black;
-}
-
-.register-alert-container {
-    position: absolute;
-    top: 14%;
-    left: 0;
-    right: 0;
-    padding: 0;
-    z-index: 1;
-}
-.content-container-login {
-    color: white;
-    position: relative;
-    top: 15%;
-    width: 400px;
-    height: 400px;
-    border-radius: 15%;
-    border-style: solid;
-    border-color: #1d1d1d;
-    background: rgba(0, 0, 0, .3);
-}
-
-input {
-    background-color: transparent !important;
-    color: whitesmoke;
-}
-
-input:focus {
-    color: white !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 500px 10px #660000 !important;
-
-
-}
-
-.button-login:hover {
-    background-color: #660000 !important;
-    color: white !important;
-    transition: all 700ms ease !important;
-    transform: scale(1.1) !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 300px 20px #660000;
-}
-
-
-
-</style>

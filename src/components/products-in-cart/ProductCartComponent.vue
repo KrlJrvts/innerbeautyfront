@@ -2,7 +2,8 @@
   <div v-for="product in totalCartProducts.products" :key="product.productId" class="card mb-3 cart-product">
     <div class="row g-0 product-data-component">
       <div class="col-md-4">
-        <img src="../../assets/cartpictures/HumanOrgansBox.jpeg" class="img-fluid rounded-start" alt="">
+        <img v-if="product.imageData === '' " src="../../assets/cartpictures/HumanOrgansBox.jpeg" class=" rounded-start product-cart-image">
+        <img else :src="product.imageData" class=" rounded-start product-cart-image" >
       </div>
       <div class="col-md-8">
         <div class="card-body card-padding">
@@ -87,32 +88,5 @@ export default {
 </script>
 
 <style scoped>
-section {
-  color: whitesmoke;
-}
 
-.cart-product {
-  background: transparent;
-  color: white;
-  border-style: solid;
-  border-color: #660000;
-}
-
-.card-padding {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.button-product-cart {
-  padding: 12px !important;
-  color: #660000;
-}
-
-.product-data-component {
-
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(255, 0, 0, .4);
-  background: rgba(0, 0, 0, .5);
-}
 </style>

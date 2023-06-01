@@ -27,23 +27,7 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-    color: black
-}
-
-#error {
-    background-image: url("../assets/errorphotos/404Error.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-}
-.error-page-button {
-    position: absolute;
-    top: 80%;
-    width: 700px;
 
 
-}
 
 </style>

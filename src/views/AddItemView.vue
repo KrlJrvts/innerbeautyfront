@@ -1,13 +1,13 @@
 <template>
     <section id="Add-item">
-        <div class="register-alert-container">
+        <div class="alert-container">
             <div class="col">
                 <AlertDanger :message="message"/>
             </div>
         </div>
         <div class="container add-item-container text-center">
             <div class="row d-flex justify-content-center products-select-row">
-                <div class="col col-3 mt-5">
+                <div class="col col-4 mt-5 me-5">
                     <div class="mb-3">
                         <ProductGroupDropdown @event-emit-selected-category-id="setProductGroupId"/>
                     </div>
@@ -41,7 +41,7 @@
                         Add Item
                     </button>
                 </div>
-                <div class="col col-3 mt-5">
+                <div class="col col-5 mt-5 mb-5 ps-3 pe-0">
                     <div class="row">
                         <div class="col mb-4">
                             <AddItemImage :picture-data-base64="newProduct.productImage"
@@ -53,7 +53,7 @@
                             <div class="form-floating mb-4 mt-2 ">
                                 <textarea v-model="newProduct.productDescription" class="form-control add-item-textarea"
                                           placeholder="Product Description..." id="floatingTextarea"
-                                          style="height: 135px"></textarea>
+                                          style="height: 135px" maxlength="200"></textarea>
                             </div>
                             <div class="form-floating ms-5 pe-0">
                                 <UserImageInput @event-emit-base64="emitBase64"/>
@@ -177,86 +177,4 @@ export default {
 }
 </script>
 
-<style scoped>
-section {
-    color: black;
-}
-
-small {
-    color: #FF0000;
-}
-
-.add-item-container {
-    color: white;
-    position: relative;
-    top: 15%;
-
-}
-
-.add-item-textarea {
-    background: transparent !important;
-    color: #FF0000;
-}
-
-.add-item-textarea:focus {
-    color: #FF0000;
-    background: transparent !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 500px 10px #660000 !important;
-}
-
-.add-item-textarea::placeholder {
-    color: #FF0000 !important;
-    background-color: transparent;
-}
-
-input {
-    background-color: transparent !important;
-    color: whitesmoke;
-}
-
-input:focus {
-    color: white !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 500px 10px #660000 !important;
-}
-
-button:hover {
-    background-color: #660000 !important;
-    color: white !important;
-    transition: all 700ms ease !important;
-    transform: scale(1.1) !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 300px 10px #660000;
-}
-
-.account-button {
-    font-size: 15px !important;
-}
-
-.register-alert-container {
-    position: absolute;
-    top: 14%;
-    left: 0;
-    right: 0;
-    padding: 0;
-    z-index: 1;
-}
-
-input[type="file"]::-webkit-file-upload-button {
-    padding: 8px 16px; /* Adjust the padding as needed */
-    font-size: 14px; /* Adjust the font size as needed */
-    background-color: black; /* Customize the background color */
-    color: white; /* Customize the text color */
-    border-radius: 4px; /* Add border radius if desired */
-    font-family: inherit;
-}
-
-.account-image {
-    border-color: #660000 !important;
-    border-style: solid;
-    border-width: 2px;
-    padding: 0;
-}
-</style>
 

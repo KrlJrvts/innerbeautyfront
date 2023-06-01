@@ -1,7 +1,7 @@
 <template>
     <section id="favorite-view">
-        <div class="d-flex justify-content-center col-12 favorite-table">
-            <table class="table" style="width: 900px">
+        <div class="d-flex justify-content-center col-12">
+            <table class="favorite-table">
                 <thead>
                 <tr class="header-row ">
                     <th scope="col" colspan="4" style="font-size: 40px; border-color: transparent">Favorite products</th>
@@ -27,11 +27,5 @@ export default {
 
 <style scoped>
 
-table {
-    color: white !important;
-}
-#favorite-view {
-    min-height: 100vh;
-    height: max-content;
-}
+
 </style>

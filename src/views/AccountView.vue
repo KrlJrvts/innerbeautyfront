@@ -1,11 +1,11 @@
 <template>
     <section>
-        <div class="register-alert-container">
+        <div class="alert-container">
             <AlertDanger :message="message"/>
         </div>
         <div class="container account-container text-center">
             <div class="row justify-content-center ">
-                <div class="col col-5 ms-5 mt-5 account-field-container ">
+                <div class="col col-5 ms-5 mt-5">
 
                     <div class="mb-5">
                         <label for="password" class="form-label">Current Password</label>
@@ -135,48 +135,5 @@ export default {
 }
 </script>
 <style scoped>
-section {
-    color: white;
-}
-
-input {
-    background-color: transparent !important;
-    color: whitesmoke;
-}
-
-.register-alert-container {
-    position: absolute;
-    top: 14%;
-    left: 0;
-    right: 0;
-    padding: 0;
-    z-index: 1;
-}
-
-.account-container {
-    position: relative;
-    top: 15%;
-    color: white;
-    width: 600px;
-    height: 460px;
-    border-radius: 50px;
-    border-style: solid;
-    border-color: #1d1d1d;
-    background: rgba(0, 0, 0, .3);
-}
-
-.account-field-container {
-
-}
-
-.account-button {
-    font-size: 15px !important;
-}
-
-input:focus {
-    color: white !important;
-    border-color: #660000 !important;
-    box-shadow: 0px 0px 500px 10px #660000 !important;
-}
 
 </style>
