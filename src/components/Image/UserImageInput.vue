@@ -14,8 +14,11 @@ export default {
     },
     methods: {
         handleImage(event) {
-            const selectedImage = event.target.files[0];
-            this.emitBase64(selectedImage);
+            const selectedFiles = event.target.files;
+            if (selectedFiles && selectedFiles.length > 0) {
+                const selectedImage = selectedFiles[0];
+                this.emitBase64(selectedImage);
+            }
         },
 
         emitBase64(fileObject) {

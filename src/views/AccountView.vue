@@ -78,7 +78,7 @@ export default {
         clearMessage() {
             setTimeout(() => {
                 this.message = '';
-                // window.location.reload()
+                window.location.reload()
             }, 2000);
         },
         emitBase64(pictureDataBase64) {

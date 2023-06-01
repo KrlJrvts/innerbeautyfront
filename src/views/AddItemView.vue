@@ -81,7 +81,7 @@ import AddItemImage from "@/components/Image/AddItemImage.vue";
 export default {
     name: "AddItemView",
     components: {
-        AddItemImage, UserImageInput, UserImage, AlertDanger,
+        AddItemImage, UserImageInput, AlertDanger,
         GenderDropdown, BloodGroupDropdown, CountryDropdown, ProductGroupDropdown
     },
 
