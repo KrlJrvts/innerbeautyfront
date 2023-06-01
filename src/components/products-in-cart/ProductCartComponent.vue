@@ -59,7 +59,6 @@ export default {
     },
 
     removeProductFromCart(productId) {
-
       this.$http.patch("/products/cart-remove", null, {
             params: {
               buyerId: Number(sessionStorage.getItem('userId')),
