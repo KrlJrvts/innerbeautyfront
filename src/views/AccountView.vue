@@ -13,12 +13,12 @@
                                id="confirm-password">
                     </div>
                     <div class="mb-2">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">Set New Password</label>
                         <input v-model="editUserData.userPassword" type="password" class="form-control"
                                id="password">
                     </div>
                     <div class="mb-4">
-                        <label for="password" class="form-label">Confirm Password</label>
+                        <label for="password" class="form-label">Confirm New Password</label>
                         <input v-model="confirmPassword" type="password" class="form-control" id="confirm-password">
                     </div>
                     <div class="">
