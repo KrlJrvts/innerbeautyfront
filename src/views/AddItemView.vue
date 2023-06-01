@@ -162,12 +162,19 @@ export default {
             }
 
         },
+        clearMessage() {
+            setTimeout(() => {
+                this.message = '';
+                window.location.reload()
+            }, 2000);
+        },
         addItem() {
             this.$http.post("/products/add", this.newProduct
             ).then(response => {
                 if (response.status === 200) {
                     this.message = 'Product is successfully added to store!'
                     this.newProduct.productImage = ''
+                    this.clearMessage();
                 }
             }).catch(error => {
                 router.push({name: 'errorRoute'})
