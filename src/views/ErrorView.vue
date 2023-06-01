@@ -1,6 +1,6 @@
 <template>
     <section id="error">
-            <div class="container account-container text-center">
+            <div class="container text-center">
                 <div class="row justify-content-center">
                     <div class="col col-12 mt-5 d-flex justify-content-center">
                         <button @click="toHomePage" type="submit"

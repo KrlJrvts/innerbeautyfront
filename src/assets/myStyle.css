@@ -254,7 +254,8 @@ button:hover {
 
 .store-container {
     position: relative;
-    transform: translateY(50%) !important;
+    top: 80px !important;
+    /*transform: translateY(25%) !important;*/
 }
 
 .store-card {
@@ -379,10 +380,11 @@ button:hover {
 
 }
 .error-page-button {
-    position: absolute;
-    top: 80%;
+    position: relative !important;
+    top: 75vh !important;
     width: 600px;
     background: rgba(0, 0, 0, .5) !important;
+
 }
 
 /* Cart view */
@@ -396,8 +398,6 @@ button:hover {
     background-image: url("@/assets/grunge-black-concrete-textured-background.jpg");
     height: fit-content;
 }
-
-
 
 .cart-product {
     background: transparent !important;
@@ -542,7 +542,7 @@ button:hover {
 
 .product-cart-image{
     max-height: 250px;
-    max-width: 350px;
+    max-width: 300px;
 }
 
 /* Product Favorite component */
