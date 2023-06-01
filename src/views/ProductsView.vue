@@ -152,7 +152,6 @@ export default {
     clearMessage() {
       setTimeout(() => {
         this.message = '';
-        window.location.reload()
       }, 1500);
     },
     openProductDescriptionModal(productDescription, productId, isInFavorites, status) {
@@ -194,7 +193,7 @@ export default {
             }
           }
       ).then(response => {
-
+        this.getProducts()
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })
