@@ -56,6 +56,7 @@ import UserImage from "@/components/Image/UserImage.vue";
 import UserImageInput from "@/components/Image/UserImageInput.vue";
 import router from "@/router";
 
+
 export default {
     name: "AccountView",
     components: {UserImageInput, UserImage, AlertDanger},
