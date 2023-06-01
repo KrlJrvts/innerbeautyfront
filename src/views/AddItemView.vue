@@ -122,12 +122,11 @@ export default {
             this.newProduct.productImage = pictureDataBase64;
         },
         addItemValidation() {
-            this.dropdownValidation();
             this.fieldValidation();
+            this.dropdownValidation();
             if (this.message === '') {
                 this.addItem();
             }
-
         },
         dropdownValidation() {
             if (this.newProduct.productCategoryId === 0) {
@@ -174,7 +173,7 @@ export default {
                 if (response.status === 200) {
                     this.message = 'Product is successfully added to store!'
                     this.newProduct.productImage = ''
-                    this.clearMessage();
+                    this.clearMessage()
                 }
             }).catch(error => {
                 router.push({name: 'errorRoute'})
