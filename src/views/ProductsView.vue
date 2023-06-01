@@ -179,6 +179,7 @@ export default {
       ).then(response => {
         if (response.status === 200) {
           this.message = 'Product is successfully added to cart!'
+            this.getProducts()
         }
       }).catch(error => {
         this.errorResponse = error.response.data
