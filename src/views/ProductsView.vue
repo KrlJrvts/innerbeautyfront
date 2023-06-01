@@ -153,7 +153,7 @@ export default {
       setTimeout(() => {
         this.message = '';
         window.location.reload()
-      }, 2500);
+      }, 1500);
     },
     openProductDescriptionModal(productDescription, productId, isInFavorites, status) {
       this.selectedProductDescription = productDescription;

@@ -89,6 +89,18 @@ export default {
             router.push({name: 'storeRoute'})
         },
         saveChanges() {
+            this.imageHandling()
+            this.dataFieldValidation()
+            if (this.message === '') {
+                this.editUserAccount();
+            }
+        },
+        imageHandling() {
+            if (this.editUserData.userImage === '') {
+                this.editUserData.userImage = this.userData.userImage
+            }
+        },
+        dataFieldValidation() {
             if (this.userData.userPassword !== this.currentPasswordValidation) {
                 this.message = 'Invalid current password!'
             } else if (this.editUserData.userPassword == '' || this.confirmPassword == '') {
@@ -97,7 +109,6 @@ export default {
                 this.message = 'Passwords do not match!'
             } else {
                 this.message = '';
-                this.editUserAccount();
             }
         },
         editUserAccount() {

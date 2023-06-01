@@ -81,13 +81,15 @@ import AddItemImage from "@/components/Image/AddItemImage.vue";
 export default {
     name: "AddItemView",
     components: {
-        AddItemImage, UserImageInput, UserImage, AlertDanger,
+        AddItemImage, UserImageInput, AlertDanger,
         GenderDropdown, BloodGroupDropdown, CountryDropdown, ProductGroupDropdown
     },
 
     data() {
         return {
             message: '',
+            dropdownValidationPassed: false,
+            fieldValidationPassed: false,
             newProduct: {
                 productSellerId: Number(sessionStorage.getItem('userId')),
                 productCategoryId: 0,
@@ -122,12 +124,11 @@ export default {
             this.newProduct.productImage = pictureDataBase64;
         },
         addItemValidation() {
-            this.dropdownValidation();
             this.fieldValidation();
-            if (this.message === '') {
+            this.dropdownValidation();
+            if (this.dropdownValidationPassed && this.fieldValidationPassed) {
                 this.addItem();
             }
-
         },
         dropdownValidation() {
             if (this.newProduct.productCategoryId === 0) {
@@ -139,7 +140,7 @@ export default {
             } else if (this.newProduct.productGenderId === 0) {
                 this.message = 'Please choose Gender'
             } else {
-                this.message = ''
+                this.dropdownValidationPassed = true;
             }
         },
         fieldValidation() {
@@ -158,9 +159,15 @@ export default {
             } else if (this.newProduct.productAvailableAt.length !== 10) {
                 this.message = 'Date format wrong. Please use the format dd.mm.yyyy'
             } else {
-                this.message = ''
+                this.fieldValidationPassed = true;
             }
 
+        },
+        clearMessage() {
+            setTimeout(() => {
+                this.message = '';
+                window.location.reload()
+            }, 2000);
         },
         addItem() {
             this.$http.post("/products/add", this.newProduct
@@ -168,6 +175,7 @@ export default {
                 if (response.status === 200) {
                     this.message = 'Product is successfully added to store!'
                     this.newProduct.productImage = ''
+                    this.clearMessage()
                 }
             }).catch(error => {
                 router.push({name: 'errorRoute'})
